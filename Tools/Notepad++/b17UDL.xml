@@ -1,0 +1,36 @@
+<NotepadPlus>
+    <UserLang name="b17" ext="b17">
+        <Settings>
+            <Global caseIgnored="no" />
+            <TreatAsSymbol comment="no" commentLine="no" />
+            <Prefix words1="no" words2="no" words3="no" words4="no" />
+        </Settings>
+        <KeywordLists>
+            <Keywords name="Delimiters">000000</Keywords>
+            <Keywords name="Folder+"></Keywords>
+            <Keywords name="Folder-"></Keywords>
+            <Keywords name="Operators">=</Keywords>
+            <Keywords name="Comment">1 2 0* 0*#C 0*+++ 0*---</Keywords>
+            <Keywords name="Words1">DENSITY CAPACITY PRESSURE HVAPOR SIGMA RTEMP KFLOORUP EFLOORUP KFLOORDOWN EFLOORDOWN KCEILUP ECEILUP KCEILDOWN ECEILDOWN KVERTICAL EVERTICAL THICKNESS CONDUCTIVITY CAPACITY DENSITY RESISTANCE PSPACING PDIAMETER PWALLTHICKNESS PCONDUCTIVITY CPFLUID CC_PSPACING CC_PIDIAMETER SP_NORMPOWER SP_NORMMFLOW NORMAREA NORMNLOOP UWRX DTSURFNORM UUPCONST ULOCONST K_DOWN M_DOWN K_UP M_UP HOURS VALUES DAYS ABS-FRONT ABS-BACK EPS-FRONT EPS-BACK HFRONT HBACK ABSFRAME EPSFRAME EPSISHADE SURF AREA FSKY NLOOP MFLOWMIN ASEGSURF LENGTH COMFID GEOPOS CAPACITANCE VOLUME TINITIAL PHINITIAL WCAPR KSURF KDEEP MSURF MDEEP BSURF BDEEP TIMEBASE NTYPES SURF COMFID LAYERS ADJ_SURF</Keywords>
+            <Keywords name="Words2">LAYER UCOMB GAP DIRECT_CONTACT INPUTS SCHEDULEHOURLY WALL WINDOW GAIN COMFORT INFILTRATION VENTILATION COOLING HEATING ZONES HEMISPHERE ORIENTATIONS INTERNAL_CALCULATION BEAM DIFFUSE LONGWAVE ADJACENT SHADECNTRL INFILTRATION COMFORT ADJACENT_UPPER AIRNODES AIRNODE PROPERTIES ORI GEOMODE REGIME RADIATIONMODE ZONE OUTPUTS AIRLINKS BUILDING TYPES SCHEDULE HOURLY</Keywords>
+            <Keywords name="Words3">CC_CPFLUID WINID HINSIDE HOUTSIDE SLOPE FFRAME UFRAME RISHADE RESHADE REFLISHADE REFLOSHADE CCISHADE ITSHADECLOSE ITSHADEOPEN CONVECTIVE RADIATIVE HUMIDITY CLOTHING MET WORK VELOCITY AIRCHANGE AIRCHANGE AIRFLOW TEMPERATURE HUMIDITY ABSHUMIDITY ON POWER RRAD FSOLAIR ORIENTATION WAGAIN GEOSURF WAGAIN INTEMP MFLOW EGAIN ALFAEQV COUPLING COUPL_HUMI ISHADE ESHADE SHADECNTRL MRT SCALE COUPL SPACID WWID WHEIG BOUNDARY</Keywords>
+            <Keywords name="Words4">FLOOR CEILING VERTICAL MANUAL MIXED 3D_DATA EXTERNAL ALFAEQV_SELECTED FRONT BACK TRANSFER INPUT STANDARD DETAILED IDENTICAL</Keywords>
+        </KeywordLists>
+        <Styles>
+            <WordsStyle name="DEFAULT" styleID="11" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" />
+            <WordsStyle name="FOLDEROPEN" styleID="12" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" />
+            <WordsStyle name="FOLDERCLOSE" styleID="13" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" />
+            <WordsStyle name="KEYWORD1" styleID="5" fgColor="0000FF" bgColor="FFFFFF" fontName="" fontStyle="0" />
+            <WordsStyle name="KEYWORD2" styleID="6" fgColor="0000FF" bgColor="FFFFFF" fontName="" fontStyle="1" />
+            <WordsStyle name="KEYWORD3" styleID="7" fgColor="800000" bgColor="FFFFFF" fontName="" fontStyle="0" />
+            <WordsStyle name="KEYWORD4" styleID="8" fgColor="6200C4" bgColor="FFFFFF" fontName="" fontStyle="0" />
+            <WordsStyle name="COMMENT" styleID="1" fgColor="000080" bgColor="FFFFFF" fontName="" fontStyle="0" />
+            <WordsStyle name="COMMENT LINE" styleID="2" fgColor="008000" bgColor="FFFFFF" fontName="" fontStyle="0" />
+            <WordsStyle name="NUMBER" styleID="4" fgColor="EA4D00" bgColor="FFFFFF" fontName="" fontStyle="0" />
+            <WordsStyle name="OPERATOR" styleID="10" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" />
+            <WordsStyle name="DELIMINER1" styleID="14" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" />
+            <WordsStyle name="DELIMINER2" styleID="15" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" />
+            <WordsStyle name="DELIMINER3" styleID="16" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" />
+        </Styles>
+    </UserLang>
+</NotepadPlus>
