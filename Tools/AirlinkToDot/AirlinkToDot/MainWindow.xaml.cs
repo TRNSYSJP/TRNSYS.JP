@@ -125,5 +125,26 @@ namespace AirlinkToDot
                 zones += node + " ";
             }
         }
+
+
+
+        private void HelpAbout_Click(object sender, RoutedEventArgs e)
+        {
+            AboutDlg aboutDlg = new AboutDlg();
+            aboutDlg.Owner = this;
+            aboutDlg.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
+            aboutDlg.ShowDialog();
+        }
+
+        /// <summary>
+        /// 終了する
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuItem_Clicked(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            
+        }
     }
 }

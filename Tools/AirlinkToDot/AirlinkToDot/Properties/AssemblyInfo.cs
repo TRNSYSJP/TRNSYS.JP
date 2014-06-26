@@ -8,11 +8,11 @@ using System.Windows;
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
 [assembly: AssemblyTitle("AirlinkToDot")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("This program converts the Airlink/bui into Graphiz format.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("quattro corporate design Co., Ltd.")]
 [assembly: AssemblyProduct("AirlinkToDot")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2014")]
+[assembly: AssemblyCopyright("Copyright © quattro corporate design Co., Ltd. 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
