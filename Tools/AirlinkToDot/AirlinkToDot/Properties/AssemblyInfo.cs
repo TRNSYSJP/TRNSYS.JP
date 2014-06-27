@@ -8,7 +8,7 @@ using System.Windows;
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
 [assembly: AssemblyTitle("AirlinkToDot")]
-[assembly: AssemblyDescription("This program converts the Airlink/bui into Graphiz format.")]
+[assembly: AssemblyDescription("This program converts the Airlink/bui into Graphviz format.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("quattro corporate design Co., Ltd.")]
 [assembly: AssemblyProduct("AirlinkToDot")]

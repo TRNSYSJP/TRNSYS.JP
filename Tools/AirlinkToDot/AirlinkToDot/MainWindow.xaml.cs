@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using Microsoft.Win32; //追加
 using System.IO;
+using System.Collections.ObjectModel;
 
 namespace AirlinkToDot
 {
@@ -31,7 +32,6 @@ namespace AirlinkToDot
         private void btnLoadBui_Click(object sender, RoutedEventArgs e)
         {
 
-            List<string> strList = new List<string>();
 
             BuiFile buiFile = new BuiFile();
 
@@ -42,63 +42,74 @@ namespace AirlinkToDot
             if (ofd.ShowDialog() == true)
             {
                 buiFile.Load(ofd.FileName);
-
-                string dir = System.IO.Path.GetDirectoryName(ofd.FileName);
-                string filename = dir+@"\TRNFlow.gv";
-                bool append = false; // 上書き
-
-
-                #region "TRNFlow/LINK から *.vg形式へ変換する"
-
-                strList.Add("digraph {");
-                strList.Add("    rankdir=LR;");
-
-                string zones="";
-                string extNodes="";
-                string auxNodes="";
-
-                foreach (Link link in buiFile.LinkList.Links)
-                {
-                    string node;
-                    node = link.FromNode;
-                    parseNode(ref zones, ref extNodes, ref auxNodes, node);
-                    node = link.ToNode;
-                    parseNode(ref zones, ref extNodes, ref auxNodes, node);
-                }
-                strList.Add("    node [shape = doublecircle]; " + zones + ";");
-                strList.Add("    node [shape = circle]; " + extNodes + ";");
-                strList.Add("    node [shape = rectangle]; " + auxNodes + ";"); 
-                foreach (Link link in buiFile.LinkList.Links)
-                {
-                    string str = "    " + link.FromNode + " -> " + link.ToNode + "[ label = \"" + link.LinkType + "\" ];";
-                    strList.Add(str);
-                }
-                strList.Add("}  ");
-
-                #endregion
-
-
-
-                // 画面へ表示
-                string vg="";
-                foreach (string str in strList)
-                {
-                    vg += str +"\n";
-                }
-                this.txtBox.Text = vg;
-
-                // ファイルへ保存
-                using (StreamWriter writer = new StreamWriter(filename, append, Encoding.GetEncoding("shift_jis")))　//Shift_JIS
-                {
-                    foreach (string str in strList)
-                    {
-                        writer.WriteLine(str);
-                    }
-                }
-
-
+                convertBuiToDot(buiFile);
 
             }
+        }
+
+        /// <summary>
+        /// Bui to Dot
+        /// </summary>
+        /// <param name="buiFile">BuiFile class</param>
+        private void convertBuiToDot(BuiFile buiFile)
+        {
+
+            List<string> strList = new List<string>();
+
+            //string dir = System.IO.Path.GetDirectoryName(ofd.FileName);
+            string dir = System.IO.Path.GetDirectoryName(buiFile.FileName);
+            string filename = dir + @"\TRNFlow.gv";
+            bool append = false; // 上書き
+
+
+            #region "TRNFlow/LINK から *.vg形式へ変換する"
+
+            strList.Add("digraph {");
+            strList.Add("    rankdir=LR;");
+
+            string zones = "";
+            string extNodes = "";
+            string auxNodes = "";
+
+            foreach (Link link in buiFile.LinkList.Links)
+            {
+                string node;
+                node = link.FromNode;
+                parseNode(ref zones, ref extNodes, ref auxNodes, node);
+                node = link.ToNode;
+                parseNode(ref zones, ref extNodes, ref auxNodes, node);
+            }
+            strList.Add("    node [shape = doublecircle]; " + zones + ";");
+            strList.Add("    node [shape = circle]; " + extNodes + ";");
+            strList.Add("    node [shape = rectangle]; " + auxNodes + ";");
+            foreach (Link link in buiFile.LinkList.Links)
+            {
+                string str = "    " + link.FromNode + " -> " + link.ToNode + "[ label = \"" + link.LinkType + "\" ];";
+                strList.Add(str);
+            }
+            strList.Add("}  ");
+
+            #endregion
+
+
+
+            // 画面へ表示
+            string vg = "";
+            foreach (string str in strList)
+            {
+                vg += str + "\n";
+            }
+            this.txtBox.Text = vg;
+
+            // ファイルへ保存
+            using (StreamWriter writer = new StreamWriter(filename, append, Encoding.GetEncoding("shift_jis")))　//Shift_JIS
+            {
+                foreach (string str in strList)
+                {
+                    writer.WriteLine(str);
+                }
+            }
+
         }
 
         /// <summary>
@@ -127,7 +138,11 @@ namespace AirlinkToDot
         }
 
 
-
+        /// <summary>
+        /// Version Info
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HelpAbout_Click(object sender, RoutedEventArgs e)
         {
             AboutDlg aboutDlg = new AboutDlg();
@@ -137,7 +152,7 @@ namespace AirlinkToDot
         }
 
         /// <summary>
-        /// 終了する
+        /// Exit
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -146,5 +161,46 @@ namespace AirlinkToDot
             this.Close();
             
         }
+
+        /// <summary>
+        /// Drag&Drop
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Drop(object sender, DragEventArgs e)
+        {
+            DroppedFiles list = this.DataContext as DroppedFiles;
+            string[] files = e.Data.GetData(DataFormats.FileDrop) as string[];
+            if (files != null)
+            {
+                BuiFile buiFile = new BuiFile();
+                buiFile.Load(files[0]);
+                convertBuiToDot(buiFile);
+            }
+
+        }
+
+        public class DroppedFiles
+        {
+            public DroppedFiles()
+            {
+                FileNames = new ObservableCollection<string>();
+            }
+            public ObservableCollection<string> FileNames
+            {
+                get;
+                private set;
+            }
+        }
+
+        private void Window_PreviewDragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop, true))
+                e.Effects = DragDropEffects.Copy;
+            else
+                e.Effects = DragDropEffects.None;
+            e.Handled = true;
+        }
+
     }
 }
