@@ -1,0 +1,467 @@
+#ESI!
+3.0
+FLowDesigner Sensor Data Reader
+0
+
+YY
+Quattro Corporate Design 
+1
+
+2
+2
+7月 31, 2013
+YY
+7月 31, 2013
+1
+
+noowner
+__
+__
+__
+1
+FlowDesignerのセンサーファイルの読み込み処理
+0
+0
+0
+0
+0
+0
+__
+__
+__
+1
+
+0
+__
+__
+__
+__
+0
+0
+__
+
+__
+__
+__
+20
+Interval Time
+SN
+1
+
+simple
+integer
+3
++
+0
++Inf
+] ; ]
+100
+0
+-
+Dimensionless
+Start time
+SN
+2
+センサーデータファイルの読み込みを開始する時間を設定する。
+デフォルトの'START'はTRNSYSの計算開始の時間と同じ。
+simple
+real
+3
++
+0
++Inf
+[ ; ]
+START
+0
+hr
+Time
+Stop time
+SN
+2
+センサーデータファイルの読み込みを終了する時間を設定する。
+デフォルトの'STOP'はTRNSYSの計算終了の時間と同じ。
+simple
+real
+3
++
+0
++Inf
+[ ; ]
+STOP
+0
+hr
+Time
+LU for the Sensor data file
+SN
+1
+FlowDesignerのセンサーデータファイルのLU
+simple
+integer
+3
++
+30
++Inf
+[ ; ]
+31
+0
+-
+Dimensionless
+elapsed time
+SN
+1
+制御開始からの経過時間
+simple
+real
+2
++
+0
++Inf
+[ ; ]
+0
+0
+s
+Time
+Wx
+SN
+2
+センサーのx方向の幅
+
+simple
+real
+2
++
+0
++Inf
+[ ; ]
+0
+0
+mm
+Length
+Wy
+SN
+1
+センサーのy方向の幅
+simple
+real
+2
++
+0
++Inf
+[ ; ]
+0
+0
+mm
+Length
+Wz
+SN
+1
+センサーのz方向の幅
+simple
+real
+2
++
+0
++Inf
+[ ; ]
+0
+0
+mm
+Length
+U
+SN
+1
+x方向流速[m/s]
+simple
+real
+2
++
+-Inf
++Inf
+[ ; ]
+0
+0
+m/s
+Velocity
+V
+SN
+1
+y方向流速[m/s]
+simple
+real
+2
++
+-Inf
++Inf
+[ ; ]
+0
+0
+m/s
+Velocity
+W
+SN
+1
+z方向流速[m/s]
+simple
+real
+2
++
+-Inf
++Inf
+[ ; ]
+0
+0
+m/s
+Velocity
+P
+SN
+1
+圧力[Pa]
+simple
+real
+2
++
+-Inf
++Inf
+[ ; ]
+0
+0
+Pa
+Pressure
+T
+SN
+1
+温度[C]
+simple
+real
+2
++
+-Inf
++Inf
+[ ; ]
+0
+0
+C
+Temperature
+Cc
+SN
+1
+汚染度 [個/Cf or 個/m3]
+simple
+real
+2
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+Dimensionless
+Ch
+SN
+1
+絶対湿度[kg/kg]
+simple
+real
+2
++
+0
++Inf
+[ ; ]
+0
+0
+-
+Dimensionless
+C1
+SN
+1
+その他の拡散物質 [ppm]
+simple
+real
+2
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+Dimensionless
+C2
+SN
+1
+その他の拡散物質 [ppm]
+simple
+real
+2
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+Dimensionless
+C3
+SN
+1
+その他の拡散物質 [ppm]
+simple
+real
+2
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+Dimensionless
+Number of Sensors
+SN
+1
+
+simple
+integer
+3
++
+1
+99
+[ ; ]
+1
+0
+-
+Dimensionless
+Delete the sensor file
+SN
+3
+センサーデータファイルを読み込み後の処理
+削除する(1)
+削除しない(0)
+simple
+integer
+3
++
+0
+1
+[ ; ]
+1
+0
+-
+Dimensionless
+0
+0
+0
+0
+0
+
+*** trnModel specific properties ***
+1
+220
+
+
+
+
+0
+
+
+
+0
+
+
+
+0
+
+
+
+0
+
+
+
+0
+6
+
+Sensor file from the FlowDesigner
+sensor.dat
+1
+test.csv
+LU for the Sensor data file
+
+1
+
+
+
+0
+
+
+0
+
+
+
+0
+
+
+0
+
+
+
+0
+
+
+0
+
+
+
+0
+
+
+0
+
+
+
+6
+Interval Time
+Start time
+Stop time
+LU for the Sensor data file
+Number of Sensors
+Delete the sensor file
+
+
+0
+0
+-1
+-1
+0
+
+
+1
+100
+0
+13
+1
+1
+13
+0
+Number of Sensors
+
+1
+100
+
+
+1
+100
+0
+5
+0
+
+
+1
+100
+-1
+-1
+0
+
+
+1
+100

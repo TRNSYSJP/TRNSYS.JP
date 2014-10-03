@@ -1,0 +1,763 @@
+#ESI!
+3.0
+FLowDesigner Control Data Writer
+0
+
+YY
+Quattro Corporate Design 
+1
+
+4
+34
+8月 02, 2013
+YY
+8月 02, 2013
+1
+
+noowner
+__
+__
+__
+1
+FlowDesignerのコントロールデータの書き出し処理
+0
+0
+0
+0
+0
+0
+__
+__
+__
+1
+
+0
+__
+__
+__
+__
+0
+0
+__
+
+__
+__
+__
+38
+Interval Time
+SN
+1
+Interval time for waiting.
+simple
+integer
+3
++
+0
++Inf
+[ ; ]
+100
+0
+-
+Dimensionless
+Start time
+SN
+3
+コントロールデータファイルの書き出しを開始する時間を指定する。
+デフォルトの'START'はTRNSYSの計算開始の時間と同じ。
+
+simple
+real
+3
++
+0
++Inf
+[ ; ]
+START
+0
+hr
+Time
+Stop time
+SN
+3
+コントロールデータファイルの書き出しを終了する時間。
+デフォルトの'STOP'はTRNSYSの計算の終了時間と同じ。
+
+simple
+real
+3
++
+0
++Inf
+[ ; ]
+STOP
+0
+hr
+Time
+LU for the control file
+SN
+1
+FlowDesignerのコントロールファイルのLU
+simple
+integer
+3
++
+30
++Inf
+[ ; ]
+32
+0
+-
+Dimensionless
+Num of Flow Control
+SN
+2
+流入流出制御の対象オブジェクト数（制御がない場合はゼロを入力）
+
+simple
+integer
+3
++
+0
+99
+[ ; ]
+1
+0
+-
+Dimensionless
+Flow Control Label
+SN
+1
+パネル名（吹出口、吸込口またはファンとして登録されていること）
+simple
+string
+1
++
+-Inf
++Inf
+[ ; ]
+FLOW_LABEL
+0
+any
+any
+U
+SN
+1
+x方向流速 [m/s]
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+m/s
+Velocity
+V
+SN
+1
+y方向流速 [m/s]
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+m/s
+Velocity
+W
+SN
+1
+z方向流速 [m/s]
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+m/s
+Velocity
+T
+SN
+1
+温度 [℃]
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+C
+Temperature
+Cc
+SN
+1
+汚染度 [個/Cf or 個/m3]
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+Dimensionless
+Ch
+SN
+1
+絶対湿度 [kg/kg]
+simple
+real
+1
++
+0
++Inf
+[ ; ]
+0
+0
+-
+Dimensionless
+C1
+SN
+1
+その他の拡散物質 [ppm]
+simple
+real
+1
++
+0
++Inf
+[ ; ]
+0
+0
+-
+Dimensionless
+C2
+SN
+1
+その他の拡散物質 [ppm]
+simple
+real
+1
++
+0
++Inf
+[ ; ]
+0
+0
+-
+Dimensionless
+C3
+SN
+1
+その他の拡散物質 [ppm]
+simple
+real
+1
++
+0
++Inf
+[ ; ]
+0
+0
+-
+Dimensionless
+Num of Surface Control
+SN
+1
+
+simple
+integer
+3
++
+0
+99
+[ ; ]
+0
+0
+-
+Dimensionless
+Num of Volume Control
+SN
+1
+
+simple
+integer
+3
++
+0
+99
+[ ; ]
+0
+0
+-
+Dimensionless
+Num of Open Control
+SN
+1
+
+simple
+integer
+3
++
+0
+99
+[ ; ]
+0
+0
+-
+Dimensionless
+Surface Control Label
+SN
+1
+
+simple
+string
+1
++
+-Inf
++Inf
+[ ; ]
+SURFACE_LABEL
+0
+-
+Dimensionless
+Tstar
+SN
+1
+
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+dimensionless
+Mc
+SN
+1
+
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+dimensionless
+Mh
+SN
+1
+
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+dimensionless
+M1
+SN
+1
+
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+dimensionless
+M2
+SN
+1
+
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+dimensionless
+M3
+SN
+1
+
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+dimensionless
+Volume Control Label
+SN
+1
+
+simple
+string
+1
++
+-Inf
++Inf
+[ ; ]
+VOLUME_LABEL
+0
+-
+Dimensionless
+Q
+SN
+1
+
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+dimensionless
+kx
+SN
+1
+
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+dimensionless
+ky
+SN
+1
+
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+dimensionless
+kz
+SN
+1
+
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+dimensionless
+Mc
+SN
+1
+
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+dimensionless
+Mh
+SN
+1
+
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+dimensionless
+M1
+SN
+1
+
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+dimensionless
+M2
+SN
+1
+
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+dimensionless
+M3
+SN
+1
+
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+dimensionless
+Open Control Label
+SN
+1
+
+simple
+string
+1
++
+-Inf
++Inf
+[ ; ]
+OPEN_LABEL
+0
+-
+Dimensionless
+r
+SN
+1
+
+simple
+real
+1
++
+-Inf
++Inf
+[ ; ]
+0
+0
+-
+dimensionless
+Overwrite flag
+SN
+3
+データファイルのオーバーライトの指定
+上書き(1)
+上書きしない(0)
+simple
+integer
+3
++
+0
+1
+[ ; ]
+1
+0
+-
+Dimensionless
+0
+0
+0
+0
+0
+
+*** trnModel specific properties ***
+9999
+221
+
+
+
+
+0
+
+
+
+0
+
+
+
+0
+
+
+
+0
+
+
+
+0
+6
+
+Control file for the FlowDesigner
+control.dat
+1
+control.dat
+LU for the control file
+
+1
+
+
+
+0
+
+
+0
+
+
+
+0
+
+
+0
+
+
+
+0
+
+
+0
+
+
+
+0
+
+
+0
+
+
+
+9
+Interval Time
+Start time
+Stop time
+LU for the control file
+Num of Flow Control
+Num of Surface Control
+Num of Volume Control
+Num of Open Control
+Overwrite flag
+
+
+0
+0
+0
+28
+4
+0
+9
+0
+Num of Flow Control
+
+1
+100
+10
+16
+0
+Num of Surface Control
+
+1
+100
+17
+26
+0
+Num of Volume Control
+
+1
+100
+27
+28
+0
+Num of Open Control
+
+1
+100
+
+
+1
+100
+-1
+-1
+0
+
+
+1
+100
+0
+8
+0
+
+
+1
+100
+-1
+-1
+0
+
+
+1
+100
