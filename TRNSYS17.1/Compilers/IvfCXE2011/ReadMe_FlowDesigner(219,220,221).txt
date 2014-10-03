@@ -1,25 +1,25 @@
 2014/10/03
 
-���̃t�H���_�ɂ�TRNSYS�J�X�^���R���|�[�l���g�̃\�[�X�R�[�h�Ɗ֘A����t�@�C�����[�߂��Ă��܂��B
+このフォルダにはTRNSYSカスタムコンポーネントのソースコードと関連するファイルが納められています。
 
-�ȉ��AFlowDesginer�Ɋ֘A�����R���|�[�l���g�̃T���v���̐����ł��B
+以下、FlowDesginerに関連したコンポーネントのサンプルの説明です。
 
-�EType219Controller
-FlowDesiger�Ƃ̘A�g�f���Ŏg�p�����ȈՃG�A�R�����f���B
-(�f���p�ɊȒP�Ȏ��ŏ������Ă��܂��B���ۂ̃G�A�R���Ƃ͓��삪�قȂ�܂��B�j
+・Type219Controller
+FlowDesigerとの連携デモで使用した簡易エアコンモデル。
+(デモ用に簡単な式で処理しています。実際のエアコンとは動作が異なります。）
 
-�EType220SensorData
-FlowDesinger����Z���T�[�f�[�^���擾����R���|�[�l���g�B
+・Type220SensorData
+FlowDesingerからセンサーデータを取得するコンポーネント。
 
-�EType221ControlData
-TRNSYS�̃f�[�^��FlowDesginer�̃R���g���[���f�[�^�Ƃ��ď����o���������s���R���|�[�l���g�B
+・Type221ControlData
+TRNSYSのデータをFlowDesginerのコントロールデータとして書き出し処理を行うコンポーネント。
 
-���e�R���|�[�l���g��Parameters/Inputs/Outputs�̏ڍׂ�PDF�`���̃h�L�������g���Q�Ɖ������B
-�������p�ɂ͊e�R���|�[�l���g�ɑΉ�����Proforma���K�v�ł��B
-\TRNSYS.JP\TRNSYS17.1\Studio\Proformas\FlowDesigner �t�H���_��TRNSYS�̃C���X�g�[���t�H���_�փR�s�[���Ă����p�������B
+※各コンポーネントのParameters/Inputs/Outputsの詳細はPDF形式のドキュメントを参照下さい。
+※ご利用には各コンポーネントに対応するProformaが必要です。
+\TRNSYS.JP\TRNSYS17.1\Studio\Proformas\FlowDesigner フォルダをTRNSYSのインストールフォルダへコピーしてご利用下さい。
 
-�y������z
-�ȉ��̊��œ�����m�F���Ă��܂��B
+【動作環境】
+以下の環境で動作を確認しています。
 
 TRNSYS17.01.0028
 Intel Parallel Stuido XE2013(Intel Visual Fortran)
