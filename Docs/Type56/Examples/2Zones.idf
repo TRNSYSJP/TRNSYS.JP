@@ -1,0 +1,722 @@
+!-   ===========  BUI-Template for TRNSYS 17 ==========
+!-T17_Template_Start
+!-*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+!-*  TRNBuild   2.0.198
+!-*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+!-*   BUILDING DESCRIPTIONS FILE TRNSYS
+!-*   FOR BUILDING:   
+!-*   GET BY WORKING WITH TRNBuild 1.0 for Windows
+!-*********************************************************************************************************************************************************************************************************
+!-*
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*  C o m m e n t s
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*  P r o j e c t
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*+++ PROJECT
+!-*+++ TITLE=UNDEFINED
+!-*+++ DESCRIPTION=UNDEFINED
+!-*+++ CREATED=UNDEFINED
+!-*+++ ADDRESS=UNDEFINED
+!-*+++ CITY=UNDEFINED
+!-*+++ SWITCH=UNDEFINED
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*  P r o p e r t i e s
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-PROPERTIES
+!- DENSITY=1.204 : CAPACITY=1.012 : PRESSURE=101325.000 : HVAPOR=2454.0 : SIGMA=2.041e-007 : RTEMP=293.15
+!-*--- alpha calculation -------------------
+!- KFLOORUP=7.2 : EFLOORUP=0.31 : KFLOORDOWN=3.888 : EFLOORDOWN=0.31
+!- KCEILUP=7.2 : ECEILUP=0.31 : KCEILDOWN=3.888 : ECEILDOWN=0.31
+!- KVERTICAL=5.76 : EVERTICAL=0.3
+!-*
+!-*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+!-TYPES
+!-*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+!-*
+!-*--------------------------------------------------------------------------------------
+!-*  L a y e r s
+!-*--------------------------------------------------------------------------------------
+!-LAYER PLASTERBOA
+!- CONDUCTIVITY=  0.576 : CAPACITY=   0.84 : DENSITY=    950
+!-LAYER FBRGLS_ASHRAE
+!- CONDUCTIVITY=  0.144 : CAPACITY=   0.84 : DENSITY=     12
+!-LAYER WD_SIDN_ASHRA
+!- CONDUCTIVITY=  0.504 : CAPACITY=    0.9 : DENSITY=    530
+!-LAYER TMBR_FLR_ASHR
+!- CONDUCTIVITY=  0.504 : CAPACITY=    1.2 : DENSITY=    650
+!-LAYER INS_FLR_ASH
+!- RESISTANCE=    6.965
+!-LAYER RFDCK_ASHRAE
+!- CONDUCTIVITY=  0.504 : CAPACITY=    0.9 : DENSITY=    530
+!-LAYER CONC_SLAB
+!- CONDUCTIVITY=  4.068 : CAPACITY=      1 : DENSITY=   1400
+!-LAYER INS_FLR_ASH_900
+!- RESISTANCE=    6.993
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*  I n p u t s
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-INPUTS TGROUND TBOUNDARY BRIGHT SHADE_CLOSE SHADE_OPEN MAX_ISHADE MAX_ESHADE
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*  S c h e d u l e s
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-SCHEDULE WORKDAY
+!- HOURS =0.000 8.000 18.000 24.0
+!- VALUES=0 1. 0 0 
+!-SCHEDULE WEEKEND
+!- HOURS =0.000 1.000 24.0
+!- VALUES=0 0 0 
+!-SCHEDULE WORKLIGHT
+!- HOURS =0.000 8.000 18.000 24.0
+!- VALUES=0 1. 0 0 
+!-SCHEDULE DAYNIGHT
+!- HOURS =0.000 6.000 18.000 24.0
+!- VALUES=0 1. 0 0 
+!-SCHEDULE USE
+!- DAYS=1 2 3 4 5 6 7
+!- HOURLY=WORKDAY WORKDAY WORKDAY WORKDAY WORKDAY WEEKEND WEEKEND
+!-SCHEDULE LIGHT
+!- DAYS=1 2 3 4 5 6 7
+!- HOURLY=WORKLIGHT WORKLIGHT WORKLIGHT WORKLIGHT WORKLIGHT WEEKEND WEEKEND
+!-SCHEDULE SETOFF
+!- DAYS=1 2 3 4 5 6 7
+!- HOURLY=DAYNIGHT DAYNIGHT DAYNIGHT DAYNIGHT DAYNIGHT WEEKEND WEEKEND
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*  W a l l s
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-WALL BND_WALL
+!- LAYERS   = PLASTERBOA FBRGLS_ASHRAE PLASTERBOA 
+!- THICKNESS= 0.012      0.066         0.012     
+!- ABS-FRONT= 0.6   : ABS-BACK= 0.6  
+!- EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+!- HFRONT   = 11 : HBACK= 11
+!-WALL EXT_WALL
+!- LAYERS   = PLASTERBOA FBRGLS_ASHRAE WD_SIDN_ASHRA 
+!- THICKNESS= 0.012      0.066         0.009     
+!- ABS-FRONT= 0.6   : ABS-BACK= 0.6  
+!- EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+!- HFRONT   = 11 : HBACK= 64
+!-WALL EXT_ROOF
+!- LAYERS   = PLASTERBOA FBRGLS_ASHRAE RFDCK_ASHRAE  
+!- THICKNESS= 0.01       0.112         0.019      
+!- ABS-FRONT= 0.6   : ABS-BACK= 0.6  
+!- EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+!- HFRONT   = 11 : HBACK= 64
+!-WALL EXT_FLOOR
+!- LAYERS   = TMBR_FLR_ASHR INS_FLR_ASH 
+!- THICKNESS= 0.03       0     
+!- ABS-FRONT= 0.6   : ABS-BACK= 0.6  
+!- EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+!- HFRONT   = 11 : HBACK= 11
+!-WALL BND_CEILING
+!- LAYERS   = CONC_SLAB 
+!- THICKNESS= 0.08         
+!- ABS-FRONT= 0.6   : ABS-BACK= 0.6  
+!- EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+!- HFRONT   = 11 : HBACK= 11
+!-WALL BND_FLOOR
+!- LAYERS   = TMBR_FLR_ASHR INS_FLR_ASH 
+!- THICKNESS= 0.03       0     
+!- ABS-FRONT= 0.6   : ABS-BACK= 0.6  
+!- EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+!- HFRONT   = 11 : HBACK= 11
+!-WALL GROUND_FLOOR
+!- LAYERS   = CONC_SLAB INS_FLR_ASH_900
+!- THICKNESS= 0.08      0     
+!- ABS-FRONT= 0.6   : ABS-BACK= 0.6  
+!- EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+!- HFRONT   = 11 : HBACK= 0.001
+!-WALL ADJ_WALL
+!- LAYERS   = PLASTERBOA FBRGLS_ASHRAE PLASTERBOA 
+!- THICKNESS= 0.012      0.066         0.012     
+!- ABS-FRONT= 0.6   : ABS-BACK= 0.6  
+!- EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+!- HFRONT   = 11 : HBACK= 11
+!-WALL ADJ_CEILING
+!- LAYERS   = CONC_SLAB 
+!- THICKNESS= 0.08         
+!- ABS-FRONT= 0.6   : ABS-BACK= 0.6  
+!- EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+!- HFRONT   = 11 : HBACK= 11
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*  W i n d o w s
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-WINDOW EXT_WINDOW1
+!- WINID=6001 : HINSIDE=11 : HOUTSIDE=64 : SLOPE=90 : SPACID=0 : WWID=0.77 : WHEIG=1.08 : FFRAME=0.3 : UFRAME=10.9091 : ABSFRAME=0.6 : RISHADE=0 : RESHADE=0 : REFLISHADE=0.5 : REFLOSHADE=0.5 : ;
+!- CCISHADE=0.5 : EPSFRAME=0.9 : EPSISHADE=0.9 : ITSHADECLOSE=INPUT 1*SHADE_CLOSE : ITSHADEOPEN=INPUT 1*SHADE_OPEN
+!-WINDOW EXT_WINDOW2
+!- WINID=6001 : HINSIDE=11 : HOUTSIDE=64 : SLOPE=90 : SPACID=0 : WWID=0.77 : WHEIG=1.08 : FFRAME=0.3 : UFRAME=10.9091 : ABSFRAME=0.6 : RISHADE=0 : RESHADE=0 : REFLISHADE=0.5 : REFLOSHADE=0.5 : ;
+!- CCISHADE=0.5 : EPSFRAME=0.9 : EPSISHADE=0.9 : ITSHADECLOSE=INPUT 1*SHADE_CLOSE : ITSHADEOPEN=INPUT 1*SHADE_OPEN
+!-WINDOW ADJ_WINDOW
+!- WINID=6001 : HINSIDE=11 : HOUTSIDE=64 : SLOPE=90 : SPACID=0 : WWID=0.77 : WHEIG=1.08 : FFRAME=0.3 : UFRAME=10.9091 : ABSFRAME=0.6 : RISHADE=0 : RESHADE=0 : REFLISHADE=0.5 : REFLOSHADE=0.5 : ;
+!- CCISHADE=0.5 : EPSFRAME=0.9 : EPSISHADE=0.9 : ITSHADECLOSE=INPUT 1*SHADE_CLOSE : ITSHADEOPEN=INPUT 1*SHADE_OPEN
+!-WINDOW ADJ_WINDOW2
+!- WINID=6001 : HINSIDE=11 : HOUTSIDE=64 : SLOPE=90 : SPACID=0 : WWID=0.77 : WHEIG=1.08 : FFRAME=0.3 : UFRAME=10.9091 : ABSFRAME=0.6 : RISHADE=0 : RESHADE=0 : REFLISHADE=0.5 : REFLOSHADE=0.5 : ;
+!- CCISHADE=0.5 : EPSFRAME=0.9 : EPSISHADE=0.9 : ITSHADECLOSE=INPUT 1*SHADE_CLOSE : ITSHADEOPEN=INPUT 1*SHADE_OPEN
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*  D e f a u l t  G a i n s
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*  O t h e r  G a i n s
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*  C o m f o r t
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*  I n f i l t r a t i o n
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*  V e n t i l a t i o n
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*  C o o l i n g
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*  H e a t i n g
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*  Z o n e s
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-ZONES 
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*  O r i e n t a t i o n s
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-ORIENTATIONS H_0_0 
+!-INTERNAL_CALCULATION H_0_0
+!-*
+!-*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+!-BUILDING
+!-*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+!-
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*  O u t p u t s
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-OUTPUTS
+!- TRANSFER : TIMEBASE=1.000
+!- DEFAULT
+!-*
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-*  E n d
+!-*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+!-END
+!-
+!-_EXTENSION_WINPOOL_START_
+!-Window 5.2  v5.2.17  DOE-2 Data File : Multi Band Calculation
+!-Unit System : SI
+!-Name        : DOE-2 WINDOW LIB
+!-Desc        : ASH140 DBLE - MOD
+!-Window ID   : 6001
+!-Tilt        : 90.0
+!-Glazings    : 2
+!-Frame       :  2 Al w/break            5.680
+!-Spacer      :  1 Class1                2.330  -0.010   0.138
+!-Total Height: 1500.0 mm
+!-Total Width : 1200.0 mm
+!-Glass Height: 1385.7 mm
+!-Glass Width : 1085.7 mm
+!-Mullion     : None
+!-Gap        Thick    Cond  dCond    Vis   dVis   Dens   dDens     Pr     dPr
+!-1 Air       13.0 0.02407  7.760  1.722  4.940  1.292 -0.0046  0.720 -0.0002
+!-2              0       0      0      0      0      0       0      0       0
+!-3              0       0      0      0      0      0       0      0       0
+!-4              0       0      0      0      0      0       0      0       0
+!-5              0       0      0      0      0      0       0      0       0
+!-Angle     0    10    20    30    40    50    60    70    80    90 Hemis
+!-Tsol  0.747 0.747 0.745 0.740 0.730 0.707 0.652 0.517 0.263 0.000 0.652
+!-Abs1  0.064 0.065 0.066 0.068 0.071 0.075 0.080 0.086 0.094 0.000 0.080
+!-Abs2  0.052 0.053 0.053 0.055 0.057 0.058 0.059 0.054 0.041 0.000 0.059
+!-Abs3      0     0     0     0     0     0     0     0     0     0     0
+!-Abs4      0     0     0     0     0     0     0     0     0     0     0
+!-Abs5      0     0     0     0     0     0     0     0     0     0     0
+!-Abs6      0     0     0     0     0     0     0     0     0     0     0
+!-Rfsol 0.136 0.136 0.136 0.137 0.143 0.160 0.210 0.343 0.602 1.000 0.210
+!-Rbsol 0.136 0.136 0.136 0.137 0.143 0.160 0.210 0.343 0.602 1.000 0.210
+!-Tvis  0.747 0.747 0.745 0.740 0.730 0.707 0.652 0.517 0.263 0.000 0.652
+!-Rfvis 0.136 0.136 0.136 0.137 0.143 0.160 0.210 0.343 0.602 1.000 0.210
+!-Rbvis 0.136 0.136 0.136 0.137 0.143 0.160 0.210 0.343 0.602 1.000 0.210
+!-SHGC  0.789 0.789 0.787 0.782 0.769 0.739 0.668 0.519 0.267 0.000 0.688
+!-SC: 0.81
+!-Layer ID#         9991     9991        0        0        0        0
+!-Tir              0.000    0.000        0        0        0        0
+!-Emis F           0.840    0.840        0        0        0        0
+!-Emis B           0.840    0.840        0        0        0        0
+!-Thickness(mm)      3.2      3.2        0        0        0        0
+!-Cond(W/m2-K     ) 333.9    333.9        0        0        0        0
+!-Spectral File         None         None         None         None         None         None
+!-Overall and Center of Glass Ig U-values (W/m2-K)
+!-Outdoor Temperature                 -17.8 C      15.6 C      26.7 C      37.8 C
+!-Solar      WdSpd  hcout hrout  hin
+!-(W/m2)     (m/s)     (W/m2-K)
+!-0        0.00   4.00  3.39  2.43  2.12 2.12  2.24 2.24  2.32 2.32  2.49 2.49
+!-0        6.71  30.84  3.23  2.58  2.72 2.72  2.80 2.80  2.89 2.89  3.13 3.13
+!-783        0.00   4.00  3.52  2.03  2.12 2.12  2.24 2.24  2.32 2.32  2.49 2.49
+!-783        6.71  30.84  3.27  2.39  2.72 2.72  2.80 2.80  2.89 2.89  3.13 3.13
+!-*** END OF LIBRARY ***
+!-***************************************************************************************************
+!-*WinID   Description                              Design         U-Value g-value T-sol Rf-sol T-vis
+!-***************************************************************************************************
+!-  6001   ASH140 DBLE - MOD                        3.2/13/3.2       2.89  0.789  0.747  0.136  0.747
+!-_EXTENSION_WINPOOL_END_
+!-
+!-_EXTENSION_BuildingGeometry_START_
+!-
+!-_EXTENSION_BuildingGeometry_END_
+!-
+!-
+!-_EXTENSION_ExternalShadingGeometry_START_
+!-
+!-_EXTENSION_ExternalShadingGeometry_END_
+!-
+!-
+!-_EXTENSION_GeoPositionGeometry_START_
+!-_EXTENSION_GeoPositionGeometry_END_
+!-
+!-T17_Template_Stop
+
+
+!-   ===========  ALL OBJECTS IN CLASS: VERSION ===========
+ 
+  Version,5.0;
+
+!-   ===========  ALL OBJECTS IN CLASS: BUILDING ===========
+ 
+Building,
+    TRNSYS17,                !- Name
+    0.0,                     !- North Axis {deg}
+    City,                    !- Terrain
+    0,                    !- Loads Convergence Tolerance Value
+    0,                     !- Temperature Convergence Tolerance Value {deltaC}
+    FullInteriorAndExterior, !- Solar Distribution
+    0;                      !- Maximum Number of Warmup Days
+
+!-   ===========  ALL OBJECTS IN CLASS: LOCATION ===========
+ 
+Site:Location,
+    not used,  !- Name
+    0.0,                 !- Latitude {deg}
+    0.0,                 !- Longitude {deg}
+    0.0,                 !- TimeZone {hr}
+    0;                 !- Elevation {m}
+
+GlobalGeometryRules,
+    UpperLeftCorner,         !- Starting Vertex Position
+    Counterclockwise,        !- Vertex Entry Direction
+    Absolute;                !- Coordinate System
+
+ 
+!-   ===========  ALL OBJECTS IN CLASS: CONSTRUCTION ===========
+ 
+Construction,
+    GROUND_FLOOR;      !- Name
+Construction,         
+    EXT_WALL;         !- Name
+Construction,    
+    EXT_FLOOR;        !- Name
+Construction,
+    EXT_ROOF;         !- Name
+Construction,
+    BND_WALL;         !- Name
+Construction,    
+    BND_FLOOR;        !- Name
+Construction,
+    BND_CEILING;      !- Name
+Construction,
+    ADJ_WALL;         !- Name
+Construction,
+    ADJ_CEILING;      !- Name
+Construction,
+    VirtualSurface;   !- Name
+Construction,
+    EXT_WINDOW1;         !- Name
+Construction,
+    EXT_WINDOW2;         !- Name
+Construction,
+    ADJ_WINDOW;          !- Name
+  Construction,
+    ADJ_WINDOW2;          !- Name
+
+!-   ===========  ALL OBJECTS IN CLASS: SurfaceProperty:OtherSideCoefficients ===========
+SurfaceProperty:OtherSideCoefficients,
+    BOUNDARY=IDENTICAL;
+SurfaceProperty:OtherSideCoefficients,
+    BOUNDARY=INPUT 1*TBOUNDARY;
+SurfaceProperty:OtherSideCoefficients,   
+    BOUNDARY=INPUT 1*TBOUNDARY_2;
+SurfaceProperty:OtherSideCoefficients,
+    BOUNDARY=INPUT 1*TBOUNDARY_3;
+SurfaceProperty:OtherSideCoefficients,   
+    BOUNDARY=INPUT 1*TGROUND;
+SurfaceProperty:OtherSideCoefficients,
+    BOUNDARY=20; 
+SurfaceProperty:OtherSideCoefficients,
+    BOUNDARY=15; 
+    
+!-   ===========  ALL OBJECTS IN CLASS: WindowProperty:ShadingControl ===========
+  WindowProperty:ShadingControl,
+    ESHADE=0; ISHADE=0 !- Name
+  WindowProperty:ShadingControl,
+    ESHADE=INPUT 1*MAX_ESHADE : SHADECNTRL=ESHADE_INTERNAL;  !- Name
+  WindowProperty:ShadingControl,
+    ISHADE=INPUT 1*MAX_ISHADE : SHADECNTRL=ISHADE_INTERNAL;  !- Name
+
+
+ !-   ===========  ALL OBJECTS IN CLASS: OUTPUT:VARIABLEDICTIONARY ===========
+
+  Output:VariableDictionary,IDF;
+
+
+  Zone,
+    ZONE1,  !- Name
+    0.0,  !- Direction of Relative North {deg}
+    0.003732,  !- X Origin {m}
+    -0.338836,  !- Y Origin {m}
+    0.0,  !- Z Origin {m}
+    ,  !- Type
+    1;  !- Multiplier
+
+  BuildingSurface:Detailed,
+    2D15D3,  !- Name
+    Floor,  !- Surface Type
+    GROUND_FLOOR,  !- Construction Name
+    ZONE1,  !- Zone Name
+    Ground,  !- Outside Boundary Condition
+    BOUNDARY=INPUT 1*TGROUND,  !- Outside Boundary Condition Object
+    NoSun,  !- Sun Exposure
+    NoWind,  !- Wind Exposure
+    ,  !- TRNSYS 17 - additional surface data
+    4,  !- Number of Vertices
+    5.000000000000,  !- Vertex 1 X-coordinate {m}
+    5.000000000000,  !- Vertex 1 Y-coordinate {m}
+    0.000000000000,  !- Vertex 1 Z-coordinate {m}
+    5.000000000000,  !- Vertex 2 X-coordinate {m}
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}
+    0.000000000000,  !- Vertex 3 X-coordinate {m}
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}
+    0.000000000000,  !- Vertex 4 X-coordinate {m}
+    5.000000000000,  !- Vertex 4 Y-coordinate {m}
+    0.000000000000;  !- Vertex 4 Z-coordinate {m}
+
+  BuildingSurface:Detailed,
+    941DCD,  !- Name
+    Wall,  !- Surface Type
+    EXT_WALL,  !- Construction Name
+    ZONE1,  !- Zone Name
+    Outdoors,  !- Outside Boundary Condition
+    ,  !- Outside Boundary Condition Object
+    SunExposed,  !- Sun Exposure
+    WindExposed,  !- Wind Exposure
+    ,  !- TRNSYS 17 - additional surface data
+    4,  !- Number of Vertices
+    0.000000000000,  !- Vertex 1 X-coordinate {m}
+    0.000000000000,  !- Vertex 1 Y-coordinate {m}
+    3.000000000000,  !- Vertex 1 Z-coordinate {m}
+    0.000000000000,  !- Vertex 2 X-coordinate {m}
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}
+    5.000000000000,  !- Vertex 3 X-coordinate {m}
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}
+    5.000000000000,  !- Vertex 4 X-coordinate {m}
+    0.000000000000,  !- Vertex 4 Y-coordinate {m}
+    3.000000000000;  !- Vertex 4 Z-coordinate {m}
+
+  BuildingSurface:Detailed,
+    14554B,  !- Name
+    Wall,  !- Surface Type
+    EXT_WALL,  !- Construction Name
+    ZONE1,  !- Zone Name
+    Outdoors,  !- Outside Boundary Condition
+    ,  !- Outside Boundary Condition Object
+    SunExposed,  !- Sun Exposure
+    WindExposed,  !- Wind Exposure
+    ,  !- TRNSYS 17 - additional surface data
+    4,  !- Number of Vertices
+    5.000000000000,  !- Vertex 1 X-coordinate {m}
+    5.000000000000,  !- Vertex 1 Y-coordinate {m}
+    3.000000000000,  !- Vertex 1 Z-coordinate {m}
+    5.000000000000,  !- Vertex 2 X-coordinate {m}
+    5.000000000000,  !- Vertex 2 Y-coordinate {m}
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}
+    0.000000000000,  !- Vertex 3 X-coordinate {m}
+    5.000000000000,  !- Vertex 3 Y-coordinate {m}
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}
+    0.000000000000,  !- Vertex 4 X-coordinate {m}
+    5.000000000000,  !- Vertex 4 Y-coordinate {m}
+    3.000000000000;  !- Vertex 4 Z-coordinate {m}
+
+  BuildingSurface:Detailed,
+    DB2A30,  !- Name
+    Wall,  !- Surface Type
+    EXT_WALL,  !- Construction Name
+    ZONE1,  !- Zone Name
+    Outdoors,  !- Outside Boundary Condition
+    ,  !- Outside Boundary Condition Object
+    SunExposed,  !- Sun Exposure
+    WindExposed,  !- Wind Exposure
+    ,  !- TRNSYS 17 - additional surface data
+    4,  !- Number of Vertices
+    0.000000000000,  !- Vertex 1 X-coordinate {m}
+    5.000000000000,  !- Vertex 1 Y-coordinate {m}
+    3.000000000000,  !- Vertex 1 Z-coordinate {m}
+    0.000000000000,  !- Vertex 2 X-coordinate {m}
+    5.000000000000,  !- Vertex 2 Y-coordinate {m}
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}
+    0.000000000000,  !- Vertex 3 X-coordinate {m}
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}
+    0.000000000000,  !- Vertex 4 X-coordinate {m}
+    0.000000000000,  !- Vertex 4 Y-coordinate {m}
+    3.000000000000;  !- Vertex 4 Z-coordinate {m}
+
+  BuildingSurface:Detailed,
+    8C0F81,  !- Name
+    Wall,  !- Surface Type
+    ADJ_WALL,  !- Construction Name
+    ZONE1,  !- Zone Name
+    Zone,  !- Outside Boundary Condition
+    ZONE2,  !- Outside Boundary Condition Object
+    NoSun,  !- Sun Exposure
+    NoWind,  !- Wind Exposure
+    ,  !- TRNSYS 17 - additional surface data
+    4,  !- Number of Vertices
+    5.000000000000,  !- Vertex 1 X-coordinate {m}
+    0.000000000000,  !- Vertex 1 Y-coordinate {m}
+    3.000000000000,  !- Vertex 1 Z-coordinate {m}
+    5.000000000000,  !- Vertex 2 X-coordinate {m}
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}
+    5.000000000000,  !- Vertex 3 X-coordinate {m}
+    5.000000000000,  !- Vertex 3 Y-coordinate {m}
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}
+    5.000000000000,  !- Vertex 4 X-coordinate {m}
+    5.000000000000,  !- Vertex 4 Y-coordinate {m}
+    3.000000000000;  !- Vertex 4 Z-coordinate {m}
+
+  BuildingSurface:Detailed,
+    6E7223,  !- Name
+    Roof,  !- Surface Type
+    EXT_ROOF,  !- Construction Name
+    ZONE1,  !- Zone Name
+    Outdoors,  !- Outside Boundary Condition
+    ,  !- Outside Boundary Condition Object
+    SunExposed,  !- Sun Exposure
+    WindExposed,  !- Wind Exposure
+    ,  !- TRNSYS 17 - additional surface data
+    4,  !- Number of Vertices
+    0.000000000000,  !- Vertex 1 X-coordinate {m}
+    5.000000000000,  !- Vertex 1 Y-coordinate {m}
+    3.000000000000,  !- Vertex 1 Z-coordinate {m}
+    0.000000000000,  !- Vertex 2 X-coordinate {m}
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}
+    3.000000000000,  !- Vertex 2 Z-coordinate {m}
+    5.000000000000,  !- Vertex 3 X-coordinate {m}
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}
+    3.000000000000,  !- Vertex 3 Z-coordinate {m}
+    5.000000000000,  !- Vertex 4 X-coordinate {m}
+    5.000000000000,  !- Vertex 4 Y-coordinate {m}
+    3.000000000000;  !- Vertex 4 Z-coordinate {m}
+
+  Zone,
+    ZONE2,  !- Name
+    0.0,  !- Direction of Relative North {deg}
+    6.41098,  !- X Origin {m}
+    -2.278833,  !- Y Origin {m}
+    0.0,  !- Z Origin {m}
+    ,  !- Type
+    1;  !- Multiplier
+
+  BuildingSurface:Detailed,
+    85A08D,  !- Name
+    Floor,  !- Surface Type
+    GROUND_FLOOR,  !- Construction Name
+    ZONE2,  !- Zone Name
+    Ground,  !- Outside Boundary Condition
+    BOUNDARY=INPUT 1*TGROUND,  !- Outside Boundary Condition Object
+    NoSun,  !- Sun Exposure
+    NoWind,  !- Wind Exposure
+    ,  !- TRNSYS 17 - additional surface data
+    4,  !- Number of Vertices
+    10.000000000000,  !- Vertex 1 X-coordinate {m}
+    5.000000000000,  !- Vertex 1 Y-coordinate {m}
+    0.000000000000,  !- Vertex 1 Z-coordinate {m}
+    10.000000000000,  !- Vertex 2 X-coordinate {m}
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}
+    5.000000000000,  !- Vertex 3 X-coordinate {m}
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}
+    5.000000000000,  !- Vertex 4 X-coordinate {m}
+    5.000000000000,  !- Vertex 4 Y-coordinate {m}
+    0.000000000000;  !- Vertex 4 Z-coordinate {m}
+
+  BuildingSurface:Detailed,
+    240BD6,  !- Name
+    Wall,  !- Surface Type
+    EXT_WALL,  !- Construction Name
+    ZONE2,  !- Zone Name
+    Outdoors,  !- Outside Boundary Condition
+    ,  !- Outside Boundary Condition Object
+    SunExposed,  !- Sun Exposure
+    WindExposed,  !- Wind Exposure
+    ,  !- TRNSYS 17 - additional surface data
+    4,  !- Number of Vertices
+    5.000000000000,  !- Vertex 1 X-coordinate {m}
+    0.000000000000,  !- Vertex 1 Y-coordinate {m}
+    3.000000000000,  !- Vertex 1 Z-coordinate {m}
+    5.000000000000,  !- Vertex 2 X-coordinate {m}
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}
+    10.000000000000,  !- Vertex 3 X-coordinate {m}
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}
+    10.000000000000,  !- Vertex 4 X-coordinate {m}
+    0.000000000000,  !- Vertex 4 Y-coordinate {m}
+    3.000000000000;  !- Vertex 4 Z-coordinate {m}
+
+  BuildingSurface:Detailed,
+    F6C124,  !- Name
+    Wall,  !- Surface Type
+    EXT_WALL,  !- Construction Name
+    ZONE2,  !- Zone Name
+    Outdoors,  !- Outside Boundary Condition
+    ,  !- Outside Boundary Condition Object
+    SunExposed,  !- Sun Exposure
+    WindExposed,  !- Wind Exposure
+    ,  !- TRNSYS 17 - additional surface data
+    4,  !- Number of Vertices
+    10.000000000000,  !- Vertex 1 X-coordinate {m}
+    5.000000000000,  !- Vertex 1 Y-coordinate {m}
+    3.000000000000,  !- Vertex 1 Z-coordinate {m}
+    10.000000000000,  !- Vertex 2 X-coordinate {m}
+    5.000000000000,  !- Vertex 2 Y-coordinate {m}
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}
+    5.000000000000,  !- Vertex 3 X-coordinate {m}
+    5.000000000000,  !- Vertex 3 Y-coordinate {m}
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}
+    5.000000000000,  !- Vertex 4 X-coordinate {m}
+    5.000000000000,  !- Vertex 4 Y-coordinate {m}
+    3.000000000000;  !- Vertex 4 Z-coordinate {m}
+
+  BuildingSurface:Detailed,
+    E7C77D,  !- Name
+    Roof,  !- Surface Type
+    EXT_ROOF,  !- Construction Name
+    ZONE2,  !- Zone Name
+    Outdoors,  !- Outside Boundary Condition
+    ,  !- Outside Boundary Condition Object
+    SunExposed,  !- Sun Exposure
+    WindExposed,  !- Wind Exposure
+    ,  !- TRNSYS 17 - additional surface data
+    4,  !- Number of Vertices
+    5.000000000000,  !- Vertex 1 X-coordinate {m}
+    5.000000000000,  !- Vertex 1 Y-coordinate {m}
+    3.000000000000,  !- Vertex 1 Z-coordinate {m}
+    5.000000000000,  !- Vertex 2 X-coordinate {m}
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}
+    3.000000000000,  !- Vertex 2 Z-coordinate {m}
+    10.000000000000,  !- Vertex 3 X-coordinate {m}
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}
+    3.000000000000,  !- Vertex 3 Z-coordinate {m}
+    10.000000000000,  !- Vertex 4 X-coordinate {m}
+    5.000000000000,  !- Vertex 4 Y-coordinate {m}
+    3.000000000000;  !- Vertex 4 Z-coordinate {m}
+
+  BuildingSurface:Detailed,
+    8D64BD,  !- Name
+    Wall,  !- Surface Type
+    EXT_WALL,  !- Construction Name
+    ZONE2,  !- Zone Name
+    Outdoors,  !- Outside Boundary Condition
+    ,  !- Outside Boundary Condition Object
+    SunExposed,  !- Sun Exposure
+    WindExposed,  !- Wind Exposure
+    ,  !- TRNSYS 17 - additional surface data
+    4,  !- Number of Vertices
+    10.000000000000,  !- Vertex 1 X-coordinate {m}
+    0.000000000000,  !- Vertex 1 Y-coordinate {m}
+    3.000000000000,  !- Vertex 1 Z-coordinate {m}
+    10.000000000000,  !- Vertex 2 X-coordinate {m}
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}
+    10.000000000000,  !- Vertex 3 X-coordinate {m}
+    5.000000000000,  !- Vertex 3 Y-coordinate {m}
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}
+    10.000000000000,  !- Vertex 4 X-coordinate {m}
+    5.000000000000,  !- Vertex 4 Y-coordinate {m}
+    3.000000000000;  !- Vertex 4 Z-coordinate {m}
+
+  BuildingSurface:Detailed,
+    36EA43,  !- Name
+    Wall,  !- Surface Type
+    ADJ_WALL,  !- Construction Name
+    ZONE2,  !- Zone Name
+    Zone,  !- Outside Boundary Condition
+    ZONE1,  !- Outside Boundary Condition Object
+    NoSun,  !- Sun Exposure
+    NoWind,  !- Wind Exposure
+    ,  !- TRNSYS 17 - additional surface data
+    4,  !- Number of Vertices
+    5.000000000000,  !- Vertex 1 X-coordinate {m}
+    5.000000000000,  !- Vertex 1 Y-coordinate {m}
+    3.000000000000,  !- Vertex 1 Z-coordinate {m}
+    5.000000000000,  !- Vertex 2 X-coordinate {m}
+    5.000000000000,  !- Vertex 2 Y-coordinate {m}
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}
+    5.000000000000,  !- Vertex 3 X-coordinate {m}
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}
+    5.000000000000,  !- Vertex 4 X-coordinate {m}
+    0.000000000000,  !- Vertex 4 Y-coordinate {m}
+    3.000000000000;  !- Vertex 4 Z-coordinate {m}
+
+  FenestrationSurface:Detailed,
+    8CDBB0,  !- Name
+    Window,  !- Surface Type
+    EXT_WINDOW1,  !- Construction Name
+    941DCD,  !- Building Surface Name
+    ,  !- Outside Boundary Condition Object
+    ,  !- TRNSYS 17 - additional surface data
+    ,  !- Shading Control Name
+    ,  !- Frame and Divider Name
+    ,  !- Multiplier
+    4,  !- Number of Vertices
+    1.000000000000,  !- Vertex 1 X-coordinate {m}
+    0.000000000000,  !- Vertex 1 Y-coordinate {m}
+    2.500000000000,  !- Vertex 1 Z-coordinate {m}
+    1.000000000000,  !- Vertex 2 X-coordinate {m}
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}
+    1.000000000000,  !- Vertex 2 Z-coordinate {m}
+    4.000000000000,  !- Vertex 3 X-coordinate {m}
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}
+    1.000000000000,  !- Vertex 3 Z-coordinate {m}
+    4.000000000000,  !- Vertex 4 X-coordinate {m}
+    0.000000000000,  !- Vertex 4 Y-coordinate {m}
+    2.500000000000;  !- Vertex 4 Z-coordinate {m}
+
+  FenestrationSurface:Detailed,
+    C8CBA4,  !- Name
+    Window,  !- Surface Type
+    EXT_WINDOW1,  !- Construction Name
+    240BD6,  !- Building Surface Name
+    ,  !- Outside Boundary Condition Object
+    ,  !- TRNSYS 17 - additional surface data
+    ,  !- Shading Control Name
+    ,  !- Frame and Divider Name
+    ,  !- Multiplier
+    4,  !- Number of Vertices
+    6.000000000000,  !- Vertex 1 X-coordinate {m}
+    0.000000000000,  !- Vertex 1 Y-coordinate {m}
+    2.500000000000,  !- Vertex 1 Z-coordinate {m}
+    6.000000000000,  !- Vertex 2 X-coordinate {m}
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}
+    1.000000000000,  !- Vertex 2 Z-coordinate {m}
+    9.000000000000,  !- Vertex 3 X-coordinate {m}
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}
+    1.000000000000,  !- Vertex 3 Z-coordinate {m}
+    9.000000000000,  !- Vertex 4 X-coordinate {m}
+    0.000000000000,  !- Vertex 4 Y-coordinate {m}
+    2.500000000000;  !- Vertex 4 Z-coordinate {m}
