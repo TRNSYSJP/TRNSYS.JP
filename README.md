@@ -1,7 +1,14 @@
 TRNSYS.JP
 =========
 2014/6/24
-このリポジトリではシミュレーションソフト「TRNSYS」の資料やコードなどを公開予定です。
+このリポジトリではシミュレーションソフト「TRNSYS」の資料やコードなどを公開しています。
+また、関連情報につては以下のサイトもご参照ください。
+
+facebook
+https://www.facebook.com/TRNSYS.JP
+
+建築環境工学系日記
+http://kankyoukei.blogspot.jp/search/label/TRNSYS
 
 Docs
 =========
