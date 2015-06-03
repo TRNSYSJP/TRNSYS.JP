@@ -1,20 +1,20 @@
 2015/6/3
-Graphviz‚ð“à•”‚Å‹N“®AƒCƒ[ƒW‚ð¶¬‚·‚éˆ—‚Ö•ÏX‚µ‚½B
+Graphvizã‚’å†…éƒ¨ã§èµ·å‹•ã€ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹å‡¦ç†ã¸å¤‰æ›´ã—ãŸã€‚
 
-GraphViz-C-Sharp-Wrapperihttps://github.com/JamieDixon/GraphViz-C-Sharp-Wrapperj‚ðŽg—p‚µ‚ÄGraphviz/Dot‚Ìˆ—‚ðŽÀ‘•‚µ‚Ä‚¢‚éB
+GraphViz-C-Sharp-Wrapperï¼ˆhttps://github.com/JamieDixon/GraphViz-C-Sharp-Wrapperï¼‰ã‚’ä½¿ç”¨ã—ã¦Graphviz/Dotã®å‡¦ç†ã‚’å®Ÿè£…ã—ã¦ã„ã‚‹ã€‚
 
 
-¦ŽÀsŠÂ‹«‚Æ‚µ‚ÄGraphviz‚ª•K{B
-ˆÈ‰º‚ÌŽè‡‚É]‚Á‚ÄÝ’è‚ðs‚Á‚Ä‚­‚¾‚³‚¢B
+â€»å®Ÿè¡Œç’°å¢ƒã¨ã—ã¦GraphvizãŒå¿…é ˆã€‚
+ä»¥ä¸‹ã®æ‰‹é †ã«å¾“ã£ã¦è¨­å®šã‚’è¡Œã£ã¦ãã ã•ã„ã€‚
 
-1.Graphviz‚ÌƒCƒ“ƒXƒg[ƒ‹
-Graphviz‚ÌƒIƒtƒBƒVƒƒƒ‹ƒTƒCƒg‚©‚çƒCƒ“ƒXƒg[ƒ‰[‚ðƒ_ƒEƒ“ƒ[ƒhAƒCƒ“ƒXƒg[ƒ‹‚ðs‚¤B
+1.Graphvizã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
+Graphvizã®ã‚ªãƒ•ã‚£ã‚·ãƒ£ãƒ«ã‚µã‚¤ãƒˆã‹ã‚‰ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ©ãƒ¼ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã€ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã‚’è¡Œã†ã€‚
 http://www.graphviz.org/Download_windows.php
 
-2.BinƒtƒHƒ‹ƒ_‚Ìƒtƒ@ƒCƒ‹‚ðƒRƒs[‚·‚é
-Graphviz‚ÌŽÀs‚É•K—v‚Èƒtƒ@ƒCƒ‹ˆêŽ®‚ðƒRƒs[‚·‚éB
-ŽÀsƒtƒHƒ‹ƒ_i—áF\AirlinkToDot\bin\Debug/Releasej‚Ö"GraphViz"‚Æ‚¢‚¤–¼‘O‚ÅƒtƒHƒ‹ƒ_‚ðì¬‚·‚éB
-‚±‚ÌƒtƒHƒ‹ƒ_‚ÖAGraphviz\binƒtƒHƒ‹ƒ_(C:\Program Files (x86)\Graphviz2.38\bin)‚Ì‚·‚×‚Ä‚Ìƒtƒ@ƒCƒ‹‚ðƒRƒs[‚·‚éB
+2.Binãƒ•ã‚©ãƒ«ãƒ€ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚³ãƒ”ãƒ¼ã™ã‚‹
+Graphvizã®å®Ÿè¡Œã«å¿…è¦ãªãƒ•ã‚¡ã‚¤ãƒ«ä¸€å¼ã‚’ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚
+å®Ÿè¡Œãƒ•ã‚©ãƒ«ãƒ€ï¼ˆä¾‹ï¼š\AirlinkToDot\bin\Debug/Releaseï¼‰ã¸"GraphViz"ã¨ã„ã†åå‰ã§ãƒ•ã‚©ãƒ«ãƒ€ã‚’ä½œæˆã™ã‚‹ã€‚
+ã“ã®ãƒ•ã‚©ãƒ«ãƒ€ã¸ã€Graphviz\binãƒ•ã‚©ãƒ«ãƒ€(C:\Program Files (x86)\Graphviz2.38\bin)ã®ã™ã¹ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚
 
 
 
