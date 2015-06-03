@@ -17,6 +17,12 @@ using Microsoft.Win32; //追加
 using System.IO;
 using System.Collections.ObjectModel;
 
+using System.Diagnostics;
+using GraphVizWrapper.Queries;
+using GraphVizWrapper;
+using System.Drawing;
+using GraphVizWrapper.Commands;
+
 namespace AirlinkToDot
 {
     /// <summary>
@@ -31,8 +37,6 @@ namespace AirlinkToDot
 
         private void btnLoadBui_Click(object sender, RoutedEventArgs e)
         {
-
-
             BuiFile buiFile = new BuiFile();
 
             OpenFileDialog ofd = new OpenFileDialog();
@@ -43,7 +47,6 @@ namespace AirlinkToDot
             {
                 buiFile.Load(ofd.FileName);
                 convertBuiToDot(buiFile);
-
             }
         }
 
@@ -53,16 +56,59 @@ namespace AirlinkToDot
         /// <param name="buiFile">BuiFile class</param>
         private void convertBuiToDot(BuiFile buiFile)
         {
+            var filename = System.IO.Path.ChangeExtension(buiFile.FileName, ".gv");
+            bool append = false; // overwrite
 
+            // convert bui to gv
+            var strList = buiToDot(buiFile);
+
+            // display 
+            string gv = "";
+            foreach (string str in strList)
+            {
+                gv += str + "\n";
+            }
+            this.txtBox.Text = gv;
+
+            // save the .gv file
+            using (StreamWriter writer = new StreamWriter(filename, append, Encoding.GetEncoding("shift_jis")))　//Shift_JIS
+            {
+                foreach (string str in strList)
+                {
+                    writer.WriteLine(str);
+                }
+            }
+
+            var imgFile = System.IO.Path.ChangeExtension(filename, ".png");
+
+            // generate a image using Graphviz/Dot
+
+            try
+            {
+                generateGraphImage(gv, imgFile);
+            }catch(System.ComponentModel.Win32Exception ex)
+            {
+                var msg = "Graphvizの実行イメージが見つかりません。\n";
+                msg += "実行フォルダに'GraphViz'フォルダがあるか確認して下さい。\n";
+                msg += "なければ、フォルダを作成してGraphvizのbinフォルダの中身をすべてコピーしてください。";
+                MessageBox.Show(msg);
+                return;
+            }
+
+            // start the paint app
+            Process.Start(imgFile);
+
+        }
+
+
+        /// <summary>
+        /// convert Bui to Dot format
+        /// </summary>
+        /// <param name="buiFile"></param>
+        /// <returns></returns>
+        private static List<string> buiToDot(BuiFile buiFile)
+        {
             List<string> strList = new List<string>();
-
-            //string dir = System.IO.Path.GetDirectoryName(ofd.FileName);
-            string dir = System.IO.Path.GetDirectoryName(buiFile.FileName);
-            string filename = dir + @"\TRNFlow.gv";
-            bool append = false; // 上書き
-
-
-            #region "TRNFlow/LINK から *.vg形式へ変換する"
 
             strList.Add("digraph {");
             strList.Add("    rankdir=LR;");
@@ -89,27 +135,49 @@ namespace AirlinkToDot
             }
             strList.Add("}  ");
 
-            #endregion
+            return strList;
+        }
 
+        /// <summary>
+        /// generate an image from .gv strings
+        /// </summary>
+        /// <param name="diagraph"></param>
+        /// <param name="imgFile"></param>
+        private static void generateGraphImage(string diagraph, string imgFile)
+        {
+            var getStartProcessQuery = new GetStartProcessQuery();
+            var getProcessStartInfoQuerty = new GetProcessStartInfoQuery();
+            var registerLayoutPluginCommand = new RegisterLayoutPluginCommand(getProcessStartInfoQuerty, getStartProcessQuery);
 
+            var wrapper = new GraphGeneration(
+                getStartProcessQuery,
+                getProcessStartInfoQuerty,
+                registerLayoutPluginCommand);
 
-            // 画面へ表示
-            string vg = "";
-            foreach (string str in strList)
-            {
-                vg += str + "\n";
-            }
-            this.txtBox.Text = vg;
+           // wrapper.RenderingEngine = Enums.RenderingEngine.Fdp;
+            wrapper.RenderingEngine = Enums.RenderingEngine.Sfdp;
 
-            // ファイルへ保存
-            using (StreamWriter writer = new StreamWriter(filename, append, Encoding.GetEncoding("shift_jis")))　//Shift_JIS
-            {
-                foreach (string str in strList)
-                {
-                    writer.WriteLine(str);
-                }
-            }
+            byte[] output = wrapper.GenerateGraph(diagraph, Enums.GraphReturnType.Png);
 
+            // byte[] to Image
+            System.Drawing.Image img = byteArrayToImage(output);
+
+            // save the image
+            img.Save(imgFile, System.Drawing.Imaging.ImageFormat.Png);
+
+            img.Dispose();
+        }
+
+        /// <summary>
+        /// convert byte[] to an image
+        /// </summary>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        private static System.Drawing.Image byteArrayToImage(byte[] b)
+        {
+            ImageConverter imgconv = new System.Drawing.ImageConverter();
+            System.Drawing.Image img = (System.Drawing.Image)imgconv.ConvertFrom(b);
+            return img;
         }
 
         /// <summary>
