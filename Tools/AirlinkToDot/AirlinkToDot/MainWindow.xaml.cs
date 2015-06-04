@@ -88,9 +88,12 @@ namespace AirlinkToDot
                 generateGraphImage(gv, imgFile);
             }catch(System.ComponentModel.Win32Exception ex)
             {
-                var msg = "Graphvizの実行イメージが見つかりません。\n";
-                msg += "実行フォルダに'GraphViz'フォルダがあるか確認して下さい。\n";
-                msg += "なければ、フォルダを作成してGraphvizのbinフォルダの中身をすべてコピーしてください。";
+                var msg = @"Graphvizの実行プログラムが見つかりません。"+"\n";
+                msg += @"このプログラムのインストールフォルダ"+"\n";
+                msg += @"'C:\Program Files (x86)\TRNSYS.JP\AirlinkToDot\GraphViz'を確認して下さい。" + "\n";
+                msg += "\n";
+                msg += @"このフォルダにGraphvizのプログラムがない場合は、コピーしてください。" + "\n";
+                msg += @"詳しくは、上記フォルダの'ReadMe.txt'を参照してください。";
                 MessageBox.Show(msg);
                 return;
             }
