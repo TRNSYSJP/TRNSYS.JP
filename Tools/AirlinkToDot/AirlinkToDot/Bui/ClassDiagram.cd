@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AirlinkToDot.BuiFile">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAACAACAAAgAAAAKAACAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Bui\BuiFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AirlinkToDot.Link">
+    <Position X="6.5" Y="1.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAgAAAAAAAAAAEAAAABAAAAAAAIAAAAjA=</HashCode>
+      <FileName>Bui\Link.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Meiryo UI" Size="9" />
+</ClassDiagram>
