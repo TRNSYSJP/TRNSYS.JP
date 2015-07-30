@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{6989167D-11E4-40FE-8C1A-2192A86A7E90}") = "Type201Lib_", "Type201Lib_.vfproj", "{E39F5235-5F06-4C95-8623-6FE979401DF2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E39F5235-5F06-4C95-8623-6FE979401DF2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E39F5235-5F06-4C95-8623-6FE979401DF2}.Debug|Win32.Build.0 = Debug|Win32
+		{E39F5235-5F06-4C95-8623-6FE979401DF2}.Release|Win32.ActiveCfg = Release|Win32
+		{E39F5235-5F06-4C95-8623-6FE979401DF2}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
