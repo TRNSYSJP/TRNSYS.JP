@@ -392,86 +392,38 @@ SurfaceProperty:OtherSideCoefficients,
   Zone,
     ROOM1,  !- Name
     0.0,  !- Direction of Relative North {deg}
-    -0.266347,  !- X Origin {m}
-    -0.230531,  !- Y Origin {m}
+    0.0,  !- X Origin {m}
+    0.0,  !- Y Origin {m}
     0.0,  !- Z Origin {m}
     ,  !- Type
     1;  !- Multiplier
 
   BuildingSurface:Detailed,
     1,                  !- Name
-    Floor,  !- Surface Type
-    GROUND_FLOOR,  !- Construction Name
+    Wall,  !- Surface Type
+    EXT_WALL,  !- Construction Name
     ROOM1,  !- Zone Name
-    Ground,  !- Outside Boundary Condition
-    BOUNDARY=INPUT 1*TGROUND,  !- Outside Boundary Condition Object
-    NoSun,  !- Sun Exposure
-    NoWind,  !- Wind Exposure
+    Outdoors,  !- Outside Boundary Condition
+    ,  !- Outside Boundary Condition Object
+    SunExposed,  !- Sun Exposure
+    WindExposed,  !- Wind Exposure
     ,  !- TRNSYS 17 - additional surface data
     4,  !- Number of Vertices
-    5.000000000000,  !- Vertex 1 X-coordinate {m}
-    5.000000000000,  !- Vertex 1 Y-coordinate {m}
-    0.000000000000,  !- Vertex 1 Z-coordinate {m}
-    5.000000000000,  !- Vertex 2 X-coordinate {m}
-    0.000000000000,  !- Vertex 2 Y-coordinate {m}
-    0.000000000000,  !- Vertex 2 Z-coordinate {m}
-    0.000000000000,  !- Vertex 3 X-coordinate {m}
-    0.000000000000,  !- Vertex 3 Y-coordinate {m}
-    0.000000000000,  !- Vertex 3 Z-coordinate {m}
-    0.000000000000,  !- Vertex 4 X-coordinate {m}
-    5.000000000000,  !- Vertex 4 Y-coordinate {m}
-    0.000000000000;  !- Vertex 4 Z-coordinate {m}
+    0.000000000000,  !- Vertex 1 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 1 Y-coordinate {m}                   
+    3.500000000000,  !- Vertex 1 Z-coordinate {m}                     
+    0.000000000000,  !- Vertex 2 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 2 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}                     
+    0.000000000000,  !- Vertex 3 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}                     
+    0.000000000000,  !- Vertex 4 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 4 Y-coordinate {m}                   
+    3.500000000000;  !- Vertex 4 Z-coordinate {m}                     
 
   BuildingSurface:Detailed,
     2,                  !- Name
-    Wall,  !- Surface Type
-    EXT_WALL,  !- Construction Name
-    ROOM1,  !- Zone Name
-    Outdoors,  !- Outside Boundary Condition
-    ,  !- Outside Boundary Condition Object
-    SunExposed,  !- Sun Exposure
-    WindExposed,  !- Wind Exposure
-    ,  !- TRNSYS 17 - additional surface data
-    4,  !- Number of Vertices
-    5.000000000000,  !- Vertex 1 X-coordinate {m}
-    0.000000000000,  !- Vertex 1 Y-coordinate {m}
-    3.500000000000,  !- Vertex 1 Z-coordinate {m}
-    5.000000000000,  !- Vertex 2 X-coordinate {m}
-    0.000000000000,  !- Vertex 2 Y-coordinate {m}
-    0.000000000000,  !- Vertex 2 Z-coordinate {m}
-    5.000000000000,  !- Vertex 3 X-coordinate {m}
-    5.000000000000,  !- Vertex 3 Y-coordinate {m}
-    0.000000000000,  !- Vertex 3 Z-coordinate {m}
-    5.000000000000,  !- Vertex 4 X-coordinate {m}
-    5.000000000000,  !- Vertex 4 Y-coordinate {m}
-    3.500000000000;  !- Vertex 4 Z-coordinate {m}
-
-  BuildingSurface:Detailed,
-    3,                  !- Name
-    Wall,  !- Surface Type
-    EXT_WALL,  !- Construction Name
-    ROOM1,  !- Zone Name
-    Outdoors,  !- Outside Boundary Condition
-    ,  !- Outside Boundary Condition Object
-    SunExposed,  !- Sun Exposure
-    WindExposed,  !- Wind Exposure
-    ,  !- TRNSYS 17 - additional surface data
-    4,  !- Number of Vertices
-    5.000000000000,  !- Vertex 1 X-coordinate {m}
-    5.000000000000,  !- Vertex 1 Y-coordinate {m}
-    3.500000000000,  !- Vertex 1 Z-coordinate {m}
-    5.000000000000,  !- Vertex 2 X-coordinate {m}
-    5.000000000000,  !- Vertex 2 Y-coordinate {m}
-    0.000000000000,  !- Vertex 2 Z-coordinate {m}
-    0.000000000000,  !- Vertex 3 X-coordinate {m}
-    5.000000000000,  !- Vertex 3 Y-coordinate {m}
-    0.000000000000,  !- Vertex 3 Z-coordinate {m}
-    0.000000000000,  !- Vertex 4 X-coordinate {m}
-    5.000000000000,  !- Vertex 4 Y-coordinate {m}
-    3.500000000000;  !- Vertex 4 Z-coordinate {m}
-
-  BuildingSurface:Detailed,
-    4,                  !- Name
     Roof,  !- Surface Type
     EXT_ROOF,  !- Construction Name
     ROOM1,  !- Zone Name
@@ -481,18 +433,66 @@ SurfaceProperty:OtherSideCoefficients,
     WindExposed,  !- Wind Exposure
     ,  !- TRNSYS 17 - additional surface data
     4,  !- Number of Vertices
-    0.000000000000,  !- Vertex 1 X-coordinate {m}
-    5.000000000000,  !- Vertex 1 Y-coordinate {m}
-    3.500000000000,  !- Vertex 1 Z-coordinate {m}
-    0.000000000000,  !- Vertex 2 X-coordinate {m}
-    0.000000000000,  !- Vertex 2 Y-coordinate {m}
-    3.500000000000,  !- Vertex 2 Z-coordinate {m}
-    5.000000000000,  !- Vertex 3 X-coordinate {m}
-    0.000000000000,  !- Vertex 3 Y-coordinate {m}
-    3.500000000000,  !- Vertex 3 Z-coordinate {m}
-    5.000000000000,  !- Vertex 4 X-coordinate {m}
-    5.000000000000,  !- Vertex 4 Y-coordinate {m}
-    3.500000000000;  !- Vertex 4 Z-coordinate {m}
+    0.000000000000,  !- Vertex 1 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 1 Y-coordinate {m}                   
+    3.500000000000,  !- Vertex 1 Z-coordinate {m}                     
+    0.000000000000,  !- Vertex 2 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}                   
+    3.500000000000,  !- Vertex 2 Z-coordinate {m}                     
+    5.000000000000,  !- Vertex 3 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}                   
+    3.500000000000,  !- Vertex 3 Z-coordinate {m}                     
+    5.000000000000,  !- Vertex 4 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 4 Y-coordinate {m}                   
+    3.500000000000;  !- Vertex 4 Z-coordinate {m}                     
+
+  BuildingSurface:Detailed,
+    3,                  !- Name
+    Wall,  !- Surface Type
+    ADJ_WALL,  !- Construction Name
+    ROOM1,  !- Zone Name
+    Zone,  !- Outside Boundary Condition
+    ROOM2,  !- Outside Boundary Condition Object
+    NoSun,  !- Sun Exposure
+    NoWind,  !- Wind Exposure
+    ,  !- TRNSYS 17 - additional surface data
+    4,  !- Number of Vertices
+    5.000000000000,  !- Vertex 1 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 1 Y-coordinate {m}                   
+    3.500000000000,  !- Vertex 1 Z-coordinate {m}                     
+    5.000000000000,  !- Vertex 2 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}                     
+    5.000000000000,  !- Vertex 3 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 3 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}                     
+    5.000000000000,  !- Vertex 4 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 4 Y-coordinate {m}                   
+    3.500000000000;  !- Vertex 4 Z-coordinate {m}                     
+
+  BuildingSurface:Detailed,
+    4,                  !- Name
+    Floor,  !- Surface Type
+    GROUND_FLOOR,  !- Construction Name
+    ROOM1,  !- Zone Name
+    Ground,  !- Outside Boundary Condition
+    BOUNDARY=INPUT 1*TGROUND,  !- Outside Boundary Condition Object
+    NoSun,  !- Sun Exposure
+    NoWind,  !- Wind Exposure
+    ,  !- TRNSYS 17 - additional surface data
+    4,  !- Number of Vertices
+    5.000000000000,  !- Vertex 1 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 1 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 1 Z-coordinate {m}                     
+    5.000000000000,  !- Vertex 2 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}                     
+    0.000000000000,  !- Vertex 3 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}                     
+    0.000000000000,  !- Vertex 4 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 4 Y-coordinate {m}                   
+    0.000000000000;  !- Vertex 4 Z-coordinate {m}                     
 
   BuildingSurface:Detailed,
     5,                  !- Name
@@ -505,42 +505,42 @@ SurfaceProperty:OtherSideCoefficients,
     WindExposed,  !- Wind Exposure
     ,  !- TRNSYS 17 - additional surface data
     4,  !- Number of Vertices
-    0.000000000000,  !- Vertex 1 X-coordinate {m}
-    0.000000000000,  !- Vertex 1 Y-coordinate {m}
-    3.500000000000,  !- Vertex 1 Z-coordinate {m}
-    0.000000000000,  !- Vertex 2 X-coordinate {m}
-    0.000000000000,  !- Vertex 2 Y-coordinate {m}
-    0.000000000000,  !- Vertex 2 Z-coordinate {m}
-    5.000000000000,  !- Vertex 3 X-coordinate {m}
-    0.000000000000,  !- Vertex 3 Y-coordinate {m}
-    0.000000000000,  !- Vertex 3 Z-coordinate {m}
-    5.000000000000,  !- Vertex 4 X-coordinate {m}
-    0.000000000000,  !- Vertex 4 Y-coordinate {m}
-    3.500000000000;  !- Vertex 4 Z-coordinate {m}
+    0.000000000000,  !- Vertex 1 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 1 Y-coordinate {m}                   
+    3.500000000000,  !- Vertex 1 Z-coordinate {m}                     
+    0.000000000000,  !- Vertex 2 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}                     
+    5.000000000000,  !- Vertex 3 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}                     
+    5.000000000000,  !- Vertex 4 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 4 Y-coordinate {m}                   
+    3.500000000000;  !- Vertex 4 Z-coordinate {m}                     
 
   FenestrationSurface:Detailed,
-    13,                  !- Name
+    7,                  !- Name
     Window,  !- Surface Type
     EXT_WINDOW1,  !- Construction Name
     5,                  !- Building Surface Name
     ,  !- Outside Boundary Condition Object
-    ,  !- TRNSYS 17 - additional surface data
-    ,  !- Shading Control Name
+    ,  !- View Factor To Ground
+    ,  !- Shading Control
     ,  !- Frame and Divider Name
     ,  !- Multiplier
     4,  !- Number of Vertices
-    1.500000000000,  !- Vertex 1 X-coordinate {m}
-    0.000000000000,  !- Vertex 1 Y-coordinate {m}
-    2.500000000000,  !- Vertex 1 Z-coordinate {m}
-    1.500000000000,  !- Vertex 2 X-coordinate {m}
-    0.000000000000,  !- Vertex 2 Y-coordinate {m}
-    0.500000000000,  !- Vertex 2 Z-coordinate {m}
-    3.500000000000,  !- Vertex 3 X-coordinate {m}
-    0.000000000000,  !- Vertex 3 Y-coordinate {m}
-    0.500000000000,  !- Vertex 3 Z-coordinate {m}
-    3.500000000000,  !- Vertex 4 X-coordinate {m}
-    0.000000000000,  !- Vertex 4 Y-coordinate {m}
-    2.500000000000;  !- Vertex 4 Z-coordinate {m}
+    1.500000000000,  !- Vertex 1 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 1 Y-coordinate {m}                   
+    2.500000000000,  !- Vertex 1 Z-coordinate {m}                     
+    1.500000000000,  !- Vertex 2 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}                   
+    0.500000000000,  !- Vertex 2 Z-coordinate {m}                     
+    3.500000000000,  !- Vertex 3 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}                   
+    0.500000000000,  !- Vertex 3 Z-coordinate {m}                     
+    3.500000000000,  !- Vertex 4 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 4 Y-coordinate {m}                   
+    2.500000000000;  !- Vertex 4 Z-coordinate {m}                     
 
 
   BuildingSurface:Detailed,
@@ -554,51 +554,27 @@ SurfaceProperty:OtherSideCoefficients,
     WindExposed,  !- Wind Exposure
     ,  !- TRNSYS 17 - additional surface data
     4,  !- Number of Vertices
-    0.000000000000,  !- Vertex 1 X-coordinate {m}
-    5.000000000000,  !- Vertex 1 Y-coordinate {m}
-    3.500000000000,  !- Vertex 1 Z-coordinate {m}
-    0.000000000000,  !- Vertex 2 X-coordinate {m}
-    5.000000000000,  !- Vertex 2 Y-coordinate {m}
-    0.000000000000,  !- Vertex 2 Z-coordinate {m}
-    0.000000000000,  !- Vertex 3 X-coordinate {m}
-    0.000000000000,  !- Vertex 3 Y-coordinate {m}
-    0.000000000000,  !- Vertex 3 Z-coordinate {m}
-    0.000000000000,  !- Vertex 4 X-coordinate {m}
-    0.000000000000,  !- Vertex 4 Y-coordinate {m}
-    3.500000000000;  !- Vertex 4 Z-coordinate {m}
+    5.000000000000,  !- Vertex 1 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 1 Y-coordinate {m}                   
+    3.500000000000,  !- Vertex 1 Z-coordinate {m}                     
+    5.000000000000,  !- Vertex 2 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 2 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}                     
+    0.000000000000,  !- Vertex 3 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 3 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}                     
+    0.000000000000,  !- Vertex 4 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 4 Y-coordinate {m}                   
+    3.500000000000;  !- Vertex 4 Z-coordinate {m}                     
 
   Zone,
     ROOM2,  !- Name
     0.0,  !- Direction of Relative North {deg}
-    4.703638,  !- X Origin {m}
-    -0.907447,  !- Y Origin {m}
+    0.0,  !- X Origin {m}
+    0.0,  !- Y Origin {m}
     0.0,  !- Z Origin {m}
     ,  !- Type
     1;  !- Multiplier
-
-  BuildingSurface:Detailed,
-    7,                  !- Name
-    Floor,  !- Surface Type
-    GROUND_FLOOR,  !- Construction Name
-    ROOM2,  !- Zone Name
-    Ground,  !- Outside Boundary Condition
-    BOUNDARY=INPUT 1*TGROUND,  !- Outside Boundary Condition Object
-    NoSun,  !- Sun Exposure
-    NoWind,  !- Wind Exposure
-    ,  !- TRNSYS 17 - additional surface data
-    4,  !- Number of Vertices
-    10.000000000000,  !- Vertex 1 X-coordinate {m}
-    5.000000000000,  !- Vertex 1 Y-coordinate {m}
-    0.000000000000,  !- Vertex 1 Z-coordinate {m}
-    10.000000000000,  !- Vertex 2 X-coordinate {m}
-    0.000000000000,  !- Vertex 2 Y-coordinate {m}
-    0.000000000000,  !- Vertex 2 Z-coordinate {m}
-    5.000000000000,  !- Vertex 3 X-coordinate {m}
-    0.000000000000,  !- Vertex 3 Y-coordinate {m}
-    0.000000000000,  !- Vertex 3 Z-coordinate {m}
-    5.000000000000,  !- Vertex 4 X-coordinate {m}
-    5.000000000000,  !- Vertex 4 Y-coordinate {m}
-    0.000000000000;  !- Vertex 4 Z-coordinate {m}
 
   BuildingSurface:Detailed,
     8,                  !- Name
@@ -611,18 +587,18 @@ SurfaceProperty:OtherSideCoefficients,
     WindExposed,  !- Wind Exposure
     ,  !- TRNSYS 17 - additional surface data
     4,  !- Number of Vertices
-    10.000000000000,  !- Vertex 1 X-coordinate {m}
-    5.000000000000,  !- Vertex 1 Y-coordinate {m}
-    3.500000000000,  !- Vertex 1 Z-coordinate {m}
-    10.000000000000,  !- Vertex 2 X-coordinate {m}
-    5.000000000000,  !- Vertex 2 Y-coordinate {m}
-    0.000000000000,  !- Vertex 2 Z-coordinate {m}
-    5.000000000000,  !- Vertex 3 X-coordinate {m}
-    5.000000000000,  !- Vertex 3 Y-coordinate {m}
-    0.000000000000,  !- Vertex 3 Z-coordinate {m}
-    5.000000000000,  !- Vertex 4 X-coordinate {m}
-    5.000000000000,  !- Vertex 4 Y-coordinate {m}
-    3.500000000000;  !- Vertex 4 Z-coordinate {m}
+    10.000000000000,  !- Vertex 1 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 1 Y-coordinate {m}                   
+    3.500000000000,  !- Vertex 1 Z-coordinate {m}                     
+    10.000000000000,  !- Vertex 2 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}                     
+    10.000000000000,  !- Vertex 3 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 3 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}                     
+    10.000000000000,  !- Vertex 4 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 4 Y-coordinate {m}                   
+    3.500000000000;  !- Vertex 4 Z-coordinate {m}                     
 
   BuildingSurface:Detailed,
     9,                  !- Name
@@ -635,21 +611,70 @@ SurfaceProperty:OtherSideCoefficients,
     WindExposed,  !- Wind Exposure
     ,  !- TRNSYS 17 - additional surface data
     4,  !- Number of Vertices
-    5.000000000000,  !- Vertex 1 X-coordinate {m}
-    5.000000000000,  !- Vertex 1 Y-coordinate {m}
-    3.500000000000,  !- Vertex 1 Z-coordinate {m}
-    5.000000000000,  !- Vertex 2 X-coordinate {m}
-    5.000000000000,  !- Vertex 2 Y-coordinate {m}
-    0.000000000000,  !- Vertex 2 Z-coordinate {m}
-    5.000000000000,  !- Vertex 3 X-coordinate {m}
-    0.000000000000,  !- Vertex 3 Y-coordinate {m}
-    0.000000000000,  !- Vertex 3 Z-coordinate {m}
-    5.000000000000,  !- Vertex 4 X-coordinate {m}
-    0.000000000000,  !- Vertex 4 Y-coordinate {m}
-    3.500000000000;  !- Vertex 4 Z-coordinate {m}
+    10.000000000000,  !- Vertex 1 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 1 Y-coordinate {m}                   
+    3.500000000000,  !- Vertex 1 Z-coordinate {m}                     
+    10.000000000000,  !- Vertex 2 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 2 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}                     
+    5.000000000000,  !- Vertex 3 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 3 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}                     
+    5.000000000000,  !- Vertex 4 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 4 Y-coordinate {m}                   
+    3.500000000000;  !- Vertex 4 Z-coordinate {m}                     
 
   BuildingSurface:Detailed,
     10,                  !- Name
+    Wall,  !- Surface Type
+    EXT_WALL,  !- Construction Name
+    ROOM2,  !- Zone Name
+    Outdoors,  !- Outside Boundary Condition
+    ,  !- Outside Boundary Condition Object
+    SunExposed,  !- Sun Exposure
+    WindExposed,  !- Wind Exposure
+    ,  !- TRNSYS 17 - additional surface data
+    4,  !- Number of Vertices
+    5.000000000000,  !- Vertex 1 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 1 Y-coordinate {m}                   
+    3.500000000000,  !- Vertex 1 Z-coordinate {m}                     
+    5.000000000000,  !- Vertex 2 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}                     
+    10.000000000000,  !- Vertex 3 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}                     
+    10.000000000000,  !- Vertex 4 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 4 Y-coordinate {m}                   
+    3.500000000000;  !- Vertex 4 Z-coordinate {m}                     
+
+  FenestrationSurface:Detailed,
+    14,                  !- Name
+    Window,  !- Surface Type
+    EXT_WINDOW1,  !- Construction Name
+    10,                  !- Building Surface Name
+    ,  !- Outside Boundary Condition Object
+    ,  !- View Factor To Ground
+    ,  !- Shading Control
+    ,  !- Frame and Divider Name
+    ,  !- Multiplier
+    4,  !- Number of Vertices
+    6.500000000000,  !- Vertex 1 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 1 Y-coordinate {m}                   
+    2.500000000000,  !- Vertex 1 Z-coordinate {m}                     
+    6.500000000000,  !- Vertex 2 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}                   
+    0.500000000000,  !- Vertex 2 Z-coordinate {m}                     
+    8.500000000000,  !- Vertex 3 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}                   
+    0.500000000000,  !- Vertex 3 Z-coordinate {m}                     
+    8.500000000000,  !- Vertex 4 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 4 Y-coordinate {m}                   
+    2.500000000000;  !- Vertex 4 Z-coordinate {m}                     
+
+
+  BuildingSurface:Detailed,
+    11,                  !- Name
     Roof,  !- Surface Type
     EXT_ROOF,  !- Construction Name
     ROOM2,  !- Zone Name
@@ -659,88 +684,63 @@ SurfaceProperty:OtherSideCoefficients,
     WindExposed,  !- Wind Exposure
     ,  !- TRNSYS 17 - additional surface data
     4,  !- Number of Vertices
-    5.000000000000,  !- Vertex 1 X-coordinate {m}
-    5.000000000000,  !- Vertex 1 Y-coordinate {m}
-    3.500000000000,  !- Vertex 1 Z-coordinate {m}
-    5.000000000000,  !- Vertex 2 X-coordinate {m}
-    0.000000000000,  !- Vertex 2 Y-coordinate {m}
-    3.500000000000,  !- Vertex 2 Z-coordinate {m}
-    10.000000000000,  !- Vertex 3 X-coordinate {m}
-    0.000000000000,  !- Vertex 3 Y-coordinate {m}
-    3.500000000000,  !- Vertex 3 Z-coordinate {m}
-    10.000000000000,  !- Vertex 4 X-coordinate {m}
-    5.000000000000,  !- Vertex 4 Y-coordinate {m}
-    3.500000000000;  !- Vertex 4 Z-coordinate {m}
-
-  BuildingSurface:Detailed,
-    11,                  !- Name
-    Wall,  !- Surface Type
-    EXT_WALL,  !- Construction Name
-    ROOM2,  !- Zone Name
-    Outdoors,  !- Outside Boundary Condition
-    ,  !- Outside Boundary Condition Object
-    SunExposed,  !- Sun Exposure
-    WindExposed,  !- Wind Exposure
-    ,  !- TRNSYS 17 - additional surface data
-    4,  !- Number of Vertices
-    10.000000000000,  !- Vertex 1 X-coordinate {m}
-    0.000000000000,  !- Vertex 1 Y-coordinate {m}
-    3.500000000000,  !- Vertex 1 Z-coordinate {m}
-    10.000000000000,  !- Vertex 2 X-coordinate {m}
-    0.000000000000,  !- Vertex 2 Y-coordinate {m}
-    0.000000000000,  !- Vertex 2 Z-coordinate {m}
-    10.000000000000,  !- Vertex 3 X-coordinate {m}
-    5.000000000000,  !- Vertex 3 Y-coordinate {m}
-    0.000000000000,  !- Vertex 3 Z-coordinate {m}
-    10.000000000000,  !- Vertex 4 X-coordinate {m}
-    5.000000000000,  !- Vertex 4 Y-coordinate {m}
-    3.500000000000;  !- Vertex 4 Z-coordinate {m}
+    5.000000000000,  !- Vertex 1 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 1 Y-coordinate {m}                   
+    3.500000000000,  !- Vertex 1 Z-coordinate {m}                     
+    5.000000000000,  !- Vertex 2 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}                   
+    3.500000000000,  !- Vertex 2 Z-coordinate {m}                     
+    10.000000000000,  !- Vertex 3 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}                   
+    3.500000000000,  !- Vertex 3 Z-coordinate {m}                     
+    10.000000000000,  !- Vertex 4 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 4 Y-coordinate {m}                   
+    3.500000000000;  !- Vertex 4 Z-coordinate {m}                     
 
   BuildingSurface:Detailed,
     12,                  !- Name
-    Wall,  !- Surface Type
-    EXT_WALL,  !- Construction Name
+    Floor,  !- Surface Type
+    GROUND_FLOOR,  !- Construction Name
     ROOM2,  !- Zone Name
-    Outdoors,  !- Outside Boundary Condition
-    ,  !- Outside Boundary Condition Object
-    SunExposed,  !- Sun Exposure
-    WindExposed,  !- Wind Exposure
+    Ground,  !- Outside Boundary Condition
+    BOUNDARY=INPUT 1*TGROUND,  !- Outside Boundary Condition Object
+    NoSun,  !- Sun Exposure
+    NoWind,  !- Wind Exposure
     ,  !- TRNSYS 17 - additional surface data
     4,  !- Number of Vertices
-    5.000000000000,  !- Vertex 1 X-coordinate {m}
-    0.000000000000,  !- Vertex 1 Y-coordinate {m}
-    3.500000000000,  !- Vertex 1 Z-coordinate {m}
-    5.000000000000,  !- Vertex 2 X-coordinate {m}
-    0.000000000000,  !- Vertex 2 Y-coordinate {m}
-    0.000000000000,  !- Vertex 2 Z-coordinate {m}
-    10.000000000000,  !- Vertex 3 X-coordinate {m}
-    0.000000000000,  !- Vertex 3 Y-coordinate {m}
-    0.000000000000,  !- Vertex 3 Z-coordinate {m}
-    10.000000000000,  !- Vertex 4 X-coordinate {m}
-    0.000000000000,  !- Vertex 4 Y-coordinate {m}
-    3.500000000000;  !- Vertex 4 Z-coordinate {m}
+    10.000000000000,  !- Vertex 1 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 1 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 1 Z-coordinate {m}                     
+    10.000000000000,  !- Vertex 2 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}                     
+    5.000000000000,  !- Vertex 3 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}                     
+    5.000000000000,  !- Vertex 4 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 4 Y-coordinate {m}                   
+    0.000000000000;  !- Vertex 4 Z-coordinate {m}                     
 
-  FenestrationSurface:Detailed,
-    14,                  !- Name
-    Window,  !- Surface Type
-    EXT_WINDOW1,  !- Construction Name
-    12,                  !- Building Surface Name
-    ,  !- Outside Boundary Condition Object
+  BuildingSurface:Detailed,
+    13,                  !- Name
+    Wall,  !- Surface Type
+    ADJ_WALL,  !- Construction Name
+    ROOM2,  !- Zone Name
+    Zone,  !- Outside Boundary Condition
+    ROOM1,  !- Outside Boundary Condition Object
+    NoSun,  !- Sun Exposure
+    NoWind,  !- Wind Exposure
     ,  !- TRNSYS 17 - additional surface data
-    ,  !- Shading Control Name
-    ,  !- Frame and Divider Name
-    ,  !- Multiplier
     4,  !- Number of Vertices
-    6.500000000000,  !- Vertex 1 X-coordinate {m}
-    0.000000000000,  !- Vertex 1 Y-coordinate {m}
-    2.500000000000,  !- Vertex 1 Z-coordinate {m}
-    6.500000000000,  !- Vertex 2 X-coordinate {m}
-    0.000000000000,  !- Vertex 2 Y-coordinate {m}
-    0.500000000000,  !- Vertex 2 Z-coordinate {m}
-    8.500000000000,  !- Vertex 3 X-coordinate {m}
-    0.000000000000,  !- Vertex 3 Y-coordinate {m}
-    0.500000000000,  !- Vertex 3 Z-coordinate {m}
-    8.500000000000,  !- Vertex 4 X-coordinate {m}
-    0.000000000000,  !- Vertex 4 Y-coordinate {m}
-    2.500000000000;  !- Vertex 4 Z-coordinate {m}
-
+    5.000000000000,  !- Vertex 1 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 1 Y-coordinate {m}                   
+    3.500000000000,  !- Vertex 1 Z-coordinate {m}                     
+    5.000000000000,  !- Vertex 2 X-coordinate {m}                   
+    5.000000000000,  !- Vertex 2 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 2 Z-coordinate {m}                     
+    5.000000000000,  !- Vertex 3 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Y-coordinate {m}                   
+    0.000000000000,  !- Vertex 3 Z-coordinate {m}                     
+    5.000000000000,  !- Vertex 4 X-coordinate {m}                   
+    0.000000000000,  !- Vertex 4 Y-coordinate {m}                   
+    3.500000000000;  !- Vertex 4 Z-coordinate {m}                     
