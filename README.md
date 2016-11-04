@@ -18,6 +18,10 @@ http://kankyoukei.blogspot.jp/search/label/TRNSYS
 
 https://github.com/TRNSYSJP/TRNSYS.JP/releases/tag/20160712
 
+操作ガイドのビデオ
+
+http://screencast-o-matic.com/u/qMZ/trnsys
+
 Docs
 =========
 入門書やTRNSYSの使い方のまとめなどを含みます。
