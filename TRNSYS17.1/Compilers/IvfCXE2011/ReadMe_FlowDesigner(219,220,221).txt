@@ -29,7 +29,16 @@ Type219Controller.dll
 Type220SensorData.dll
 Type221ControlData.dll
 
-Simulation Studio を起動した状態であれば、いったん終了して起動しなおしてください。（コピーしたファイルが読み込まれます）
+・Descrips.datの編集
+＜TRNSYSのインストールフォルダ＞\Exe\Descrips.dat をメモ帳で開き、最後の行へ、以下の1行を追加してください。
+
+221 !MyComponent: Type221
+
+
+※詳しくは"\TRNSYS.JP\TRNSYS17.1\Compilers\IvfCXE2011\ビルド方法 - FlowDesinger221.docx"を参照
+
+
+以上で設定は終了です。Simulation Studio を起動した状態であれば、いったん終了して起動しなおしてください。（コピーしたファイルが読み込まれます）
 
 
 
