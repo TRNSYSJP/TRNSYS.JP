@@ -12,11 +12,10 @@ https://www.facebook.com/TRNSYS.JP
 
 http://kankyoukei.blogspot.jp/search/label/TRNSYS
 
-トレーニングテキスト改訂のお知らせ　2016年7月改訂版
+トレーニングテキスト改訂のお知らせ　2016年11月18日改訂版
 =========
-ダウンロード専用ページを用意しました。
 
-https://github.com/TRNSYSJP/TRNSYS.JP/releases/tag/20160712
+https://github.com/TRNSYSJP/TRNSYS.JP/releases/tag/20161118
 
 操作ガイドのビデオ
 
