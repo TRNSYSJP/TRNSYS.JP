@@ -10,12 +10,12 @@ https://www.facebook.com/TRNSYS.JP
 
 建築環境工学系日記
 
-http://kankyoukei.blogspot.jp/search/label/TRNSYS
+http://www.kankyoukei.com/
 
-トレーニングテキスト改訂のお知らせ　2016年11月18日改訂版
+トレーニングテキスト TRNSYS18版を公開　2017年06月19日
 =========
 
-https://github.com/TRNSYSJP/TRNSYS.JP/releases/tag/20161118
+https://github.com/TRNSYSJP/TRNSYS.JP/releases/tag/20170622
 
 操作ガイドのビデオ
 
