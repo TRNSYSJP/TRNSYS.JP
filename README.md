@@ -4,21 +4,25 @@ TRNSYS.JP
 このリポジトリではシミュレーションソフト「TRNSYS」の資料やコードなどを公開しています。
 また、関連情報につては以下のサイトもご参照ください。
 
-facebook
-
+## facebook ##
+#### TRNSYS.JP ####
 https://www.facebook.com/TRNSYS.JP
 
-建築環境工学系日記
+### 社員Blog ###
 
+
+#### 建築環境工学系日記 ####  
 http://www.kankyoukei.com/
 
-トレーニングテキスト TRNSYS18版を公開　2017年06月19日
+#### なんでもよへこ。 ####  
+http://yoheko.net/
+
+
+トレーニングテキスト TRNSYS18 (2017年10月20日)を公開
 =========
+https://github.com/TRNSYSJP/TRNSYS.JP/releases/tag/20171020
 
-https://github.com/TRNSYSJP/TRNSYS.JP/releases/tag/20170622
-
-操作ガイドのビデオ
-
+操作ガイドのビデオ  
 http://screencast-o-matic.com/u/qMZ/trnsys
 
 Docs
