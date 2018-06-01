@@ -10,7 +10,7 @@ def myFunc():
 	inp3 = trn.getInputValue(3)
 	# processing
 	out1 = inp1+inp2
-	out2 = inp3**inp2
+	out2 = inp2*inp3
 	# return the new values to the Outputs
 	trn.setOutputValue(1, out1)
 	trn.setOutputValue(2, out2)
