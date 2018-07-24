@@ -16,6 +16,10 @@ http://www.kankyoukei.com/
 #### なんでもよへこ。 ####  
 http://yoheko.net/
 
+Weather Data Map plugin released.
+=========
+Weather Data Map pluginをリリースしました。
+https://github.com/TRNSYSJP/TRNSYS.JP/releases/tag/0.9.0
 
 トレーニングテキスト TRNSYS18 (2017年10月20日)を公開
 =========
