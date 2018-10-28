@@ -42,7 +42,7 @@ namespace AirlinkToDot
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.FileName = "";
             ofd.DefaultExt = "*.b*";
-            ofd.Filter = "TRNBuld File (*.bui;*.b17)|*.bui;*.b17";
+            ofd.Filter = "TRNBuld File (*.bui;*.b17;*.b18)|*.bui;*.b17;*.b18";
             if (ofd.ShowDialog() == true)
             {
                 buiFile.Load(ofd.FileName);
@@ -128,9 +128,9 @@ namespace AirlinkToDot
                 node = link.ToNode;
                 parseNode(ref zones, ref extNodes, ref auxNodes, node);
             }
-            strList.Add("    node [shape = doublecircle]; " + zones + ";");
-            strList.Add("    node [shape = circle]; " + extNodes + ";");
-            strList.Add("    node [shape = rectangle]; " + auxNodes + ";");
+            strList.Add("    node [shape = doublecircle]; " + zones + (string.IsNullOrEmpty(zones) ? "" : ";"));
+            strList.Add("    node [shape = circle]; " + extNodes + (string.IsNullOrEmpty(extNodes) ? "" : ";"));
+            strList.Add("    node [shape = rectangle]; " + auxNodes + (string.IsNullOrEmpty(auxNodes)?"": ";"));
             foreach (Link link in buiFile.LinkList.Links)
             {
                 string str = "    " + link.FromNode + " -> " + link.ToNode + "[ label = \"" + link.LinkType + "\" ];";
