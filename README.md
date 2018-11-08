@@ -16,6 +16,10 @@ http://www.kankyoukei.com/
 #### なんでもよへこ。 ####  
 http://yoheko.net/
 
+TRNSYS18基本操作ガイド（２室モデル演習）サンプルモデル
+=========
+https://github.com/TRNSYSJP/TRNSYS.JP/releases/tag/20181105
+
 Weather Data Map plugin released.
 =========
 Weather Data Map pluginをリリースしました。
