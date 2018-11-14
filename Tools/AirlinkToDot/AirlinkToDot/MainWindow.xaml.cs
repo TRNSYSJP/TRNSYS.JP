@@ -116,11 +116,6 @@ namespace AirlinkToDot
             strList.Add("digraph {");
             strList.Add("    rankdir=LR;");
 
-            //string zones = "";
-            //string extNodes = "";
-            //string auxNodes = "";
-
-
             List<string> zones = new List<string>();
             List<string> extNodes = new List<string>();
             List<string> auxNodes = new List<string>();
@@ -140,8 +135,6 @@ namespace AirlinkToDot
             foreach (var str in extNodes) { extNodeList += str + " "; }
             string auxNodeList = "";
             foreach (var str in auxNodes) { auxNodeList += str + " "; }
-
-
 
             strList.Add("    node [shape = doublecircle]; " + zoneList + (string.IsNullOrEmpty(zoneList) ? "" : ";"));
             strList.Add("    node [shape = circle]; " + extNodeList + (string.IsNullOrEmpty(extNodeList) ? "" : ";"));
