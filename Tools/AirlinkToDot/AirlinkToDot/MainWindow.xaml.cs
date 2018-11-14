@@ -116,21 +116,36 @@ namespace AirlinkToDot
             strList.Add("digraph {");
             strList.Add("    rankdir=LR;");
 
-            string zones = "";
-            string extNodes = "";
-            string auxNodes = "";
+            //string zones = "";
+            //string extNodes = "";
+            //string auxNodes = "";
+
+
+            List<string> zones = new List<string>();
+            List<string> extNodes = new List<string>();
+            List<string> auxNodes = new List<string>();
 
             foreach (Link link in buiFile.LinkList.Links)
             {
                 string node;
                 node = link.FromNode;
-                parseNode(ref zones, ref extNodes, ref auxNodes, node);
+                parseNode(zones, extNodes, auxNodes, node);
                 node = link.ToNode;
-                parseNode(ref zones, ref extNodes, ref auxNodes, node);
+                parseNode(zones, extNodes, auxNodes, node);
             }
-            strList.Add("    node [shape = doublecircle]; " + zones + (string.IsNullOrEmpty(zones) ? "" : ";"));
-            strList.Add("    node [shape = circle]; " + extNodes + (string.IsNullOrEmpty(extNodes) ? "" : ";"));
-            strList.Add("    node [shape = rectangle]; " + auxNodes + (string.IsNullOrEmpty(auxNodes)?"": ";"));
+
+            string zoneList = "";
+            foreach (var str in zones) { zoneList += str + " "; }
+            string extNodeList = "";
+            foreach (var str in extNodes) { extNodeList += str + " "; }
+            string auxNodeList = "";
+            foreach (var str in auxNodes) { auxNodeList += str + " "; }
+
+
+
+            strList.Add("    node [shape = doublecircle]; " + zoneList + (string.IsNullOrEmpty(zoneList) ? "" : ";"));
+            strList.Add("    node [shape = circle]; " + extNodeList + (string.IsNullOrEmpty(extNodeList) ? "" : ";"));
+            strList.Add("    node [shape = rectangle]; " + auxNodeList + (string.IsNullOrEmpty(auxNodeList) ? "" : ";"));
             foreach (Link link in buiFile.LinkList.Links)
             {
                 string str = "    " + link.FromNode + " -> " + link.ToNode + "[ label = \"" + link.LinkType + "\" ];";
@@ -190,21 +205,21 @@ namespace AirlinkToDot
         /// <param name="extNodes"></param>
         /// <param name="auxNodes"></param>
         /// <param name="node"></param>
-        private static void parseNode(ref string zones, ref string extNodes, ref string auxNodes, string node)
+        private static void parseNode(List<string> zones, List<string> extNodes, List<string> auxNodes, string node)
         {
             if (node.StartsWith("EN_") )
             {
-                if (extNodes.IndexOf(node) < 0) extNodes += node + " ";
+                if (extNodes.Where((c)=>c.Equals(node)).Count() < 1) extNodes.Add(node);
                 return;
             }
             else if (node.StartsWith("AN_"))
             {
-                if (auxNodes.IndexOf(node) < 0) auxNodes += node + " ";
+                if (auxNodes.Where((c) => c.Equals(node)).Count() < 1) auxNodes.Add(node);
                 return;
             }
             else if (zones.IndexOf(node) < 0)
             {
-                zones += node + " ";
+                zones.Add(node);
             }
         }
 
