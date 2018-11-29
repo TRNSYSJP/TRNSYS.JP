@@ -120,6 +120,23 @@ namespace AirlinkToDot
             List<string> extNodes = new List<string>();
             List<string> auxNodes = new List<string>();
 
+
+            // 数字で始まるZone名への対策
+            // Zone名の1文字目が数字なら先頭に"_"を追加する
+            foreach (Link link in buiFile.LinkList.Links)
+            {
+                int num = 0;
+                if (int.TryParse(link.FromNode.Substring(0, 1), out num))
+                {
+                    link.FromNode = "_" + link.FromNode;
+                }
+                if (int.TryParse(link.ToNode.Substring(0, 1), out num))
+                {
+                    link.ToNode = "_" + link.ToNode;
+                }
+            }
+
+            // ノードをZone, Ext, Auxへ分類する
             foreach (Link link in buiFile.LinkList.Links)
             {
                 string node;
@@ -128,6 +145,7 @@ namespace AirlinkToDot
                 node = link.ToNode;
                 parseNode(zones, extNodes, auxNodes, node);
             }
+
 
             string zoneList = "";
             foreach (var str in zones) { zoneList += str + " "; }
@@ -165,8 +183,9 @@ namespace AirlinkToDot
                 getProcessStartInfoQuerty,
                 registerLayoutPluginCommand);
 
-           // wrapper.RenderingEngine = Enums.RenderingEngine.Fdp;
-            wrapper.RenderingEngine = Enums.RenderingEngine.Sfdp;
+            // wrapper.RenderingEngine = Enums.RenderingEngine.Fdp;
+            //wrapper.RenderingEngine = Enums.RenderingEngine.Sfdp;
+            wrapper.RenderingEngine = Enums.RenderingEngine.Dot;
 
             byte[] output = wrapper.GenerateGraph(diagraph, Enums.GraphReturnType.Png);
 
