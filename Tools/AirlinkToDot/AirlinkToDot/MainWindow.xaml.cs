@@ -159,7 +159,7 @@ namespace AirlinkToDot
             strList.Add("    node [shape = rectangle]; " + auxNodeList + (string.IsNullOrEmpty(auxNodeList) ? "" : ";"));
             foreach (Link link in buiFile.LinkList.Links)
             {
-                string str = "    " + link.FromNode + " -> " + link.ToNode + "[ label = \"" + link.LinkType + "\" ];";
+                string str = $"    {link.FromNode} -> {link.ToNode}[ label = \"{link.LinkType} [{link.ID}]\" ];";
                 strList.Add(str);
             }
             strList.Add("}  ");
