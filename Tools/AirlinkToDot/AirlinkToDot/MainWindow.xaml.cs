@@ -33,6 +33,24 @@ namespace AirlinkToDot
         public MainWindow()
         {
             InitializeComponent();
+
+            if (App.CommandLineArgs != null)
+            {
+
+                var ss = App.CommandLineArgs[0];
+                var finfo = new FileInfo(App.CommandLineArgs[0]);
+                if (!finfo.Exists)
+                {
+                    // コマンドラインで指定されたファイルは存在しない。
+                    // The file specified on the command line does not exist
+                    MessageBox.Show($"The file, {finfo.Name} specified on the command line does not exist");
+                    return;
+                }
+                
+                BuiFile buiFile = new BuiFile();
+                buiFile.Load(finfo.FullName);
+                convertBuiToDot(buiFile);
+            }
         }
 
         private void btnLoadBui_Click(object sender, RoutedEventArgs e)
@@ -88,12 +106,11 @@ namespace AirlinkToDot
                 generateGraphImage(gv, imgFile);
             }catch(System.ComponentModel.Win32Exception ex)
             {
-                var msg = @"Graphvizの実行プログラムが見つかりません。"+"\n";
-                msg += @"このプログラムのインストールフォルダ"+"\n";
-                msg += @"'C:\Program Files (x86)\TRNSYS.JP\AirlinkToDot\GraphViz'を確認して下さい。" + "\n";
+                var msg = @"Graphviz executable program can not be found." + "\n";
+                msg += @"Please copy the GraphViz program to the installation folder of this utility program." + "\n";
+                msg += @"'C:\Program Files (x86)\TRNSYS.JP\AirlinkToDot\GraphViz'" + "\n";
                 msg += "\n";
-                msg += @"このフォルダにGraphvizのプログラムがない場合は、コピーしてください。" + "\n";
-                msg += @"詳しくは、上記フォルダの'ReadMe.txt'を参照してください。";
+                msg += @"For details, refer to 'ReadMe.txt' in the installation folder.";
                 MessageBox.Show(msg);
                 return;
             }
