@@ -8,7 +8,7 @@ using System.Windows;
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
 [assembly: AssemblyTitle("AirlinkToDot")]
-[assembly: AssemblyDescription("This program converts the Airlink/b17 into Graphviz format.")]
+[assembly: AssemblyDescription("This program converts the Airlink/bui into Graphviz format.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("quattro corporate design Co., Ltd.")]
 [assembly: AssemblyProduct("AirlinkToDot")]
@@ -51,5 +51,5 @@ using System.Windows;
 // すべての値を指定するか、下のように '*' を使ってビルドおよびリビジョン番号を 
 // 既定値にすることができます:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.4.0")]
-[assembly: AssemblyFileVersion("1.0.4.0")]
+[assembly: AssemblyVersion("1.0.5.0")]
+[assembly: AssemblyFileVersion("1.0.5.0")]
