@@ -36,8 +36,6 @@ namespace AirlinkToDot
 
             if (App.CommandLineArgs != null)
             {
-
-                var ss = App.CommandLineArgs[0];
                 var finfo = new FileInfo(App.CommandLineArgs[0]);
                 if (!finfo.Exists)
                 {
@@ -136,6 +134,7 @@ namespace AirlinkToDot
             List<string> zones = new List<string>();
             List<string> extNodes = new List<string>();
             List<string> auxNodes = new List<string>();
+            List<string> constPressureNodes = new List<string>();
 
 
             // 数字で始まるZone名への対策
@@ -158,9 +157,9 @@ namespace AirlinkToDot
             {
                 string node;
                 node = link.FromNode;
-                parseNode(zones, extNodes, auxNodes, node);
+                parseNode(zones, extNodes, auxNodes, constPressureNodes, node);
                 node = link.ToNode;
-                parseNode(zones, extNodes, auxNodes, node);
+                parseNode(zones, extNodes, auxNodes, constPressureNodes, node);
             }
 
 
@@ -170,10 +169,15 @@ namespace AirlinkToDot
             foreach (var str in extNodes) { extNodeList += str + " "; }
             string auxNodeList = "";
             foreach (var str in auxNodes) { auxNodeList += str + " "; }
+            string constPressureNodeList = "";
+            foreach (var str in constPressureNodes) { constPressureNodeList += str + " "; }
+
 
             strList.Add("    node [shape = doublecircle]; " + zoneList + (string.IsNullOrEmpty(zoneList) ? "" : ";"));
             strList.Add("    node [shape = circle]; " + extNodeList + (string.IsNullOrEmpty(extNodeList) ? "" : ";"));
             strList.Add("    node [shape = rectangle]; " + auxNodeList + (string.IsNullOrEmpty(auxNodeList) ? "" : ";"));
+            strList.Add("    node [style=rounded, shape = diamond]; " + constPressureNodeList + (string.IsNullOrEmpty(constPressureNodeList) ? "" : ";"));
+
             foreach (Link link in buiFile.LinkList.Links)
             {
                 string str = $"    {link.FromNode} -> {link.ToNode}[ label = \"{link.LinkType} [{link.ID}]\" ];";
@@ -233,17 +237,23 @@ namespace AirlinkToDot
         /// <param name="zones"></param>
         /// <param name="extNodes"></param>
         /// <param name="auxNodes"></param>
+        /// <param name="cpNodes"></param>
         /// <param name="node"></param>
-        private static void parseNode(List<string> zones, List<string> extNodes, List<string> auxNodes, string node)
+        private static void parseNode(List<string> zones, List<string> extNodes, List<string> auxNodes, List<string> cpNodes, string node)
         {
-            if (node.StartsWith("EN_") )
+            if (node.StartsWith("EN_"))
             {
-                if (extNodes.Where((c)=>c.Equals(node)).Count() < 1) extNodes.Add(node);
+                if (extNodes.Where((c) => c.Equals(node)).Count() < 1) extNodes.Add(node);
                 return;
             }
             else if (node.StartsWith("AN_"))
             {
                 if (auxNodes.Where((c) => c.Equals(node)).Count() < 1) auxNodes.Add(node);
+                return;
+            }
+            else if (node.StartsWith("P_"))
+            {
+                if (cpNodes.Where((c) => c.Equals(node)).Count() < 1) cpNodes.Add(node);
                 return;
             }
             else if (zones.IndexOf(node) < 0)

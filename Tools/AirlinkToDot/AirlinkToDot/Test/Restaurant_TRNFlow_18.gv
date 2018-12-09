@@ -1,0 +1,24 @@
+digraph {
+    rankdir=LR;
+    node [shape = doublecircle]; KITCHEN STORAGE DINING ;
+    node [shape = circle]; EN_003 EN_004 EN_001 EN_002 ;
+    node [shape = rectangle]; AN_001 AN_006 AN_005 AN_002 AN_003 AN_004 ;
+    KITCHEN -> AN_001[ label = "DS_001 [1]" ];
+    EN_003 -> KITCHEN[ label = "CR_001 [2]" ];
+    EN_004 -> STORAGE[ label = "CR_001 [3]" ];
+    EN_004 -> DINING[ label = "CR_001 [4]" ];
+    EN_003 -> DINING[ label = "CR_001 [5]" ];
+    EN_001 -> KITCHEN[ label = "CR_001 [6]" ];
+    EN_001 -> STORAGE[ label = "CR_001 [7]" ];
+    AN_006 -> AN_005[ label = "CR_001 [8]" ];
+    AN_001 -> AN_002[ label = "DS_002 [9]" ];
+    AN_002 -> AN_003[ label = "FA_001 [10]" ];
+    DINING -> STORAGE[ label = "WI_DOOR2 [11]" ];
+    DINING -> KITCHEN[ label = "WI_DOOR1 [12]" ];
+    AN_003 -> EN_001[ label = "DS_003 [13]" ];
+    AN_004 -> KITCHEN[ label = "DS_003 [14]" ];
+    AN_005 -> AN_004[ label = "DS_002 [15]" ];
+    AN_006 -> AN_005[ label = "FA_001 [16]" ];
+    EN_001 -> AN_006[ label = "DS_004 [17]" ];
+    EN_002 -> DINING[ label = "WI_WIN_001 [18]" ];
+}  

@@ -28,14 +28,26 @@ namespace AirlinkToDot
                     {
                         if (item2.Contains('='))
                         {
+                            // LINK CR_001       : ID= 6 : FRNODE= 0 PA       : TONODE= KITCHEN    : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       0 : FSCALE= 1
                             string[] strs = item2.Split('=');
-                            DataItem dataItem = new DataItem(strs[0].Trim(), strs[1].Trim());
+                            var keyword = strs[0].Trim();
+                            var data    = strs[1].Trim();
+                            if(data.Contains("INPUT"))
+                            {
+                                //: FSCALE= INPUT 1*FAN
+                                // INPUTならば何もしない
+                            }
+                            else if(data.Contains(" ")) // const. pressure e.g. "0 PA"
+                            {
+                                string[] tmpStrs = data.Split(' ');
+                                data = "P_" + tmpStrs[0];
+                            }
+                            DataItem dataItem = new DataItem(keyword, data);
                             dataItems.Add(dataItem);
                         }
                         else if (item2.Contains(" "))
                         {
-                            //LINK DS_001       : ID= 1 : FRNODE= KITCHEN    : TONODE= AN_001     : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       0 : FSCALE= 1
-
+                            // LINK DS_001       : ID= 1 : FRNODE= KITCHEN    : TONODE= AN_001     : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       0 : FSCALE= 1
                             string[] strs2 = item2.Split(' ');
                             DataItem dataItem = new DataItem(strs2[0].Trim(), strs2[1].Trim());
                             dataItems.Add(dataItem);

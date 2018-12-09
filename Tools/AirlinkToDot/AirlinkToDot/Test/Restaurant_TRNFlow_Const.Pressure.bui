@@ -1,0 +1,565 @@
+*********************************************************************************
+*  TRNBuild   3.0.294
+*********************************************************************************
+*   BUILDING DESCRIPTIONS FILE TRNSYS
+*   FOR BUILDING:   C:\TRNSYS18\Examples\TRNFLOW_example\Restaurant_TRNFlow_Const.Pressure.bui
+*   GET BY WORKING WITH TRNBuild 1.0 for Windows
+*********************************************************************************
+*
+*--------------------------------------------------------------------------------
+*  C o m m e n t s
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  P r o j e c t
+*--------------------------------------------------------------------------------
+*+++ PROJECT
+*+++ TITLE=RESTAURANT EXAMPLE
+*+++ DESCRIPTION=TRNSYS MAIN REFERENCE MANUAL
+*+++ CREATED=SOLAR ENERGY LABORATORY
+*+++ ADDRESS=MADISON, WI  USA
+*+++ CITY=
+*+++ SWITCH=UNDEFINED
+*--------------------------------------------------------------------------------
+*  P r o p e r t i e s
+*--------------------------------------------------------------------------------
+PROPERTIES
+ DENSITY=1.204 : CAPACITY=1.012 : PRESSURE=101325.000 : HVAPOR=2454.0 : SIGMA=2.041e-007 : RTEMP=293.15
+*--- convective heat transfer coefficient calculation ---------------------
+ KFLOORUP=7.2 : EFLOORUP=0.31 : KFLOORDOWN=3.888 : EFLOORDOWN=0.31
+ KCEILUP=7.2 : ECEILUP=0.31 : KCEILDOWN=3.888 : ECEILDOWN=0.31
+ KVERTICAL=5.76 : EVERTICAL=0.3
+*--- radiance parameters -------------------
+ SCENE_ROTATION_ANGLE=0 : GROUND_IDS= : GROUND_REFLECTANCE=0.2 : SHADER_REFLECTANCE=0
+ CALC_MODE=RAD : LATITUDE=48 : LONGITUDE=-9.2 : TIME_ZONE=-15 : SITE_ELEVATION=200
+ AB=5 : AD=1000 : AS=20 : AR=300 : AA=0.1
+ LR=6 : ST=0.15 : SJ=1 : LW=0.004 : DJ=0 : DS=0.2 : DR=2 : DP=512
+*--- comfort parameters -------------------
+ DIAM-SENSOR=0.07 : EPS-SENSOR=0.82 : REFL-SENSOR=0.47 : ELV_AIRSPEED1=0.3 : ELV_AIRSPEED2=0.7 : ELV_AIRSPEED3=1.2
+*--- other -------------------
+ FSCAL_TREGENZA=MEDIUM : SHM_MODE=0 : SURFGRID=0.2
+*--- daylight  -------------------
+ UDIMIN=100 : UDIMAX=2000 : DAMIN=300
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+TYPES
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*
+*--------------------------------------------------------------------------------
+*  L a y e r s
+*--------------------------------------------------------------------------------
+LAYER GYPSUM
+ CONDUCTIVITY=   2.62 : CAPACITY=   0.75 : DENSITY=   1601 : PERT=      0 : PENRT=      0
+LAYER INSULATION
+ CONDUCTIVITY=  0.155 : CAPACITY=   0.75 : DENSITY=     32 : PERT=      0 : PENRT=      0
+LAYER STUCCO
+ CONDUCTIVITY=   2.49 : CAPACITY=   0.75 : DENSITY=   1858 : PERT=      0 : PENRT=      0
+LAYER WOOD
+ CONDUCTIVITY=  0.418 : CAPACITY=   2.25 : DENSITY=    592 : PERT=      0 : PENRT=      0
+LAYER CONCRETE
+ CONDUCTIVITY=   6.23 : CAPACITY=   0.75 : DENSITY=   2242 : PERT=      0 : PENRT=      0
+LAYER STONE
+ CONDUCTIVITY=   5.17 : CAPACITY=    1.5 : DENSITY=    881 : PERT=      0 : PENRT=      0
+LAYER CLAYTILE
+ CONDUCTIVITY=      3 : CAPACITY=   0.84 : DENSITY=   1000 : PERT=      0 : PENRT=      0
+LAYER PLASTBOARD
+ CONDUCTIVITY=    1.9 : CAPACITY=   0.84 : DENSITY=   1200 : PERT=      0 : PENRT=      0
+LAYER AIRSPACE
+ RESISTANCE=     0.05 : PERT=      0 : PENRT=      0
+LAYER ROOFING
+ CONDUCTIVITY=    2.5 : CAPACITY=      1 : DENSITY=   2100 : PERT=      0 : PENRT=      0
+*--------------------------------------------------------------------------------
+*  I n p u t s
+*--------------------------------------------------------------------------------
+INPUTS HOUTSIDE FAN WINDVEL WINDDIR PAMB_ABS CONAMB_1 CONAMB_2 CONAMB_3 CONAMB_4 CONAMB_5 TRNFLOW
+INPUTS_DESCRIPTION
+ HOUTSIDE : any : Input
+ FAN : any : Input
+ WINDVEL : m/s : Wind speed at meteo station reference height (TRNFlow Input)
+ WINDDIR : degrees : Wind direction (TRNFlow Input - 0° wind from north, 90° wind from east)
+ PAMB_ABS : Pa : Absolute ambient barometric pressure (TRNFlow Input)
+ CONAMB_1 : kg/kg : Ambient concentration of pollutant no. 1 (TRNFlow Input)
+ CONAMB_2 : kg/kg : Ambient concentration of pollutant no. 2 (TRNFlow Input)
+ CONAMB_3 : kg/kg : Ambient concentration of pollutant no. 3 (TRNFlow Input)
+ CONAMB_4 : kg/kg : Ambient concentration of pollutant no. 4 (TRNFlow Input)
+ CONAMB_5 : kg/kg : Ambient concentration of pollutant no. 5 (TRNFlow Input)
+ TRNFLOW : any : Switch to turn off TRNFLOW (TRNFlow Input - 0... TRNFLOW off, >0...TRNFLOW on)
+*--------------------------------------------------------------------------------
+*  S c h e d u l e s
+*--------------------------------------------------------------------------------
+SCHEDULE WEEKDAY
+ HOURS =0.000 8.000 10.000 12.000 14.000 17.000 22.000 24.0
+ VALUES=0 5. 2. 10. 2. 10. 0 0 
+SCHEDULE WEEKEND
+ HOURS =0.000 8.000 10.000 12.000 14.000 17.000 22.000 24.0
+ VALUES=0 10. 5. 10. 4. 10. 0 0 
+SCHEDULE OCCUPANCY
+ HOURS =0.000 7.000 22.000 24.0
+ VALUES=0 1. 0 0 
+SCHEDULE CUSTOMERS
+ DAYS=1 2 3 4 5 6 7
+ HOURLY=WEEKDAY WEEKDAY WEEKDAY WEEKDAY WEEKDAY WEEKEND WEEKEND
+*--------------------------------------------------------------------------------
+*  C O N S T R U C T I O N (Wall, Floor, Ceiling,..)
+*--------------------------------------------------------------------------------
+CONSTRUCTION OUTSIDE
+ LAYERS   = GYPSUM INSULATION STUCCO 
+ THICKNESS= 0.019  0.076      0.025  
+ ABS-FRONT= 0.9   : ABS-BACK= 0.8  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = 11 : HBACK= INPUT 1*HOUTSIDE
+CONSTRUCTION INSIDE
+ LAYERS   = GYPSUM WOOD  GYPSUM 
+ THICKNESS= 0.019  0.058 0.019  
+ ABS-FRONT= 0.8   : ABS-BACK= 0.8  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = 11 : HBACK= 11
+CONSTRUCTION FLOOR
+ LAYERS   = STONE INSULATION CONCRETE 
+ THICKNESS= 0.025 0.076      0.102    
+ ABS-FRONT= 0.8   : ABS-BACK= 0    
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = 11 : HBACK= 1e-005
+CONSTRUCTION ROOF
+ LAYERS   = PLASTBOARD AIRSPACE INSULATION CONCRETE ROOFING 
+ THICKNESS= 0.016      0        0.076      0.102    0.006   
+ ABS-FRONT= 0.8   : ABS-BACK= 0.9  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = 11 : HBACK= INPUT 1*HOUTSIDE
+*--------------------------------------------------------------------------------
+*  W i n d o w s
+*--------------------------------------------------------------------------------
+WINDOW DOUBLE
+ WINID=2001 : HINSIDE=11 : HOUTSIDE=72 : SLOPE=90 : SPACID=0 : WWID=0.77 : WHEIG=1.08 : FFRAME=0.15 : UFRAME=8.17 : ABSFRAME=0.6 : RISHADE=0 : RESHADE=0 : REFLISHADE=0.5 : REFLOSHADE=0.5 : CCISHADE=0.5 : EPSFRAME=0.9 : EPSISHADE=0.9 : ITSHADECLOSE=648 : ITSHADEOPEN=576 : FLOWTOAIRNODE=1 : PERT=0 : PENRT=0 : RADMATERIAL=undefined : RADMATERIAL_SHD1=undefined
+*--------------------------------------------------------------------------------
+*  G a i n s / L o s s e s
+*--------------------------------------------------------------------------------
+GAIN PEOPLE
+ CONVECTIVE=150 : RADIATIVE=70 : HUMIDITY=0.058 : ELPOWERFRAC=0 :  ABSOLUTE : CATEGORY=MISCELLANEOUS
+GAIN LIGHTS
+ CONVECTIVE=300 : RADIATIVE=1500 : HUMIDITY=0 : ELPOWERFRAC=0 :  ABSOLUTE : CATEGORY=MISCELLANEOUS
+GAIN STOVES
+ CONVECTIVE=10000 : RADIATIVE=5000 : HUMIDITY=0.1 : ELPOWERFRAC=0 :  ABSOLUTE : CATEGORY=MISCELLANEOUS
+GAIN FREEZER
+ CONVECTIVE=1500 : RADIATIVE=0 : HUMIDITY=0 : ELPOWERFRAC=0 :  ABSOLUTE : CATEGORY=MISCELLANEOUS
+*--------------------------------------------------------------------------------
+*  C o m f o r t
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  I n f i l t r a t i o n
+*--------------------------------------------------------------------------------
+INFILTRATION SOUTH
+ AIRCHANGE=SCHEDULE 0.03*CUSTOMERS+0.5
+INFILTRATION NORTH
+ AIRCHANGE=0.5
+*--------------------------------------------------------------------------------
+*  V e n t i l a t i o n
+*--------------------------------------------------------------------------------
+VENTILATION KITCHEN
+ TEMPERATURE=OUTSIDE
+ AIRCHANGE=SCHEDULE 0.5*OCCUPANCY
+ SPECFANPOWER=0
+ SENSHR=0
+ RELMINHUM=OUTSIDE
+ RELMAXHUM=OUTSIDE
+ CALCQAHU=0
+*--------------------------------------------------------------------------------
+*  C o o l i n g
+*--------------------------------------------------------------------------------
+COOLING KITCHEN
+ ON=26
+ POWER=50000
+ HUMIDITY=100
+ ELPOWERFRAC=0
+ AREA_RELATED_POWER=0
+*--------------------------------------------------------------------------------
+*  H e a t i n g
+*--------------------------------------------------------------------------------
+HEATING HEATER
+ ON=SCHEDULE 5*OCCUPANCY+15
+ POWER=50000
+ HUMIDITY=0
+ RRAD=0
+ ELPOWERFRAC=0
+ AREA_RELATED_POWER=0
+*--------------------------------------------------------------------------------
+*  D a y l i g h t   C o n t r o l 
+*--------------------------------------------------------------------------------
+*
+*--------------------------------------------------------------------------------
+*  Z o n e s
+*--------------------------------------------------------------------------------
+ZONES DINING KITCHEN STORAGE
+*--------------------------------------------------------------------------------
+*  O r i e n t a t i o n s
+*--------------------------------------------------------------------------------
+HEMISPHERE NORTHERN
+ORIENTATIONS NORTH SOUTH EAST WEST HORIZONTAL
+INTERNAL_CALCULATION NORTH SOUTH EAST WEST HORIZONTAL
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+BUILDING
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*
+*--------------------------------------------------------------------------------
+*  Z o n e  DINING  /  A i r n o d e  DINING
+*--------------------------------------------------------------------------------
+ZONE DINING
+RADIATIONMODE
+ BEAM=STANDARD : DIFFUSE=STANDARD : LONGWAVE=STANDARD : GEOMODE=MANUAL : FSOLAIR=0
+DAYLIGHTMODE
+ DLSHADE =-1
+AIRNODE DINING
+WALL         =OUTSIDE    : SURF=  1 : AREA=        35 : EXTERNAL : ORI=SOUTH : FSKY=0.5
+WINDOW=DOUBLE     : SURF=  2 : AREA=        10 : EXTERNAL : ORI=SOUTH : FSKY=0.5
+WALL         =OUTSIDE    : SURF=  3 : AREA=        35 : EXTERNAL : ORI=WEST : FSKY=0.5
+WALL         =OUTSIDE    : SURF=  4 : AREA=        35 : EXTERNAL : ORI=EAST : FSKY=0.5
+WALL         =INSIDE     : SURF=  5 : AREA=      22.5 : INTERNAL
+WALL         =INSIDE     : SURF=  6 : AREA=      22.5 : ADJACENT=STORAGE : ADJ_SURF=16 : FRONT : COUPL=1
+WALL         =FLOOR      : SURF=  7 : AREA=     112.5 : BOUNDARY=10
+WALL         =ROOF       : SURF=  8 : AREA=     112.5 : EXTERNAL : ORI=HORIZONTAL : FSKY=1
+WALL         =INSIDE     : SURF=  9 : AREA=      22.5 : ADJACENT=KITCHEN : ADJ_SURF=10 : FRONT : COUPL=1
+ REGIME
+ GAIN        = PEOPLE     : SCALE= SCHEDULE 5*CUSTOMERS : GEOPOS= 0 : SCALE2= 1 : FRAC_REFAREA= -1
+ GAIN        = LIGHTS     : SCALE= SCHEDULE 2*OCCUPANCY : GEOPOS= 0 : SCALE2= 1 : FRAC_REFAREA= -1
+ INFILTRATION= SOUTH
+ HEATING     = HEATER
+ CAPACITANCE = 500     : VOLUME= 337.5   : REFAREA= 1       : TINITIAL= 20      : PHINITIAL= 50      : WCAPR= 1
+*--------------------------------------------------------------------------------
+*  Z o n e  KITCHEN  /  A i r n o d e  KITCHEN
+*--------------------------------------------------------------------------------
+ZONE KITCHEN
+RADIATIONMODE
+ BEAM=STANDARD : DIFFUSE=STANDARD : LONGWAVE=STANDARD : GEOMODE=MANUAL : FSOLAIR=0
+DAYLIGHTMODE
+ DLSHADE =-1
+AIRNODE KITCHEN
+WALL         =INSIDE     : SURF= 10 : AREA=      22.5 : ADJACENT=DINING : ADJ_SURF=9 : BACK : COUPL=1
+WALL         =OUTSIDE    : SURF= 11 : AREA=      22.5 : EXTERNAL : ORI=WEST : FSKY=0.5
+WALL         =OUTSIDE    : SURF= 12 : AREA=      22.5 : EXTERNAL : ORI=NORTH : FSKY=0.5
+WALL         =INSIDE     : SURF= 13 : AREA=      22.5 : ADJACENT=STORAGE : ADJ_SURF=17 : BACK
+WALL         =FLOOR      : SURF= 14 : AREA=     56.25 : BOUNDARY=10
+WALL         =ROOF       : SURF= 15 : AREA=     56.25 : EXTERNAL : ORI=HORIZONTAL : FSKY=1
+ REGIME
+ GAIN        = PEOPLE     : SCALE= SCHEDULE 0.5*CUSTOMERS : GEOPOS= 0 : SCALE2= 1 : FRAC_REFAREA= -1
+ GAIN        = LIGHTS     : SCALE= SCHEDULE 1*OCCUPANCY : GEOPOS= 0 : SCALE2= 1 : FRAC_REFAREA= -1
+ GAIN        = STOVES     : SCALE= SCHEDULE 1*OCCUPANCY : GEOPOS= 0 : SCALE2= 1 : FRAC_REFAREA= -1
+ INFILTRATION= NORTH
+ VENTILATION = KITCHEN
+ COOLING     = KITCHEN
+ HEATING     = HEATER
+ CAPACITANCE = 250     : VOLUME= 168.75  : REFAREA= 1       : TINITIAL= 20      : PHINITIAL= 50      : WCAPR= 1
+*--------------------------------------------------------------------------------
+*  Z o n e  STORAGE  /  A i r n o d e  STORAGE
+*--------------------------------------------------------------------------------
+ZONE STORAGE
+RADIATIONMODE
+ BEAM=STANDARD : DIFFUSE=STANDARD : LONGWAVE=STANDARD : GEOMODE=MANUAL : FSOLAIR=0
+DAYLIGHTMODE
+ DLSHADE =-1
+AIRNODE STORAGE
+WALL         =INSIDE     : SURF= 16 : AREA=      22.5 : ADJACENT=DINING : ADJ_SURF=6 : BACK : COUPL=1
+WALL         =INSIDE     : SURF= 17 : AREA=      22.5 : ADJACENT=KITCHEN : ADJ_SURF=13 : FRONT
+WALL         =OUTSIDE    : SURF= 18 : AREA=      22.5 : EXTERNAL : ORI=NORTH : FSKY=0.5
+WALL         =OUTSIDE    : SURF= 19 : AREA=      22.5 : EXTERNAL : ORI=EAST : FSKY=0.5
+WALL         =FLOOR      : SURF= 20 : AREA=     56.25 : BOUNDARY=10
+WALL         =ROOF       : SURF= 21 : AREA=     56.25 : EXTERNAL : ORI=HORIZONTAL : FSKY=1
+ REGIME
+ GAIN        = FREEZER    : SCALE= 1 : GEOPOS= 0 : SCALE2= 1 : FRAC_REFAREA= -1
+ INFILTRATION= NORTH
+ CAPACITANCE = 250     : VOLUME= 168.75  : REFAREA= 1       : TINITIAL= 20      : PHINITIAL= 50      : WCAPR= 1
+*--------------------------------------------------------------------------------
+*  O u t p u t s
+*--------------------------------------------------------------------------------
+OUTPUTS
+ TRANSFER : TIMEBASE=1.000
+ AIRNODES = DINING KITCHEN STORAGE 
+ NTYPES =   1 : TAIR - air temperature of airnode
+        =   2 : QSENS - sensible energy demand of airnode, heating(-), cooling(+)
+        =   3 : QCSURF - total convection to air from all surfaces within airnode (incl. internal shading)
+        =   4 : QINF - sensible infiltration energy gain of airnode
+        =   5 : QVENT - sensible ventilation energy gain of airnode
+        =   6 : QCOUP - sensible coupling energy gain of airnode
+        =   7 : QGCONV - internal convective gains of airnode
+        =   8 : DQAIR - change in internal sensible energy of airnode air since beginning of simulation
+ AIRNODES = DINING 
+ NTYPES =  17 : SURF = 1, 3, 4, 5, 6, 7, 8, 9, 2,  : TSI - inside surface temperature
+ AIRNODES = KITCHEN 
+ NTYPES = 201 : FLINZ - outdoor air infiltration flow per airnode [kg/h]
+        = 203 : FLVSZ - ventilation supply flow per airnode [kg/h]
+        = 202 : FLEXZ - exfiltration flow per airnode [kg/h]
+        = 204 : FLVEZ - ventilation exhaust flow per airnode[kg/h]
+        = 210 : ACHZ - outdoor air change rate per airnode [1/h]
+ AIRLINKS = DS_001[1] DS_003[14] 
+ NTYPES = 222 : FLFTL - flow `From-node to To-node'. per link [kg/h]
+ AIRLINKS = DS_001[1] DS_003[14] 
+ NTYPES = 221 : FLTFL - flow `To-Node to From-node', per link [kg/h] 
+ AIRLINKS = CR_001[2] 
+ NTYPES = 220 : FLNEL - net mass flow per link [kg/h]
+ AIRNODES = DINING STORAGE KITCHEN 
+ NTYPES = 229 : SFLIN - sum of outdoor air infiltration flows into the specified airnodes [kg/h]
+ AIRNODES = DINING STORAGE KITCHEN 
+ NTYPES = 233 : SFLTO - sum of total outdoor air flows into the specified airnodes [kg/h]
+ AIRNODES = DINING 
+ NTYPES = 237 : ACHB - outdoor air change rate of all airnodes of the flow network [1/h]
+ AUXILIARYNODES = AN_006 
+ NTYPES = 251 : FLTOA - total outdoor air flow into auxiliary node [kg/h]
+ AUXILIARYNODES = AN_001 
+ NTYPES = 242 : TAIRA - air temperature of auxiliary node [°C]
+        = 243 : HAIRA - absolut humidity of auxiliary node air [kgwater/kgdry_air]
+*
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  T R N S F L O W Multizone Airflow Network (Model COMIS 3.1)
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+MULTIZONE_AIRFLOW_NETWORK
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*
+CALCFLOWS=1
+*--------------------------------------------------------------------------------
+*  A d d  T R N S F L O W  C o m m a n d s
+*--------------------------------------------------------------------------------
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+POLLUTANTS
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+LINKTYPES
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*
+*--------------------------------------------------------------------------------
+*  C r a c k s
+*--------------------------------------------------------------------------------
+CRACK CR_001
+ DESC= -
+ CS= 0.002 : EXPN= 0.66 
+ FILTER1= 0     : FILTER2= 0     : FILTER3= 0     : FILTER4= 0     : FILTER5= 0    
+CRACK CR_002
+ DESC= -
+ CS= 0.1   : EXPN= 0.65 
+ FILTER1= 0     : FILTER2= 0     : FILTER3= 0     : FILTER4= 0     : FILTER5= 0    
+*--------------------------------------------------------------------------------
+*  F a n s
+*--------------------------------------------------------------------------------
+FAN FA_001
+ DESC= -
+ AIRDENSITY= 1.2   :  CSOFF= 0.2   : EXPNOFF= 0.65 
+ PRESSURE=          0       40       80      120      175 
+ FLOWRATE=        665      622      519      354       26 
+ FILTER1= 0     : FILTER2= 0     : FILTER3= 0     : FILTER4= 0     : FILTER5= 0    
+*--------------------------------------------------------------------------------
+*  S t r a i g h t   D u c t s
+*--------------------------------------------------------------------------------
+DUCT DS_002
+ DESC= -
+ DIAM1=        0.2 : DIAM2=         0 : ROUGHNESS =    0.03 : LENGTH=     1.8
+ ZETADEF=        0 : ZETAINV=       0 : FITTING=          6 : PARAM1=       2 : PARAM2=       0
+ FILTER1= 0     : FILTER2= 0     : FILTER3= 0     : FILTER4= 0     : FILTER5= 0    
+DUCT DS_001
+ DESC= -
+ DIAM1=        0.2 : DIAM2=         0 : ROUGHNESS =    0.03 : LENGTH=     0.2
+ ZETADEF=        0 : ZETAINV=       0 : FITTING=          3 : PARAM1=       2 : PARAM2=      15
+ FILTER1= 0     : FILTER2= 0     : FILTER3= 0     : FILTER4= 0     : FILTER5= 0    
+DUCT DS_003
+ DESC= -
+ DIAM1=        0.2 : DIAM2=         0 : ROUGHNESS =    0.03 : LENGTH=     0.2
+ ZETADEF=        0 : ZETAINV=       0 : FITTING=          5 : PARAM1=      80 : PARAM2=       0
+ FILTER1= 0     : FILTER2= 0     : FILTER3= 0     : FILTER4= 0     : FILTER5= 0    
+DUCT DS_004
+ DESC= -
+ DIAM1=        0.2 : DIAM2=         0 : ROUGHNESS =    0.03 : LENGTH=     0.2
+ ZETADEF=        0 : ZETAINV=       0 : FITTING=          2 : PARAM1=      80 : PARAM2=       0
+ FILTER1= 0     : FILTER2= 0     : FILTER3= 0     : FILTER4= 0     : FILTER5= 0    
+*--------------------------------------------------------------------------------
+*  F l o w   C o n t r o l l e r s
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  L a r g e    V e r t i c a l   Openings (Windows+Doors)
+*--------------------------------------------------------------------------------
+LOPENING WI_DOOR2
+ DESC= -
+ LOTYPE=        1 : LO1TYPE=      4 : LOWIDTH=     1.2 : LOHEIGHT=       2 : LOEXTRA=       0
+ CDCLOSE=     0.6 : CDOPEN=     0.6
+ CSCL=       0.01 : EXPNCL=    0.59
+ FILTER1= 0     : FILTER2= 0     : FILTER3= 0     : FILTER4= 0     : FILTER5= 0    
+LOPENING WI_DOOR1
+ DESC= -
+ LOTYPE=        1 : LO1TYPE=      4 : LOWIDTH=     1.2 : LOHEIGHT=       2 : LOEXTRA=       0
+ CDCLOSE=     0.6 : CDOPEN=     0.6
+ CSCL=       0.01 : EXPNCL=    0.59
+ FILTER1= 0     : FILTER2= 0     : FILTER3= 0     : FILTER4= 0     : FILTER5= 0    
+LOPENING WI_WIN_001
+ DESC= -
+ LOTYPE=        1 : LO1TYPE=      4 : LOWIDTH=     1.5 : LOHEIGHT=       1 : LOEXTRA=       0
+ CDCLOSE=     0.6 : CDOPEN=     0.6
+ CSCL=      0.003 : EXPNCL=    0.66
+ FILTER1= 0     : FILTER2= 0     : FILTER3= 0     : FILTER4= 0     : FILTER5= 0    
+*--------------------------------------------------------------------------------
+*  T e s t   D a t a   C o m p o n e n t s
+*--------------------------------------------------------------------------------
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+NODETYPES
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*
+*--------------------------------------------------------------------------------
+*  E x t e r n a l   N o d e s  (CP VALUES)
+*--------------------------------------------------------------------------------
+*REFHEIGHT=     10 :                   WINDDIR=        0      90     180     270
+ENODE EN_003       : CONCENTRATION= 1     : CP=     -0.2    -0.2    -0.2     0.8
+ENODE EN_004       : CONCENTRATION= 1     : CP=     -0.2     0.8    -0.2    -0.2
+ENODE EN_001       : CONCENTRATION= 1     : CP=      0.8    -0.2    -0.2    -0.2
+ENODE EN_002       : CONCENTRATION= 1     : CP=     -0.2    -0.2     0.8    -0.2
+REFHEIGHT=      10 :                   WINDDIR=        0      90     180     270
+*--------------------------------------------------------------------------------
+*  A u x i l i a r y   N o d e s
+*--------------------------------------------------------------------------------
+ANODE AN_001       : REFHEIGHT=        0 : DEFCOND=  ON : TEMP= 21 : HUMIDITY= 0.008
+ANODE AN_006       : REFHEIGHT=        0 : DEFCOND= OFF
+ANODE AN_005       : REFHEIGHT=        0 : DEFCOND= OFF
+ANODE AN_002       : REFHEIGHT=        0 : DEFCOND= OFF
+ANODE AN_003       : REFHEIGHT=        0 : DEFCOND= OFF
+ANODE AN_004       : REFHEIGHT=        0 : DEFCOND= OFF
+ANODE AN_00X       : REFHEIGHT=        0 : DEFCOND= OFF
+*--------------------------------------------------------------------------------
+*  T h e r m a l  Z o n e   N o d e s
+*--------------------------------------------------------------------------------
+TNODE DINING       : REFHEIGHT=       0 : THEIGHT=       3 : TDEPTH=       4
+TNODE KITCHEN      : REFHEIGHT=       0 : THEIGHT=       3 : TDEPTH=       4
+TNODE STORAGE      : REFHEIGHT=       0 : THEIGHT=       3 : TDEPTH=       4
+*--------------------------------------------------------------------------------
+*  W i n d   v e  l o c i t y   p r o f i l e
+*--------------------------------------------------------------------------------
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+WIND_VELOPROF
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*
+WINDDIR=        0
+VELOEXP=     0.26
+*--------------------------------------------------------------------------------
+*  A i r l i n k   N e t w o r k
+*--------------------------------------------------------------------------------
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+AIRLINK_NETWORK
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*
+LINK DS_001       : ID= 1 : FRNODE= KITCHEN    : TONODE= AN_001     : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       0 : FSCALE= 1
+LINK CR_001       : ID= 2 : FRNODE= EN_003     : TONODE= KITCHEN    : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       0 : FSCALE= 1
+LINK CR_001       : ID= 3 : FRNODE= EN_004     : TONODE= STORAGE    : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       0 : FSCALE= 1
+LINK CR_001       : ID= 4 : FRNODE= EN_004     : TONODE= DINING     : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       0 : FSCALE= 1
+LINK CR_001       : ID= 5 : FRNODE= EN_003     : TONODE= DINING     : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       0 : FSCALE= 1
+LINK CR_001       : ID= 6 : FRNODE= 0 PA       : TONODE= KITCHEN    : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       0 : FSCALE= 1
+LINK CR_001       : ID= 7 : FRNODE= 100 PA     : TONODE= STORAGE    : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       0 : FSCALE= 1
+LINK CR_001       : ID= 8 : FRNODE= AN_006     : TONODE= AN_005     : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       0 : FSCALE= 0
+LINK DS_002       : ID= 9 : FRNODE= AN_001     : TONODE= AN_002     : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       0 : FSCALE= 1
+LINK FA_001       : ID= 10 : FRNODE= AN_002     : TONODE= AN_003     : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       0 : FSCALE= INPUT 1*FAN
+LINK WI_DOOR2     : ID= 11 : FRNODE= DINING     : TONODE= STORAGE    : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       1 : FSCALE= 0
+LINK WI_DOOR1     : ID= 12 : FRNODE= DINING     : TONODE= KITCHEN    : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       1 : FSCALE= 0
+LINK DS_003       : ID= 13 : FRNODE= AN_003     : TONODE= 0 PA       : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       0 : FSCALE= 1
+LINK DS_003       : ID= 14 : FRNODE= AN_004     : TONODE= KITCHEN    : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       0 : FSCALE= 1
+LINK DS_002       : ID= 15 : FRNODE= AN_005     : TONODE= AN_004     : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       0 : FSCALE= 1
+LINK FA_001       : ID= 16 : FRNODE= AN_006     : TONODE= AN_005     : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       0 : FSCALE= INPUT 0.6*FAN
+LINK DS_004       : ID= 17 : FRNODE= EN_001     : TONODE= AN_006     : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       0 : FSCALE= 1
+LINK WI_WIN_001   : ID= 18 : FRNODE= EN_002     : TONODE= DINING     : FRHEIGHT=       0 : TOHEIGHT=        0 : WIOWNHF=       1 : FSCALE= 0
+*--------------------------------------------------------------------------------
+*  E n d
+*--------------------------------------------------------------------------------
+END
+
+_EXTENSION_WINPOOL_START_
+WINDOW 4.1  DOE-2 Data File : Multi Band Calculation
+Unit System : SI
+Name        : TRNSYS 15 WINDOW LIB
+Desc        : Waermeschutzglas,Ar, 1.4 71/59
+Window ID   : 2001
+Tilt        : 90.0
+Glazings    : 2
+Frame       : 11                       2.270
+Spacer      :  1 Class1                2.330  -0.010   0.138
+Total Height: 1219.2 mm
+Total Width :  914.4 mm
+Glass Height: 1079.5 mm
+Glass Width :  774.7 mm
+Mullion     : None
+Gap        Thick   Cond  dCond    Vis   dVis   Dens   dDens     Pr     dPr
+1 Argon     16.0 0.01620  5.000  2.110  6.300  1.780 -0.0060  0.680 0.00066
+2              0       0      0      0      0      0       0      0       0
+3              0       0      0      0      0      0       0      0       0
+4              0       0      0      0      0      0       0      0       0
+5              0       0      0      0      0      0       0      0       0
+Angle     0    10    20    30    40    50    60    70    80    90 Hemis
+Tsol  0.426 0.428 0.422 0.413 0.402 0.380 0.333 0.244 0.113 0.000 0.354
+Abs1  0.118 0.118 0.120 0.123 0.129 0.135 0.142 0.149 0.149 0.000 0.132
+Abs2  0.190 0.192 0.198 0.201 0.200 0.199 0.199 0.185 0.117 0.000 0.191
+Abs3      0     0     0     0     0     0     0     0     0     0     0
+Abs4      0     0     0     0     0     0     0     0     0     0     0
+Abs5      0     0     0     0     0     0     0     0     0     0     0
+Abs6      0     0     0     0     0     0     0     0     0     0     0
+Rfsol 0.266 0.262 0.260 0.262 0.269 0.286 0.326 0.422 0.621 1.000 0.314
+Rbsol 0.215 0.209 0.207 0.210 0.219 0.237 0.272 0.356 0.560 0.999 0.260
+Tvis  0.706 0.710 0.701 0.688 0.670 0.635 0.556 0.403 0.188 0.000 0.590
+Rfvis 0.121 0.115 0.114 0.118 0.132 0.163 0.228 0.376 0.649 1.000 0.203
+Rbvis 0.103 0.096 0.093 0.096 0.108 0.132 0.179 0.286 0.520 0.999 0.162
+SHGC  0.589 0.593 0.591 0.586 0.574 0.551 0.505 0.405 0.218 0.000 0.518
+Tvis_daylight: 0.706
+Layer ID#         9052     9065        0        0        0        0
+Tir              0.000    0.000        0        0        0        0
+Emis F           0.840    0.140        0        0        0        0
+Emis B           0.840    0.840        0        0        0        0
+Thickness(mm)      4.0      4.0        0        0        0        0
+Cond(W/m2-C     ) 225.0    225.0        0        0        0        0
+Spectral File     None     None     None     None     None     None
+Overall and Center of Glass Ig U-values (W/m2-C)
+Outdoor Temperature                 -17.8 C      15.6 C      26.7 C      37.8 C
+Solar      WdSpd  hcout hrout  hin
+(W/m2)     (m/s)     (W/m2-C)
+0        0.00  12.25  3.25  7.62  1.54 1.54  1.31 1.31  1.35 1.35  1.47 1.47
+0        6.71  25.47  3.21  7.64  1.62 1.62  1.36 1.36  1.40 1.40  1.53 1.53
+783        0.00  12.25  3.39  7.99  1.69 1.69  1.54 1.54  1.51 1.51  1.54 1.54
+783        6.71  25.47  3.30  7.81  1.79 1.79  1.63 1.63  1.58 1.58  1.59 1.59
+*** END OF LIBRARY ***
+************************************************************************************************************
+*WinID   Description                              Design         U-Value g-value T-sol Rf-sol T-vis-daylight
+************************************************************************************************************
+  2001   Waermeschutzglas,Ar, 1.4 71/59           4/16/4           1.4  0.589  0.426  0.266  0.706
+_EXTENSION_WINPOOL_END_
+
+_EXTENSION_BuildingGeometry_START_
+
+_EXTENSION_BuildingGeometry_END_
+
+
+_EXTENSION_VirtualSurfaceGeometry_START_
+_EXTENSION_VirtualSurfaceGeometry_END_
+
+
+_EXTENSION_ExternalShadingGeometry_START_
+
+_EXTENSION_ExternalShadingGeometry_END_
+
+
+_EXTENSION_GeoPositionGeometry_START_
+_EXTENSION_GeoPositionGeometry_END_
+
+
+_EXTENSION_DaylightSensorPoints_START_
+_EXTENSION_DaylightSensorPoints_END_
+
+
+_EXTENSION_AdditionalDaylightGeometry_START_
+_EXTENSION_AdditionalDaylightGeometry_END_
+
+
+_EXTENSION_VAMPARAMS_START_
+_EXTENSION_VAMPARAMS_END_
+
+
+
