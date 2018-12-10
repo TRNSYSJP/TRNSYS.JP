@@ -34,20 +34,46 @@ namespace AirlinkToDot
         {
             InitializeComponent();
 
+            bool exitOption = false;
+            FileInfo buiFileInfo = null;
+
             if (App.CommandLineArgs != null)
             {
-                var finfo = new FileInfo(App.CommandLineArgs[0]);
-                if (!finfo.Exists)
+                foreach (var str in App.CommandLineArgs)
                 {
-                    // コマンドラインで指定されたファイルは存在しない。
-                    // The file specified on the command line does not exist
-                    MessageBox.Show($"The file, {finfo.Name} specified on the command line does not exist");
-                    return;
+                    if(str.StartsWith("/"))
+                    {
+                        if (str.ToUpper().Contains("/N"))
+                        {
+                            exitOption = true;
+                            continue;
+                        }
+                        // Error!
+                        var msg = $"An unknown option, {str} is specified.";
+                        MessageBox.Show(msg,"Error",MessageBoxButton.OK, MessageBoxImage.Error);
+                        break;
+                    }
+
+
+                    var finfo = new FileInfo(str);
+                    if (finfo.Exists)
+                    {
+                        buiFileInfo = finfo;
+                    }
+                    else
+                    {
+                        // コマンドラインで指定されたファイルは存在しない。
+                        // The file specified on the command line does not exist
+                        MessageBox.Show($"The file, {finfo.Name} specified on the command line does not exist");
+                        break;
+                    }
                 }
-                
+
                 BuiFile buiFile = new BuiFile();
-                buiFile.Load(finfo.FullName);
+                buiFile.Load(buiFileInfo.FullName);
                 convertBuiToDot(buiFile);
+                if(exitOption) Application.Current.Shutdown();//終了
+
             }
         }
 
