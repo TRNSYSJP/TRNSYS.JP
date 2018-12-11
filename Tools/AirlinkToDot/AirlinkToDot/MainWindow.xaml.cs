@@ -170,6 +170,7 @@ namespace AirlinkToDot
                 SaveGVFile(gvFileName, append, strList);
             }
 
+            bool pngRet = false;
             var pngFileName = System.IO.Path.ChangeExtension(gvFileName, ".png");
             if (File.Exists(pngFileName))
             {
@@ -178,7 +179,7 @@ namespace AirlinkToDot
                 if (ret == MessageBoxResult.Yes)
                 {
                     // Yes, Overwrite the existing file.
-                    SavePngFile(gv, pngFileName);
+                    pngRet = SavePngFile(gv, pngFileName);
                 }
                 else
                 {
@@ -195,18 +196,18 @@ namespace AirlinkToDot
                     if (result == true)
                     {
                         // Save document
-                        SavePngFile(gv, dlg.FileName);
+                        pngRet = SavePngFile(gv, dlg.FileName);
                     }
                 }
             }
             else
             {
                 // generate a image using Graphviz/Dot
-                SavePngFile(gv, pngFileName);
+                pngRet = SavePngFile(gv, pngFileName);
             }
 
             // Launch application associated with png file
-            Process.Start(pngFileName);
+            if(pngRet) Process.Start(pngFileName);
 
         }
 

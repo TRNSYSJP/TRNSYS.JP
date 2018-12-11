@@ -1,7 +1,7 @@
 ﻿<Window x:Class="AirlinkToDot.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Bui to Dot" Height="350" Width="525" Drop="Window_Drop" AllowDrop="True" PreviewDragOver="Window_PreviewDragOver" Icon="1403802386_272433.ico" ScrollViewer.VerticalScrollBarVisibility="Hidden" MinWidth="500" MinHeight="350">
+        Title="Bui to Dot" Height="350" Width="525" Drop="Window_Drop" AllowDrop="True" PreviewDragOver="Window_PreviewDragOver" Icon="1403802386_272433.ico" ScrollViewer.VerticalScrollBarVisibility="Hidden" MinWidth="500" MinHeight="350" ResizeMode="CanResizeWithGrip">
     <Window.CommandBindings>
        
 
