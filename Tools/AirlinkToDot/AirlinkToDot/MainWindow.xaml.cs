@@ -114,7 +114,12 @@ namespace AirlinkToDot
         /// <param name="buiFile">BuiFile class</param>
         private void convertBuiToDot(BuiFile buiFile)
         {
-            var filename = System.IO.Path.ChangeExtension(buiFile.FileName, ".gv");
+            var baseFileName = System.IO.Path.GetFileNameWithoutExtension(buiFile.FileName);
+            baseFileName += "_airnetwork";
+
+
+
+            var gvFileName = System.IO.Path.ChangeExtension(baseFileName, ".gv");
             bool append = false; // overwrite
 
             // convert bui to gv
@@ -129,22 +134,96 @@ namespace AirlinkToDot
             this.txtBox.Text = gv;
 
             // save the .gv file
-            using (StreamWriter writer = new StreamWriter(filename, append, Encoding.GetEncoding("shift_jis")))　//Shift_JIS
+            MessageBoxResult ret;
+            if (File.Exists(gvFileName))
             {
-                foreach (string str in strList)
+                var msg = "The default GV file already exists. Overwrite it?";
+                ret = MessageBox.Show(msg, "Confirm saving default file", MessageBoxButton.YesNo);
+                if (ret == MessageBoxResult.Yes)
                 {
-                    writer.WriteLine(str);
+                    // Yes, Overwrite the existing file.
+                    SaveGVFile(gvFileName, append, strList);
+                }
+                else
+                {
+                    // No, new filename is needed.
+                    Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+                    dlg.FileName = gvFileName; // Default file name
+                    dlg.DefaultExt = ".gv"; // Default file extension
+                    dlg.Filter = "Graphviz DOT File (.gv)|*.gv"; // Filter files by extension
+
+                    // Show save file dialog box
+                    Nullable<bool> result = dlg.ShowDialog();
+
+                    // Process save file dialog box results
+                    if (result == true)
+                    {
+                        // Save document
+                        gvFileName = dlg.FileName;
+                        SaveGVFile(gvFileName, append, strList);
+
+                    }
                 }
             }
+            else
+            {
+                SaveGVFile(gvFileName, append, strList);
+            }
 
-            var imgFile = System.IO.Path.ChangeExtension(filename, ".png");
+            var pngFileName = System.IO.Path.ChangeExtension(gvFileName, ".png");
+            if (File.Exists(pngFileName))
+            {
+                var msg = "The default PNG file already exists. Overwrite it?";
+                ret = MessageBox.Show(msg, "Confirm saving default file", MessageBoxButton.YesNo);
+                if (ret == MessageBoxResult.Yes)
+                {
+                    // Yes, Overwrite the existing file.
+                    SavePngFile(gv, pngFileName);
+                }
+                else
+                {
+                    // No, new filename is needed.
+                    Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+                    dlg.FileName = pngFileName; // Default file name
+                    dlg.DefaultExt = ".png"; // Default file extension
+                    dlg.Filter = "PNG (.png)|*.png"; // Filter files by extension
 
-            // generate a image using Graphviz/Dot
+                    // Show save file dialog box
+                    Nullable<bool> result = dlg.ShowDialog();
 
+                    // Process save file dialog box results
+                    if (result == true)
+                    {
+                        // Save document
+                        SavePngFile(gv, dlg.FileName);
+                    }
+                }
+            }
+            else
+            {
+                // generate a image using Graphviz/Dot
+                SavePngFile(gv, pngFileName);
+            }
+
+            // Launch application associated with png file
+            Process.Start(pngFileName);
+
+        }
+
+
+        /// <summary>
+        /// generate a image using Graphviz/Dot
+        /// </summary>
+        /// <param name="gv">data for GraphViz</param>
+        /// <param name="pngFileName">PNG filename </param>
+        /// <returns></returns>
+        private static bool SavePngFile(string gv, string pngFileName)
+        {
             try
             {
-                generateGraphImage(gv, imgFile);
-            }catch(System.ComponentModel.Win32Exception ex)
+                generateGraphImage(gv, pngFileName);
+            }
+            catch (System.ComponentModel.Win32Exception ex)
             {
                 var msg = @"Graphviz executable program can not be found." + "\n";
                 msg += @"Please copy the GraphViz program to the installation folder of this utility program." + "\n";
@@ -152,12 +231,20 @@ namespace AirlinkToDot
                 msg += "\n";
                 msg += @"For details, refer to 'ReadMe.txt' in the installation folder.";
                 MessageBox.Show(msg);
-                return;
+                return false;
             }
+            return true;
+        }
 
-            // start the paint app
-            Process.Start(imgFile);
-
+        private static void SaveGVFile(string filename, bool append, List<string> strList)
+        {
+            using (StreamWriter writer = new StreamWriter(filename, append, Encoding.GetEncoding("shift_jis")))　//Shift_JIS
+            {
+                foreach (string str in strList)
+                {
+                    writer.WriteLine(str);
+                }
+            }
         }
 
 
