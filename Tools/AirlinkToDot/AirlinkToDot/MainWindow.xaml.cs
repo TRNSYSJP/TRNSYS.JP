@@ -39,42 +39,58 @@ namespace AirlinkToDot
 
             if (App.CommandLineArgs != null)
             {
-                foreach (var str in App.CommandLineArgs)
+                if (GetBuiFileAndOption(ref buiFileInfo, ref exitOption))
                 {
-                    if(str.StartsWith("/"))
-                    {
-                        if (str.ToUpper().Contains("/N"))
-                        {
-                            exitOption = true;
-                            continue;
-                        }
-                        // Error!
-                        var msg = $"An unknown option, {str} is specified.";
-                        MessageBox.Show(msg,"Error",MessageBoxButton.OK, MessageBoxImage.Error);
-                        break;
-                    }
-
-
-                    var finfo = new FileInfo(str);
-                    if (finfo.Exists)
-                    {
-                        buiFileInfo = finfo;
-                    }
-                    else
-                    {
-                        // コマンドラインで指定されたファイルは存在しない。
-                        // The file specified on the command line does not exist
-                        MessageBox.Show($"The file, {finfo.Name} specified on the command line does not exist");
-                        break;
-                    }
+                    BuiFile buiFile = new BuiFile();
+                    buiFile.Load(buiFileInfo.FullName);
+                    convertBuiToDot(buiFile);
+                    if (exitOption) Application.Current.Shutdown();//終了
                 }
 
-                BuiFile buiFile = new BuiFile();
-                buiFile.Load(buiFileInfo.FullName);
-                convertBuiToDot(buiFile);
-                if(exitOption) Application.Current.Shutdown();//終了
-
             }
+        }
+
+
+        /// <summary>
+        /// Buiファイル名、/Nオプションを取得する
+        /// </summary>
+        /// <param name="buiFile"></param>
+        /// <param name="exitOption"></param>
+        private static bool GetBuiFileAndOption(ref FileInfo buiFileInfo, ref bool exitOption)
+        {
+            foreach (var str in App.CommandLineArgs)
+            {
+                if (str.StartsWith("/"))
+                {
+                    if (str.ToUpper().Contains("/N"))
+                    {
+                        exitOption = true;
+                        continue;
+                    }
+                    // Error!
+                    var msg = $"An unknown option, {str} is specified.";
+                    MessageBox.Show(msg, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    break;
+                }
+
+
+                var finfo = new FileInfo(str);
+                if (finfo.Exists)
+                {
+                    buiFileInfo = finfo;
+                }
+                else
+                {
+                    // コマンドラインで指定されたファイルは存在しない。
+                    // The file specified on the command line does not exist
+                    MessageBox.Show($"The file, {finfo.Name} specified on the command line does not exist");
+                    break;
+                }
+            }
+
+            if (buiFileInfo != null) return true;
+            else return false;
+
         }
 
         private void btnLoadBui_Click(object sender, RoutedEventArgs e)
