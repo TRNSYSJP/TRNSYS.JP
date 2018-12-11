@@ -114,8 +114,11 @@ namespace AirlinkToDot
         /// <param name="buiFile">BuiFile class</param>
         private void convertBuiToDot(BuiFile buiFile)
         {
-            var baseFileName = System.IO.Path.GetFileNameWithoutExtension(buiFile.FileName);
-            baseFileName += "_airnetwork";
+            var dir = System.IO.Path.GetDirectoryName(buiFile.FileName);
+            var fileName = System.IO.Path.GetFileNameWithoutExtension(buiFile.FileName);
+            
+
+            var baseFileName =  $@"{dir}\{fileName}_airnetwork.bui";
 
 
 
@@ -137,6 +140,7 @@ namespace AirlinkToDot
             MessageBoxResult ret;
             if (File.Exists(gvFileName))
             {
+                this.Activate(); // Put this window forward
                 var msg = "The default GV file already exists. Overwrite it?";
                 ret = MessageBox.Show(msg, "Confirm saving default file", MessageBoxButton.YesNo);
                 if (ret == MessageBoxResult.Yes)
@@ -148,7 +152,8 @@ namespace AirlinkToDot
                 {
                     // No, new filename is needed.
                     Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
-                    dlg.FileName = gvFileName; // Default file name
+                    dlg.InitialDirectory = System.IO.Path.GetDirectoryName(gvFileName);
+                    dlg.FileName = System.IO.Path.GetFileName(gvFileName); // Default file name
                     dlg.DefaultExt = ".gv"; // Default file extension
                     dlg.Filter = "Graphviz DOT File (.gv)|*.gv"; // Filter files by extension
 
@@ -174,6 +179,7 @@ namespace AirlinkToDot
             var pngFileName = System.IO.Path.ChangeExtension(gvFileName, ".png");
             if (File.Exists(pngFileName))
             {
+                this.Activate(); // Put this window forward
                 var msg = "The default PNG file already exists. Overwrite it?";
                 ret = MessageBox.Show(msg, "Confirm saving default file", MessageBoxButton.YesNo);
                 if (ret == MessageBoxResult.Yes)
@@ -185,7 +191,8 @@ namespace AirlinkToDot
                 {
                     // No, new filename is needed.
                     Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
-                    dlg.FileName = pngFileName; // Default file name
+                    dlg.InitialDirectory = System.IO.Path.GetDirectoryName(pngFileName);
+                    dlg.FileName = System.IO.Path.GetFileName(pngFileName); // Default file name
                     dlg.DefaultExt = ".png"; // Default file extension
                     dlg.Filter = "PNG (.png)|*.png"; // Filter files by extension
 
