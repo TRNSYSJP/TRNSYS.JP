@@ -12,6 +12,7 @@ Vol.6 TRNEdit
 	
 Vol.9 Tutorials
 	9.1. TRNSYSサンプルの使用
+	9.2. シンプルなTRNSYSプロジェクトの作成 [New!]
 　
 
 
