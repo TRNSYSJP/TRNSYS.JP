@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup.vdproj", "{144F3E05-C336-46AF-BDDD-09D710B3815A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirlinkToDot", "..\AirlinkToDot\AirlinkToDot.csproj", "{5BC8A18F-53D8-464D-B501-17B5B61A5423}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{144F3E05-C336-46AF-BDDD-09D710B3815A}.Debug|Any CPU.ActiveCfg = Debug
+		{144F3E05-C336-46AF-BDDD-09D710B3815A}.Debug|Any CPU.Build.0 = Debug
+		{144F3E05-C336-46AF-BDDD-09D710B3815A}.Release|Any CPU.ActiveCfg = Release
+		{144F3E05-C336-46AF-BDDD-09D710B3815A}.Release|Any CPU.Build.0 = Release
+		{5BC8A18F-53D8-464D-B501-17B5B61A5423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BC8A18F-53D8-464D-B501-17B5B61A5423}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BC8A18F-53D8-464D-B501-17B5B61A5423}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BC8A18F-53D8-464D-B501-17B5B61A5423}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {736C8E4A-8942-4347-9AA0-8741A4AD3B86}
+	EndGlobalSection
+EndGlobal
