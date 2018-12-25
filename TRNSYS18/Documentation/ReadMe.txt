@@ -12,7 +12,11 @@ Vol.6 TRNEdit
 	
 Vol.9 Tutorials
 	9.1. TRNSYSサンプルの使用
-	9.2. シンプルなTRNSYSプロジェクトの作成 [New!]
+	9.2. シンプルなTRNSYSプロジェクトの作成 
+	9.3. 3D データモデルを使用した建物プロジェクト
+	9.3.1.	はじめに											[New!]
+	9.3.2.	TRNSYS3D(SketchUp Plugin)と 3D Building ウィザード	[New!]
+
 　
 
 
