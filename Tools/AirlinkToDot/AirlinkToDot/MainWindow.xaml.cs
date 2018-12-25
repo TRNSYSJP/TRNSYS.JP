@@ -22,6 +22,7 @@ using GraphVizWrapper.Queries;
 using GraphVizWrapper;
 using System.Drawing;
 using GraphVizWrapper.Commands;
+using Path = System.IO.Path;
 
 namespace AirlinkToDot
 {
@@ -435,11 +436,34 @@ namespace AirlinkToDot
             string[] files = e.Data.GetData(DataFormats.FileDrop) as string[];
             if (files != null)
             {
-                BuiFile buiFile = new BuiFile();
-                buiFile.Load(files[0]);
-                convertBuiToDot(buiFile);
+                if (checkFileNmae(files[0]))
+                {
+                    BuiFile buiFile = new BuiFile();
+                    buiFile.Load(files[0]);
+                    convertBuiToDot(buiFile);
+                }
+                else
+                {
+                    this.Activate(); //  bring the window to the foreground.
+                    var msg = "Non-bui file was dropped. Please drop the Bui file here.";
+                    MessageBox.Show(this, msg, "Non-bui file", MessageBoxButton.OK);
+                    this.txtBox.Text = "Error !!\n" + msg;
+
+                }
             }
 
+        }
+
+        /// <summary>
+        /// 拡張子がBuiファイルに合致するか判定する
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        private bool checkFileNmae(string v)
+        {
+            var ext = Path.GetExtension(v).ToUpper();
+            if (ext == ".BUI" || ext == ".B17" || ext == ".B18") return true;
+            else return false;
         }
 
         public class DroppedFiles
