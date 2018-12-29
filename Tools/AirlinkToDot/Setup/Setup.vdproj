@@ -61,6 +61,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -77,6 +85,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -133,11 +149,6 @@
             "AssemblyAsmDisplayName" = "8:GraphVizWrapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_733E96FC7D39B0849B2E6A489EFA9FD5"
-                    {
-                    "Name" = "8:GraphVizWrapper.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:GraphVizWrapper.dll"
             "TargetName" = "8:"
@@ -235,7 +246,7 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AirlinkToDot"
-        "ProductCode" = "8:{75AD6B4D-C579-4EDF-BFE3-F62607AFB06F}"
+        "ProductCode" = "8:{EC4E4895-AFEC-426B-9185-03D5E74A103E}"
         "PackageCode" = "8:{C11132DD-8925-42DD-B1EA-3D375781F691}"
         "UpgradeCode" = "8:{281012BE-0AEA-48F1-B01D-450EF054A920}"
         "AspNetVersion" = "8:4.0.30319.0"
