@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_029DBF118DBA4ECE9F48769F95BA7D5E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_260CBD26369F423A8E301ACA0A3D7664"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -34,13 +40,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_733E96FC7D39B0849B2E6A489EFA9FD5"
+        "OwnerKey" = "8:_2BB3E5B821D9429BB22883E085C8CDFC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2BB3E5B821D9429BB22883E085C8CDFC"
+        "OwnerKey" = "8:_733E96FC7D39B0849B2E6A489EFA9FD5"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -68,6 +74,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
         "Release"
@@ -92,6 +106,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
     }
@@ -122,6 +144,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_029DBF118DBA4ECE9F48769F95BA7D5E"
+            {
+            "SourcePath" = "8:..\\ReadMe.pdf"
+            "TargetName" = "8:ReadMe.pdf"
+            "Tag" = "8:"
+            "Folder" = "8:_DE6417B7A6FB4F73ABD17DCA5F341BB7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_260CBD26369F423A8E301ACA0A3D7664"
             {
             "SourcePath" = "8:..\\AirlinkToDot\\GraphViz\\ReadMe.txt"
@@ -149,6 +191,11 @@
             "AssemblyAsmDisplayName" = "8:GraphVizWrapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_733E96FC7D39B0849B2E6A489EFA9FD5"
+                    {
+                    "Name" = "8:GraphVizWrapper.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:GraphVizWrapper.dll"
             "TargetName" = "8:"
@@ -393,6 +440,20 @@
             "Folder" = "8:_80E3CEC32E614754936195DE3B4CE6D0"
             "WorkingFolder" = "8:_DE6417B7A6FB4F73ABD17DCA5F341BB7"
             "Icon" = "8:_2BB3E5B821D9429BB22883E085C8CDFC"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_9D1CCCED41964531B939F1D0A32F5FB0"
+            {
+            "Name" = "8:ReadMe"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_029DBF118DBA4ECE9F48769F95BA7D5E"
+            "Folder" = "8:_80E3CEC32E614754936195DE3B4CE6D0"
+            "WorkingFolder" = "8:_DE6417B7A6FB4F73ABD17DCA5F341BB7"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
         }
