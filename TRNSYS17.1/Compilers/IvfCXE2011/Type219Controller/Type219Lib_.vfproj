@@ -3,9 +3,9 @@
 	<Platforms>
 		<Platform Name="Win32"/></Platforms>
 	<Configurations>
-		<Configuration Name="Debug|Win32" OutputDirectory="C:\Trnsys17_01_0028\UserLib\DebugDLLs" IntermediateDirectory="Debug" DeleteExtensionsOnClean="*.obj;*.mod;*.pdb;*.asm;*.map;*.dyn;*.dpi;*.tmp;*.log;*.ilk;*.exe;$(TargetPath)" ConfigurationType="typeDynamicLibrary">
-				<Tool Name="VFFortranCompilerTool" AdditionalOptions="/dll" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" AdditionalIncludeDirectories="C:\Trnsys17_01_0028\Compilers\IvfCXE2011\TrnDll\Debug\" LocalVariableStorage="localStorageSave" LocalSavedScalarsZero="true" ExtendSinglePrecisionConstants="true" ExternalNameInterpretation="extNameUpperCase" CallingConvention="callConventionCRef" ModulePath="$(INTDIR)/" ObjectFile="$(INTDIR)/" AssemblerListingLocation="$(INTDIR)/" Traceback="true" BoundsCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
-				<Tool Name="VFLinkerTool" AdditionalOptions="/MACHINE:I386" OutputFile="$(OUTDIR)/Type219Controller.dll" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" AdditionalLibraryDirectories="C:\Trnsys17_01_0028\Compilers\IvfCXE2011\TrnDll\Debug" GenerateDebugInformation="true" ProgramDatabaseFile="$(OUTDIR)/Type219Controller.pdb" SubSystem="subSystemWindows" ImportLibrary="$(OUTDIR)/Type219Controller.lib" LinkDLL="true" AdditionalDependencies="kernel32.lib"/>
+		<Configuration Name="Debug|Win32" OutputDirectory="C:\Trnsys17\UserLib\DebugDLLs" IntermediateDirectory="Debug" DeleteExtensionsOnClean="*.obj;*.mod;*.pdb;*.asm;*.map;*.dyn;*.dpi;*.tmp;*.log;*.ilk;*.exe;$(TargetPath)" ConfigurationType="typeDynamicLibrary">
+				<Tool Name="VFFortranCompilerTool" AdditionalOptions="/dll" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" AdditionalIncludeDirectories="C:\Trnsys17\Compilers\IvfCXE2011\TrnDll\Debug\" LocalVariableStorage="localStorageSave" LocalSavedScalarsZero="true" ExtendSinglePrecisionConstants="true" ExternalNameInterpretation="extNameUpperCase" CallingConvention="callConventionCRef" ModulePath="$(INTDIR)/" ObjectFile="$(INTDIR)/" AssemblerListingLocation="$(INTDIR)/" Traceback="true" BoundsCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
+				<Tool Name="VFLinkerTool" AdditionalOptions="/MACHINE:I386" OutputFile="$(OUTDIR)/Type219Controller.dll" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" AdditionalLibraryDirectories="C:\Trnsys17\Compilers\IvfCXE2011\TrnDll\Debug" GenerateDebugInformation="true" ProgramDatabaseFile="$(OUTDIR)/Type219Controller.pdb" SubSystem="subSystemWindows" ImportLibrary="$(OUTDIR)/Type219Controller.lib" LinkDLL="true" AdditionalDependencies="kernel32.lib"/>
 				<Tool Name="VFResourceCompilerTool" PreprocessorDefinitions="_DEBUG" Culture="rcEnglishUS" ResourceOutputFileName="$(INTDIR)/$(InputName).res"/>
 				<Tool Name="VFMidlTool" PreprocessorDefinitions="_DEBUG" MkTypLibCompatible="true" SuppressStartupBanner="true" HeaderFileName="" DLLDataFileName="" TypeLibraryName="$(OUTDIR)/Type219Controller.tlb"/>
 				<Tool Name="VFCustomBuildTool"/>
@@ -13,9 +13,9 @@
 				<Tool Name="VFPreBuildEventTool"/>
 				<Tool Name="VFPostBuildEventTool"/>
 				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration>
-		<Configuration Name="Release|Win32" OutputDirectory="C:\Trnsys17_01_0028\UserLib\ReleaseDLLs" IntermediateDirectory="Release" DeleteExtensionsOnClean="*.obj;*.mod;*.pdb;*.asm;*.map;*.dyn;*.dpi;*.tmp;*.log;*.ilk;*.exe;$(TargetPath)" ConfigurationType="typeDynamicLibrary">
-				<Tool Name="VFFortranCompilerTool" AdditionalOptions="/dll" SuppressStartupBanner="true" AdditionalIncludeDirectories="C:\Trnsys17_01_0028\Compilers\IvfCXE2011\TrnDll\Release\" LocalVariableStorage="localStorageSave" LocalSavedScalarsZero="true" ExtendSinglePrecisionConstants="true" ExternalNameInterpretation="extNameUpperCase" CallingConvention="callConventionCRef" ModulePath="$(INTDIR)/" ObjectFile="$(INTDIR)/" AssemblerListingLocation="$(INTDIR)/"/>
-				<Tool Name="VFLinkerTool" AdditionalOptions="/MACHINE:I386" OutputFile="$(OUTDIR)/Type219Controller.dll" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" AdditionalLibraryDirectories="C:\Trnsys17_01_0028\Compilers\IvfCXE2011\TrnDll\Release" ProgramDatabaseFile="$(OUTDIR)/Type219Controller.pdb" SubSystem="subSystemWindows" ImportLibrary="$(OUTDIR)/Type219Controller.lib" LinkDLL="true" AdditionalDependencies="kernel32.lib"/>
+		<Configuration Name="Release|Win32" OutputDirectory="C:\Trnsys17\UserLib\ReleaseDLLs" IntermediateDirectory="Release" DeleteExtensionsOnClean="*.obj;*.mod;*.pdb;*.asm;*.map;*.dyn;*.dpi;*.tmp;*.log;*.ilk;*.exe;$(TargetPath)" ConfigurationType="typeDynamicLibrary">
+				<Tool Name="VFFortranCompilerTool" AdditionalOptions="/dll" SuppressStartupBanner="true" AdditionalIncludeDirectories="C:\Trnsys17\Compilers\IvfCXE2011\TrnDll\Release\" LocalVariableStorage="localStorageSave" LocalSavedScalarsZero="true" ExtendSinglePrecisionConstants="true" ExternalNameInterpretation="extNameUpperCase" CallingConvention="callConventionCRef" ModulePath="$(INTDIR)/" ObjectFile="$(INTDIR)/" AssemblerListingLocation="$(INTDIR)/"/>
+				<Tool Name="VFLinkerTool" AdditionalOptions="/MACHINE:I386" OutputFile="$(OUTDIR)/Type219Controller.dll" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" AdditionalLibraryDirectories="C:\Trnsys17\Compilers\IvfCXE2011\TrnDll\Release" ProgramDatabaseFile="$(OUTDIR)/Type219Controller.pdb" SubSystem="subSystemWindows" ImportLibrary="$(OUTDIR)/Type219Controller.lib" LinkDLL="true" AdditionalDependencies="kernel32.lib"/>
 				<Tool Name="VFResourceCompilerTool" PreprocessorDefinitions="NDEBUG" Culture="rcEnglishUS" ResourceOutputFileName="$(INTDIR)/$(InputName).res"/>
 				<Tool Name="VFMidlTool" PreprocessorDefinitions="NDEBUG" MkTypLibCompatible="true" SuppressStartupBanner="true" HeaderFileName="" DLLDataFileName="" TypeLibraryName="$(OUTDIR)/Type219Controller.tlb"/>
 				<Tool Name="VFCustomBuildTool"/>
@@ -26,7 +26,7 @@
 	<Files>
 		<Filter Name="Header Files" Filter="h;hpp;hxx;hm;inl;fi;fd"/>
 		<Filter Name="Libraries">
-		<File RelativePath="..\..\..\..\..\..\Trnsys17_01_0028\Exe\TRNDll.lib"/></Filter>
+		<File RelativePath="..\..\..\..\..\..\Trnsys17\Exe\TRNDll.lib"/></Filter>
 		<Filter Name="Resource Files" Filter="ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"/>
 		<Filter Name="Source Files" Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat;f90;for;f;fpp">
 		<File RelativePath=".\Type219Controller.f90"/></Filter></Files>
