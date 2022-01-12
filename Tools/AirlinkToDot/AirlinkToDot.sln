@@ -1,9 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirlinkToDot", "AirlinkToDot\AirlinkToDot.csproj", "{5BC8A18F-53D8-464D-B501-17B5B61A5423}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphVizWrapper", "..\..\..\GraphViz-C-Sharp-Wrapper\src\GraphVizWrapper\GraphVizWrapper.csproj", "{CFEC60DC-14E0-47E4-A60E-8919FB5FEF5D}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{75C2267B-27F1-4775-9064-C436825EDD52}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CFEC60DC-14E0-47E4-A60E-8919FB5FEF5D} = {CFEC60DC-14E0-47E4-A60E-8919FB5FEF5D}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,8 +31,31 @@ Global
 		{5BC8A18F-53D8-464D-B501-17B5B61A5423}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5BC8A18F-53D8-464D-B501-17B5B61A5423}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{5BC8A18F-53D8-464D-B501-17B5B61A5423}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{CFEC60DC-14E0-47E4-A60E-8919FB5FEF5D}.CD_ROM|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFEC60DC-14E0-47E4-A60E-8919FB5FEF5D}.CD_ROM|Any CPU.Build.0 = Debug|Any CPU
+		{CFEC60DC-14E0-47E4-A60E-8919FB5FEF5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFEC60DC-14E0-47E4-A60E-8919FB5FEF5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFEC60DC-14E0-47E4-A60E-8919FB5FEF5D}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFEC60DC-14E0-47E4-A60E-8919FB5FEF5D}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{CFEC60DC-14E0-47E4-A60E-8919FB5FEF5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFEC60DC-14E0-47E4-A60E-8919FB5FEF5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFEC60DC-14E0-47E4-A60E-8919FB5FEF5D}.SingleImage|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFEC60DC-14E0-47E4-A60E-8919FB5FEF5D}.SingleImage|Any CPU.Build.0 = Debug|Any CPU
+		{75C2267B-27F1-4775-9064-C436825EDD52}.CD_ROM|Any CPU.ActiveCfg = Debug
+		{75C2267B-27F1-4775-9064-C436825EDD52}.CD_ROM|Any CPU.Build.0 = Debug
+		{75C2267B-27F1-4775-9064-C436825EDD52}.Debug|Any CPU.ActiveCfg = Debug
+		{75C2267B-27F1-4775-9064-C436825EDD52}.Debug|Any CPU.Build.0 = Debug
+		{75C2267B-27F1-4775-9064-C436825EDD52}.DVD-5|Any CPU.ActiveCfg = Debug
+		{75C2267B-27F1-4775-9064-C436825EDD52}.DVD-5|Any CPU.Build.0 = Debug
+		{75C2267B-27F1-4775-9064-C436825EDD52}.Release|Any CPU.ActiveCfg = Release
+		{75C2267B-27F1-4775-9064-C436825EDD52}.Release|Any CPU.Build.0 = Release
+		{75C2267B-27F1-4775-9064-C436825EDD52}.SingleImage|Any CPU.ActiveCfg = Debug
+		{75C2267B-27F1-4775-9064-C436825EDD52}.SingleImage|Any CPU.Build.0 = Debug
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {729825B1-F696-4B80-BE65-C0958599B24A}
 	EndGlobalSection
 EndGlobal
