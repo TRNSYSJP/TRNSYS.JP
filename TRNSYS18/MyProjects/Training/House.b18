@@ -1,15 +1,15 @@
 *********************************************************************************
-*  TRNBuild   3.0.292
+*  TRNBuild   3.0.298
 *********************************************************************************
 *   BUILDING DESCRIPTIONS FILE TRNSYS
-*   FOR BUILDING:   C:\TRNSYS18\MyProjects\Training\House.b18
+*   FOR BUILDING:   C:\WorkCopy\TRNSYS.JP\TRNSYS18\MyProjects\Training\House.b18
 *   GET BY WORKING WITH TRNBuild 1.0 for Windows
 *********************************************************************************
 *
 *--------------------------------------------------------------------------------
 *  C o m m e n t s
 *--------------------------------------------------------------------------------
-*#C Originally created by TRNSIDF Version 1.78
+*#C Originally created by TRNSIDF Version 1.81
 *--------------------------------------------------------------------------------
 *  P r o j e c t
 *--------------------------------------------------------------------------------
@@ -73,8 +73,8 @@ LAYER DAEMM
 *--------------------------------------------------------------------------------
 INPUTS TGROUND TBOUNDARY SHADE_CLOSE SHADE_OPEN MAX_ISHADE MAX_ESHADE
 INPUTS_DESCRIPTION
- TGROUND : °C : Ground Temperature (boundary temperature used for floors adjacent to the ground)
- TBOUNDARY : °C : Boundary Temperature (boundary temperature used for boundary floors, walls, ceilings)
+ TGROUND : C : Ground Temperature (boundary temperature used for floors adjacent to the ground)
+ TBOUNDARY : C : Boundary Temperature (boundary temperature used for boundary floors, walls, ceilings)
  SHADE_CLOSE : kJ/hr.m^2 : threshold of total radiation on facade where shading device is activated
  SHADE_OPEN : kJ/hr.m^2 : threshold of total radiation on facade where shading device is deactivated
  MAX_ISHADE : any : max shading factor of internal shading
@@ -183,7 +183,7 @@ WINDOW ADJ_WINDOW2
 *--------------------------------------------------------------------------------
 *  G a i n s / L o s s e s
 *--------------------------------------------------------------------------------
-GAIN ASHRAE_105W-Person_AII_24°C
+GAIN ASHRAE_105W-Person_AII_24C
  CONVECTIVE=100.8 : RADIATIVE=151.2 : HUMIDITY=0.052 : ELPOWERFRAC=0 :  ABSOLUTE : CATEGORY=PEOPLE
 GAIN light_6W/m2
  CONVECTIVE=8.64 : RADIATIVE=12.96 : HUMIDITY=0 : ELPOWERFRAC=1 :  AREA_RELATED : CATEGORY=LIGHTS
@@ -243,15 +243,15 @@ RADIATIONMODE
 DAYLIGHTMODE
  DLSHADE =-1
 AIRNODE ROOM1
-FLOOR        =GROUND_FLOOR : SURF=  1 : AREA=        25 : BOUNDARY=10 : GEOSURF=0.6
+FLOOR        =GROUND_FLOOR : SURF=  1 : AREA=        25 : BOUNDARY=10 : GEOSURF=0.8
 ROOF         =EXT_ROOF   : SURF=  2 : AREA=        25 : EXTERNAL : ORI=H_0_0 : FSKY=1
-WALL         =ADJ_WALL   : SURF=  3 : AREA=      17.5 : ADJACENT=ROOM2 : ADJ_SURF=10 : FRONT : GEOSURF=0.1
-WALL         =EXT_WALL   : SURF=  4 : AREA=      13.5 : EXTERNAL : ORI=S_0_90 : FSKY=0.5 : GEOSURF=0.077143
-WINDOW=EXT_WINDOW1 : SURF=  7 : AREA=         4 : EXTERNAL : ORI=S_0_90 : FSKY=0.5 : GEOSURF=0.022857
-WALL         =EXT_WALL   : SURF=  5 : AREA=      17.5 : EXTERNAL : ORI=N_180_90 : FSKY=0.5 : GEOSURF=0.1
-WALL         =EXT_WALL   : SURF=  6 : AREA=      17.5 : EXTERNAL : ORI=W_90_90 : FSKY=0.5 : GEOSURF=0.1
+WALL         =ADJ_WALL   : SURF=  3 : AREA=      17.5 : ADJACENT=ROOM2 : ADJ_SURF=10 : FRONT : GEOSURF=0.05
+WALL         =EXT_WALL   : SURF=  4 : AREA=      13.5 : EXTERNAL : ORI=S_0_90 : FSKY=0.5 : GEOSURF=0.038571
+WINDOW=EXT_WINDOW1 : SURF=  7 : AREA=         4 : EXTERNAL : ORI=S_0_90 : FSKY=0.5 : GEOSURF=0.011429
+WALL         =EXT_WALL   : SURF=  5 : AREA=      17.5 : EXTERNAL : ORI=N_180_90 : FSKY=0.5 : GEOSURF=0.05
+WALL         =EXT_WALL   : SURF=  6 : AREA=      17.5 : EXTERNAL : ORI=W_90_90 : FSKY=0.5 : GEOSURF=0.05
  REGIME
- GAIN        = ASHRAE_105W-Person_AII_24°C : SCALE= SCHEDULE 1*ROOM1_PEOPLE : GEOPOS= 0 : SCALE2= 1 : FRAC_REFAREA= -1
+ GAIN        = ASHRAE_105W-Person_AII_24C : SCALE= SCHEDULE 1*ROOM1_PEOPLE : GEOPOS= 0 : SCALE2= 1 : FRAC_REFAREA= -1
  GAIN        = light_6W/m2 : SCALE= SCHEDULE 1*ROOM1_LIGHT : GEOPOS= 0 : SCALE2= 1 : FRAC_REFAREA= 1
  COOLING     = ROOM1_COOLING
  HEATING     = ROOM1_HEATING
@@ -265,16 +265,15 @@ RADIATIONMODE
 DAYLIGHTMODE
  DLSHADE =-1
 AIRNODE ROOM2
-WALL         =EXT_WALL   : SURF=  8 : AREA=      17.5 : EXTERNAL : ORI=N_180_90 : FSKY=0.5 : GEOSURF=0.1
+WALL         =EXT_WALL   : SURF=  8 : AREA=      17.5 : EXTERNAL : ORI=N_180_90 : FSKY=0.5 : GEOSURF=0.05
 ROOF         =EXT_ROOF   : SURF=  9 : AREA=        25 : EXTERNAL : ORI=H_0_0 : FSKY=1
-WALL         =ADJ_WALL   : SURF= 10 : AREA=      17.5 : ADJACENT=ROOM1 : ADJ_SURF=3 : BACK : GEOSURF=0.1
-WALL         =EXT_WALL   : SURF= 11 : AREA=      17.5 : EXTERNAL : ORI=E_270_90 : FSKY=0.5 : GEOSURF=0.1
-WALL         =EXT_WALL   : SURF= 12 : AREA=      13.5 : EXTERNAL : ORI=S_0_90 : FSKY=0.5 : GEOSURF=0.077143
-WINDOW=EXT_WINDOW1 : SURF= 14 : AREA=         4 : EXTERNAL : ORI=S_0_90 : FSKY=0.5 : GEOSURF=0.022857
-FLOOR        =GROUND_FLOOR : SURF= 13 : AREA=        25 : BOUNDARY=10 : GEOSURF=0.6
+WALL         =ADJ_WALL   : SURF= 10 : AREA=      17.5 : ADJACENT=ROOM1 : ADJ_SURF=3 : BACK : GEOSURF=0.05
+WALL         =EXT_WALL   : SURF= 11 : AREA=      17.5 : EXTERNAL : ORI=E_270_90 : FSKY=0.5 : GEOSURF=0.05
+WALL         =EXT_WALL   : SURF= 12 : AREA=      13.5 : EXTERNAL : ORI=S_0_90 : FSKY=0.5 : GEOSURF=0.038571
+WINDOW=EXT_WINDOW1 : SURF= 14 : AREA=         4 : EXTERNAL : ORI=S_0_90 : FSKY=0.5 : GEOSURF=0.011429
+FLOOR        =GROUND_FLOOR : SURF= 13 : AREA=        25 : BOUNDARY=10 : GEOSURF=0.8
  REGIME
- GAIN        = ASHRAE_105W-Person_AII_24°C : SCALE= SCHEDULE 1*ROOM2_PEOPLE : GEOPOS= 0 : SCALE2= 1 : FRAC_REFAREA= -1
- GAIN        = light_6W/m2 : SCALE= SCHEDULE 1*ROOM1_LIGHT : GEOPOS= 0 : SCALE2= 1 : FRAC_REFAREA= 1
+ GAIN        = ASHRAE_105W-Person_AII_24C : SCALE= SCHEDULE 1*ROOM2_PEOPLE : GEOPOS= 0 : SCALE2= 1 : FRAC_REFAREA= -1
  CAPACITANCE = 105     : VOLUME= 87.5    : REFAREA= 25      : TINITIAL= 20      : PHINITIAL= 50      : WCAPR= 1
 *--------------------------------------------------------------------------------
 *  O u t p u t s
@@ -470,7 +469,21 @@ _EXTENSION_VirtualSurfaceGeometry_END_
 
 
 _EXTENSION_ExternalShadingGeometry_START_
+vertex 21 8.500000000000 0.000000000000 2.641776078889
+vertex 22 8.500000000000 0.000000000000 2.500000000000
+vertex 23 6.500000000000 0.000000000000 2.500000000000
+vertex 24 6.500000000000 0.000000000000 2.641776078889
+vertex 25 8.500000000000 -0.700000000000 2.500000000000
+vertex 26 6.500000000000 -0.700000000000 2.500000000000
+vertex 27 6.500000000000 -0.700000000000 2.641776078889
+vertex 28 8.500000000000 -0.700000000000 2.641776078889
 
+shader 10001 21 22 23 24
+shader 10002 22 25 26 23
+shader 10003 24 23 26 27
+shader 10004 24 27 28 21
+shader 10005 28 25 22 21
+shader 10006 27 26 25 28
 _EXTENSION_ExternalShadingGeometry_END_
 
 
