@@ -104,7 +104,8 @@ if __name__ == '__main__':
             'title': Y_AXIS_TITLE, # Y-axis title
             'range': Y_AXIS_RANGE, # Y-axis range
             'exponentformat': 'none', # disable 'e' notation
-            'separatethousands': True # Enable comma
+            'separatethousands': True, # Enable comma
+            'fixedrange': False # Enable zoom
         }
     )
     # Add a range slider

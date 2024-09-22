@@ -57,11 +57,13 @@ if __name__ == '__main__':
 
     # Remove unnecessary symbols from column names
     df.columns = [re.sub(r'[-+=]', '', col) for col in df.columns]
+
+    # substitute 'B4_QCOUP' with '_B4_QCOUP' in column names
+    df.columns = [re.sub(r'B4_QCOUP', '_B4_QCOUP', col) for col in df.columns]
     
     # Extracting data excluding the pre-calculation period.
     # In this example, we extract the data after 24h
-    # df = df[df['TIME'].astype(float) >= 24]　# 24h以降のデータを抽出
-    df = df[df['TIME'].astype(float) >= PLOT_START_TIME] # 0h以降のデータを抽出
+    df = df[df['TIME'].astype(float) >= PLOT_START_TIME] 
 
     # Convert TIME column to date/time and set to the Index.
     df.index = pd.to_datetime(df['TIME'], unit='h', origin=DATETIME_ORIGIN)
@@ -82,7 +84,7 @@ if __name__ == '__main__':
     # Group columns that start with a number followed by an underscore
     groups = {}
     for col in df.columns:
-        match = re.match(r'^(\d+)_', col)
+        match = re.match(r'^(\d+)(_B)?', col)
         if match:
             group_name = match.group(1)
             if group_name not in groups:
@@ -112,7 +114,8 @@ if __name__ == '__main__':
             'title': Y_AXIS_TITLE, # Y-axis title
             'range': Y_AXIS_RANGE, # Y-axis range
             'exponentformat': 'none', # disable 'e' notation
-            'separatethousands': True # Enable comma
+            'separatethousands': True, # Enable comma
+            'fixedrange': False # Enable zoom
         }
     )
     # Add a range slider

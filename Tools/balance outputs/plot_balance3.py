@@ -116,7 +116,8 @@ if __name__ == '__main__':
 
     fig.update_yaxes(range=Y_AXIS_RANGE, title_text=Y_AXIS_TITLE, row=1, col=1,
                     exponentformat='none', # disable 'e' notation
-                    separatethousands=True # Enable comma
+                    separatethousands=True, # Enable comma
+                    fixedrange=False # Enable zoom
                      )
 
     # 2nd row
